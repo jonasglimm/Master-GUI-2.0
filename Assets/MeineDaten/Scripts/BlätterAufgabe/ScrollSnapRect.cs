@@ -64,6 +64,7 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     public float swipeMovementX = 8f ;
 
     public AudioSource scrollingSound;
+    private Button[] buttons; //used to select the currently shown button to change the color
 
     //------------------------------------------------------------------------
     void Start() {
@@ -89,6 +90,8 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         SetPage(startingPage);
         InitPageSelection();
         SetPageSelection(startingPage);
+        buttons = GetComponentsInChildren<Button>();
+        buttons[startingPage].Select();
 
         // prev and next buttons
         if (nextButton)
@@ -235,12 +238,16 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     private void NextScreen() {
         LerpToPage(_currentPage + 1);
         scrollingSound.Play();
+        buttons[_currentPage].Select();
+
     }
 
     //------------------------------------------------------------------------
     private void PreviousScreen() {
         LerpToPage(_currentPage - 1);
         scrollingSound.Play();
+        buttons[_currentPage].Select();
+
     }
 
     //------------------------------------------------------------------------
