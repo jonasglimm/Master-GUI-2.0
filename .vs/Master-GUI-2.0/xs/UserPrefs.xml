@@ -1,8 +1,9 @@
 ﻿<Properties StartupConfiguration="{AE6E7F84-5196-7310-30D5-FD1955374EF5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/BlätterAufgabe/BlaetterAufgabe/BlaetterRectMovement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlControl.cs">
     <Files>
-      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/ScrollSnapRect.cs" Line="66" Column="26" />
-      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/BlaetterAufgabe/BlaetterRectMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/ScrollSnapRect.cs" Line="242" Column="1" />
+      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/BlaetterAufgabe/BlaetterRectMovement.cs" Line="97" Column="1" />
+      <File FileName="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlControl.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,10 +12,11 @@
             <Node name="Assets" expanded="True">
               <Node name="MeineDaten" expanded="True">
                 <Node name="Scripts" expanded="True">
+                  <Node name="AuswahlAufgabe" expanded="True">
+                    <Node name="AuswahlControl.cs" selected="True" />
+                  </Node>
                   <Node name="BlätterAufgabe" expanded="True">
-                    <Node name="BlaetterAufgabe" expanded="True">
-                      <Node name="BlaetterRectMovement.cs" selected="True" />
-                    </Node>
+                    <Node name="BlaetterAufgabe" expanded="True" />
                   </Node>
                 </Node>
               </Node>

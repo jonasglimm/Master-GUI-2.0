@@ -25,6 +25,7 @@ public class AuswahlControl : MonoBehaviour
     public GameObject anzahlFehler;
     public TextMeshProUGUI timeTextField;
     public GameObject endPanel;
+    public bool useIcons;
 
     // Private variables to use within the calculations
     private int aufgabenstellung;
@@ -33,6 +34,10 @@ public class AuswahlControl : MonoBehaviour
     private int aufgabenNr;
 
     private Button[] buttonList;
+    private GameObject[] numberList;
+    private GameObject[] iconList;
+    private GameObject images;
+  
 
     // Active time is the time in sec how long a feedback panel is shown
     private float activeTime; //set in ValueControlCenter
@@ -49,6 +54,8 @@ public class AuswahlControl : MonoBehaviour
     {
         valueControlCenter = GameObject.Find("AufgabenManager").GetComponent<ValueControlCenter>();
         auswahlTrackpad = GameObject.Find("AufgabenManager").GetComponent<AuswahlTrackpad>();
+        buttonList = FindObjectsOfType<Button>();
+        images = GameObject.Find("Images");
 
         activeTime = valueControlCenter.feedbackPanelTime;
         anzahlAufgaben = valueControlCenter.numberOfTasks;
@@ -59,21 +66,19 @@ public class AuswahlControl : MonoBehaviour
     void Start()
     {
         aufgabenNr = 1;
+        ChangeToIcons();
         NewTask(); //Which Button should be pressed?
         // Starting to count mistakes and tasks
         fehlercounter = 0;
 
         // if direct touch is used, the selected color is changed to blue
-         if (directTouchInput == true) 
+        if (directTouchInput == true) 
          {
-             buttonList = FindObjectsOfType<Button>();
-
-             for (var i = 0; i < buttonList.Length; i++ )
+             for (var i = 0; i < buttonList.Length - 1; i++ ) // -1 because of backbutton
              {
                  ColorBlock colorVar = buttonList[i].colors;
                  colorVar.selectedColor = new Color(0.2666667f, 0.4470588f, 0.7686275f, 1);
                  buttonList[i].colors = colorVar;
-
              }
          }
          startTime = System.DateTime.Now;
@@ -88,6 +93,34 @@ public class AuswahlControl : MonoBehaviour
         maxAnzahlAufgabe.GetComponent<TMPro.TextMeshProUGUI>().text = anzahlAufgaben.ToString();
     }
 
+    private void ChangeToIcons()
+    {
+        numberList = GameObject.FindGameObjectsWithTag("NoIcons");
+        iconList = GameObject.FindGameObjectsWithTag("WithIcons");
+
+        if (useIcons == true)
+        {
+            zahlAufgabe.GetComponent<TextMeshProUGUI>().enabled = false;
+
+            for (var i = 0; i < numberList.Length; i++)
+            {
+                numberList[i].GetComponent<TextMeshProUGUI>().enabled = false;
+                iconList[i].GetComponent<Image>().enabled = true;
+            }
+        }
+        else
+        {
+            zahlAufgabe.GetComponent<TextMeshProUGUI>().enabled = true;
+
+            for (var i = 0; i < numberList.Length; i++)
+            {
+                numberList[i].GetComponent<TextMeshProUGUI>().enabled = true;
+                iconList[i].GetComponent<Image>().enabled = false;
+                images.transform.GetChild(2).GetComponent<Image>().enabled = false;
+            }
+        }
+    }
+
     // Function to be assigned to each button (OnButtonClicked) - compares the name (number) of the button to the current task
     // Feedback is given and either the task counter or the mistake counter is increased
     public void Comparision(Button btn)
@@ -96,6 +129,12 @@ public class AuswahlControl : MonoBehaviour
         if (btn.name == aufgabenstellung.ToString())
         {
             StartCoroutine(FeedbackCorrect());
+
+            if (useIcons == true)
+            {
+                images.transform.GetChild(aufgabenstellung - 1).GetComponent<Image>().enabled = false;
+            }
+
             aufgabenNr++;
 
             if(aufgabenNr >= anzahlAufgaben) // if task counter reaches the max number of task, the endscreem is called
@@ -131,6 +170,11 @@ public class AuswahlControl : MonoBehaviour
     {
         int factor = aufgabenNr / aufgabenListe.Length;
         aufgabenstellung = aufgabenListe[aufgabenNr - (factor * aufgabenListe.Length) - 1];
+
+        if (useIcons == true)
+        {
+            images.transform.GetChild(aufgabenstellung - 1).GetComponent<Image>().enabled = true;
+        }
     }
 
     //Endscreen to show the endpanel
