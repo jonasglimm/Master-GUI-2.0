@@ -34,7 +34,6 @@
 			_locations = new Vector2d[_locationStrings.Length];
 			_spawnedObjects = new List<GameObject>();
 
-			
 			var i = mapboxTaskControl.targetCount; // all below is added - use green code for original functionality
 			var locationString = _locationStrings[i];
 			_locations[i] = Conversions.StringToLatLon(locationString);
@@ -83,12 +82,10 @@
 				previousI = i;
 			}
 			
-			
 			var spawnedObject = _spawnedObjects[0]; // 0 instead of i because the list always only contains one object
 			var location = _locations[i];
 			spawnedObject.transform.localPosition = _map.GeoToWorldPosition(location, true);
 			spawnedObject.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
-			
 
 			//Normal rendering of objects - use this for normal functionality
 			/*

@@ -91,6 +91,11 @@ public class AuswahlControl : MonoBehaviour
         anzahlFehler.GetComponent<TMPro.TextMeshProUGUI>().text = fehlercounter.ToString();
         nummerDerAufgabe.GetComponent<TMPro.TextMeshProUGUI>().text = aufgabenNr.ToString();
         maxAnzahlAufgabe.GetComponent<TMPro.TextMeshProUGUI>().text = anzahlAufgaben.ToString();
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            EndScreen();
+        }
     }
 
     private void ChangeToIcons()
@@ -180,7 +185,7 @@ public class AuswahlControl : MonoBehaviour
     //Endscreen to show the endpanel
     public void EndScreen() {
         var totalTime = System.DateTime.Now - startTime;
-        timeTextField.text = totalTime.Minutes.ToString()+":"+totalTime.Seconds.ToString();
+        timeTextField.text = totalTime.Minutes.ToString()+" min : "+totalTime.Seconds.ToString() + " sek";
         endPanel.SetActive(true);
         endNachricht.SetActive(true);
 

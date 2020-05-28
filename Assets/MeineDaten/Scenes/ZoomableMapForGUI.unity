@@ -1205,7 +1205,7 @@ MonoBehaviour:
   timeTextField: {fileID: 820854364}
   pointer: {fileID: 789113797}
   targetCount: 0
-  _panSpeed: 1
+  _panSpeed: 1.75
   _zoomSpeed: 0.25
   zoomBarrier: 16
   targetOffset: 0.005
