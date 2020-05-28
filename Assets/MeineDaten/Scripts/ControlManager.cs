@@ -42,7 +42,16 @@ public class ControlManager : MonoBehaviour
     private int currentTaskNumber;
     private int lastTaskElement;
     private DateTime startTime;
-// Use this for initialization
+    private GameObject startPanel;
+    private GameObject startPanelTouchscreen;
+
+    private void Awake()
+    {
+        startPanel = GameObject.Find("StartPanel");
+        startPanelTouchscreen = GameObject.Find("StartPanelForTouchscreen");
+    }
+
+    // Use this for initialization
     void Start () {
         CheckModalities();
         errors = 0;
@@ -50,8 +59,8 @@ public class ControlManager : MonoBehaviour
         taskTextField.text = taskNumber.ToString() + " / "+totalTasks.ToString();
         errorCountTextField.text = errors.ToString();
         CreateTaskOrder();
+        SetStartPanel();
         NewTask();
-        startTime = System.DateTime.Now;
     }
 
     private void Update()
@@ -60,6 +69,31 @@ public class ControlManager : MonoBehaviour
         {
             EndScreen();
         }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            StartTime();
+        }
+
+    }
+
+    public void SetStartPanel()
+    {
+        if (touchscreenInput == true)
+        {
+            startPanel.SetActive(false);
+        }
+        else
+        {
+            startPanelTouchscreen.SetActive(false);
+        }
+    }
+
+    public void StartTime()
+    {
+        startTime = System.DateTime.Now;
+        clickSound.Play();
+        startPanel.SetActive(false);
+        startPanelTouchscreen.SetActive(false);
     }
 
     public void CheckModalities() // Check if exactly one modality is set to active

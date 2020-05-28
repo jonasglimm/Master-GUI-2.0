@@ -33,10 +33,15 @@ public class ScrollTaskControl : MonoBehaviour
     private float activeTime;
     private int anzahlAufgaben;
     private DateTime startTime;
+    private GameObject startPanel;
+    private GameObject startPanelTouchscreen;
+
     private void Awake()
     {
         valueControlCenter = GameObject.Find("ScrollManager").GetComponent<ValueControlCenter>();
         scrollRectMovement = GameObject.Find("ButtonScrollList").GetComponent<ScrollRectMovement>();
+        startPanel = GameObject.Find("StartPanel");
+        startPanelTouchscreen = GameObject.Find("StartPanelForTouchscreen");
     }
 
     void Start()
@@ -47,8 +52,8 @@ public class ScrollTaskControl : MonoBehaviour
         fehlercounter = 0;
         aufgabenNr = 1;
         CreateTaskOrder();
+        SetStartPanel();
         NewTask();
-        startTime = System.DateTime.Now;
     }
 
     private void Update()
@@ -67,10 +72,35 @@ public class ScrollTaskControl : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            StartTime();
+        }
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
             EndScreen();
         }
+    }
+
+    public void SetStartPanel()
+    {
+        if (valueControlCenter.touchscreenInput == true)
+        {
+            startPanel.SetActive(false);
+        }
+        else
+        {
+            startPanelTouchscreen.SetActive(false);
+        }
+    }
+
+    public void StartTime()
+    {
+        startTime = System.DateTime.Now;
+        clickSound.Play();
+        startPanel.SetActive(false);
+        startPanelTouchscreen.SetActive(false);
     }
 
     public void Comparision(TextMeshProUGUI buttonText)

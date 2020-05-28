@@ -39,6 +39,7 @@ ScriptsOnlyBuild:
     - Mapbox.Unity.Utilities.DebugTools.SceneData
     - Mapbox.Unity.Utilities.DebugTools.ScenesList
     - Mapbox.Unity.Utilities.OpenUrlOnButtonClick
+    - Mapbox.Unity.Utilities.Runnable
     - Mapbox.Unity.Utilities.TelemetryConfigurationButton
     - MapboxTaskControl
     - PageSelectionCreator
@@ -308,6 +309,123 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
     - Class: 225
+      Script: {instanceID: 0}
+    Assets/MeineDaten/Scenes/KartenAufgabeZoom.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 90
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11410}
+    - Class: 114
+      Script: {instanceID: 11840}
+    - Class: 114
+      Script: {instanceID: 11846}
+    - Class: 114
+      Script: {instanceID: 11924}
+    - Class: 114
+      Script: {instanceID: 12142}
+    - Class: 114
+      Script: {instanceID: 12156}
+    - Class: 114
+      Script: {instanceID: 12350}
+    - Class: 114
+      Script: {instanceID: 12390}
+    - Class: 114
+      Script: {instanceID: 12532}
+    - Class: 114
+      Script: {instanceID: 12560}
+    - Class: 114
+      Script: {instanceID: 12780}
+    - Class: 114
+      Script: {instanceID: 13038}
+    - Class: 114
+      Script: {instanceID: 13056}
+    - Class: 114
+      Script: {instanceID: 13252}
+    - Class: 114
+      Script: {instanceID: 13636}
+    - Class: 114
+      Script: {instanceID: 13710}
+    - Class: 114
+      Script: {instanceID: 13756}
+    - Class: 114
+      Script: {instanceID: 13976}
+    - Class: 114
+      Script: {instanceID: 14192}
+    - Class: 114
+      Script: {instanceID: 14250}
+    - Class: 114
+      Script: {instanceID: 14256}
+    - Class: 114
+      Script: {instanceID: 14708}
+    - Class: 114
+      Script: {instanceID: 14786}
+    - Class: 114
+      Script: {instanceID: 14836}
+    - Class: 114
+      Script: {instanceID: 14970}
+    - Class: 114
+      Script: {instanceID: 15030}
+    - Class: 114
+      Script: {instanceID: 15498}
+    - Class: 114
+      Script: {instanceID: 15718}
+    - Class: 114
+      Script: {instanceID: 15786}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 124
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 225
+      Script: {instanceID: 0}
+    - Class: 258
       Script: {instanceID: 0}
     Assets/MeineDaten/Scenes/Menu.unity:
     - Class: 1
@@ -611,123 +729,6 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
     - Class: 225
-      Script: {instanceID: 0}
-    Assets/MeineDaten/Scenes/ZoomableMapForGUI.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 23
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 33
-      Script: {instanceID: 0}
-    - Class: 43
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 64
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 82
-      Script: {instanceID: 0}
-    - Class: 83
-      Script: {instanceID: 0}
-    - Class: 89
-      Script: {instanceID: 0}
-    - Class: 90
-      Script: {instanceID: 0}
-    - Class: 95
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 108
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 11410}
-    - Class: 114
-      Script: {instanceID: 11840}
-    - Class: 114
-      Script: {instanceID: 11846}
-    - Class: 114
-      Script: {instanceID: 11924}
-    - Class: 114
-      Script: {instanceID: 12142}
-    - Class: 114
-      Script: {instanceID: 12156}
-    - Class: 114
-      Script: {instanceID: 12350}
-    - Class: 114
-      Script: {instanceID: 12390}
-    - Class: 114
-      Script: {instanceID: 12532}
-    - Class: 114
-      Script: {instanceID: 12560}
-    - Class: 114
-      Script: {instanceID: 12780}
-    - Class: 114
-      Script: {instanceID: 13038}
-    - Class: 114
-      Script: {instanceID: 13056}
-    - Class: 114
-      Script: {instanceID: 13252}
-    - Class: 114
-      Script: {instanceID: 13636}
-    - Class: 114
-      Script: {instanceID: 13710}
-    - Class: 114
-      Script: {instanceID: 13756}
-    - Class: 114
-      Script: {instanceID: 13976}
-    - Class: 114
-      Script: {instanceID: 14192}
-    - Class: 114
-      Script: {instanceID: 14250}
-    - Class: 114
-      Script: {instanceID: 14256}
-    - Class: 114
-      Script: {instanceID: 14708}
-    - Class: 114
-      Script: {instanceID: 14786}
-    - Class: 114
-      Script: {instanceID: 14836}
-    - Class: 114
-      Script: {instanceID: 14970}
-    - Class: 114
-      Script: {instanceID: 15030}
-    - Class: 114
-      Script: {instanceID: 15498}
-    - Class: 114
-      Script: {instanceID: 15718}
-    - Class: 114
-      Script: {instanceID: 15786}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 124
-      Script: {instanceID: 0}
-    - Class: 128
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 196
-      Script: {instanceID: 0}
-    - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
-    - Class: 225
-      Script: {instanceID: 0}
-    - Class: 258
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -2586,7 +2587,7 @@ ScriptsOnlyBuild:
     className: TextMeshOutline
   - hash:
       serializedVersion: 2
-      Hash: da34c9e921c738c6e855430e3de85736
+      Hash: 5c4dbd2351e61bb3a089ad4a44be1eb9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MapboxTaskControl
@@ -3112,6 +3113,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: Mapbox.Unity.MeshGeneration.Modifiers
     className: ModifierStack
+  - hash:
+      serializedVersion: 2
+      Hash: 05d953cd1bdfc4b7173849e3d84954f5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SettingsController
   platform: 9
   scenePathNames:
   - Assets/MeineDaten/Scenes/Menu.unity
@@ -3119,6 +3126,6 @@ ScriptsOnlyBuild:
   - "Assets/MeineDaten/Scenes/Bla\u0308tterAufgabe.unity"
   - Assets/MeineDaten/Scenes/ScrollAufgabe.unity
   - Assets/MeineDaten/Scenes/SliderAufgabe.unity
-  - Assets/MeineDaten/Scenes/ZoomableMapForGUI.unity
+  - Assets/MeineDaten/Scenes/KartenAufgabeZoom.unity
   - Assets/MeineDaten/Scenes/DialTextInsertion.unity
   playerPath: /Users/jonasglimmann/UnityProject/AppBuild/Test 2.0

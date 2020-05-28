@@ -1,7 +1,12 @@
 ﻿<Properties StartupConfiguration="{AE6E7F84-5196-7310-30D5-FD1955374EF5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/Settings/SettingsController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/ScrollAufgabe/ScrollTaskControl.cs">
     <Files>
-      <File FileName="Assets/MeineDaten/Scripts/Settings/SettingsController.cs" Line="22" Column="1" />
+      <File FileName="Assets/MeineDaten/Scripts/Settings/SettingsController.cs" Line="15" Column="23" />
+      <File FileName="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlControl.cs" Line="107" Column="10" />
+      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/BlaetterAufgabe/BlaetterControl.cs" Line="44" Column="1" />
+      <File FileName="Assets/MeineDaten/Scripts/ControlManager.cs" Line="98" Column="1" />
+      <File FileName="Assets/MeineDaten/Scripts/ScrollAufgabe/ScrollTaskControl.cs" Line="82" Column="25" />
+      <File FileName="Assets/MeineDaten/Scripts/SliderControl/SliderControl.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -24,10 +29,11 @@
                   </Node>
                   <Node name="LetterSelection" expanded="True" />
                   <Node name="MapAufgabe" expanded="True" />
-                  <Node name="ScrollAufgabe" expanded="True" />
-                  <Node name="Settings" expanded="True">
-                    <Node name="SettingsController.cs" selected="True" />
+                  <Node name="ScrollAufgabe" expanded="True">
+                    <Node name="ScrollTaskControl.cs" selected="True" />
                   </Node>
+                  <Node name="Settings" expanded="True" />
+                  <Node name="SliderControl" expanded="True" />
                 </Node>
               </Node>
             </Node>

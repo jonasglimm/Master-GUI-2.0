@@ -37,12 +37,16 @@ public class SliderControl : MonoBehaviour
     private Vector3 lastMouseCoordinate = Vector3.zero;
     // public Slider slider;
     private bool selected = false;
+    private GameObject startPanel;
+    private GameObject startPanelTouchscreen;
 
     private void Awake() //intiate all variables which are set in different scripts
     {
         valueControlCenter = GameObject.Find("SliderControl").GetComponent<ValueControlCenter>();
         startSliderTask = GameObject.Find("SliderControl").GetComponent<StartSliderTask>();
         clickSound = GameObject.Find("ClickSound").GetComponent<AudioSource>();
+        startPanel = GameObject.Find("StartPanel");
+        startPanelTouchscreen = GameObject.Find("StartPanelForTouchscreen");
 
         endOfScale = startSliderTask.endOfScale;
         CreateTaskOrder();
@@ -55,8 +59,9 @@ public class SliderControl : MonoBehaviour
         valueSlider.maxValue = endOfScale;
         valueSlider.value = endOfScale / 2;
         NewTask();
+        SetStartPanel();
 
-        if(valueControlCenter.touchpadInput == false){
+        if (valueControlCenter.touchpadInput == false){
             ColorBlock colorVar = valueSlider.colors;
             colorVar.selectedColor = new Color(1f, 0.8509804f, 0.4f, 1);
             valueSlider.colors = colorVar;
@@ -67,7 +72,6 @@ public class SliderControl : MonoBehaviour
         {
             InvokeRepeating("CursorLock", valueControlCenter.cursorResetTime, valueControlCenter.cursorResetTime);  
         }
-        startTime = System.DateTime.Now;
     }
 
     void handleTouchpadInput(){
@@ -108,6 +112,35 @@ public class SliderControl : MonoBehaviour
             CursorUnlock();
             handleTouchpadInput();
         }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            StartTime();
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            EndScreen();
+        }
+    }
+
+    public void SetStartPanel()
+    {
+        if (valueControlCenter.touchscreenInput == true)
+        {
+            startPanel.SetActive(false);
+        }
+        else
+        {
+            startPanelTouchscreen.SetActive(false);
+        }
+    }
+
+    public void StartTime()
+    {
+        startTime = System.DateTime.Now;
+        clickSound.Play();
+        startPanel.SetActive(false);
+        startPanelTouchscreen.SetActive(false);
     }
 
     public void Comparision()
@@ -183,7 +216,7 @@ public class SliderControl : MonoBehaviour
 
     public void EndScreen(){
         var totalTime = System.DateTime.Now - startTime;
-        timeTextField.text = totalTime.Minutes.ToString()+":"+totalTime.Seconds.ToString();
+        timeTextField.text = totalTime.Minutes.ToString()+" min : "+totalTime.Seconds.ToString() + " sec";
         endPanel.SetActive(true);
     }
 

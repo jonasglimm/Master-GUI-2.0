@@ -48,7 +48,9 @@ public class AuswahlControl : MonoBehaviour
     // If no direct touch is used, startButton is the first button to be highlighted
     private Button startButton; //set in ValueControlCenter
     private DateTime startTime;
-
+    private GameObject startPanel;
+    private GameObject startPanelTouchscreen;
+    private AudioSource clickSound;
 
     void Awake()
     {
@@ -56,6 +58,9 @@ public class AuswahlControl : MonoBehaviour
         auswahlTrackpad = GameObject.Find("AufgabenManager").GetComponent<AuswahlTrackpad>();
         buttonList = FindObjectsOfType<Button>();
         images = GameObject.Find("Images");
+        startPanel = GameObject.Find("StartPanel");
+        startPanelTouchscreen = GameObject.Find("StartPanelForTouchscreen");
+        clickSound = GameObject.Find("AufgabenManager").GetComponent<AudioSource>();
 
         activeTime = valueControlCenter.feedbackPanelTime;
         anzahlAufgaben = valueControlCenter.numberOfTasks;
@@ -79,9 +84,13 @@ public class AuswahlControl : MonoBehaviour
                  ColorBlock colorVar = buttonList[i].colors;
                  colorVar.selectedColor = new Color(0.2666667f, 0.4470588f, 0.7686275f, 1);
                  buttonList[i].colors = colorVar;
+                startPanel.SetActive(false);
              }
          }
-         startTime = System.DateTime.Now;
+        else
+        {
+            startPanelTouchscreen.SetActive(false);
+        }
     }
 
     //The correct text is assigned to the different textelements shown on the Canvas
@@ -92,10 +101,23 @@ public class AuswahlControl : MonoBehaviour
         nummerDerAufgabe.GetComponent<TMPro.TextMeshProUGUI>().text = aufgabenNr.ToString();
         maxAnzahlAufgabe.GetComponent<TMPro.TextMeshProUGUI>().text = anzahlAufgaben.ToString();
 
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            StartTime();
+        }
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
             EndScreen();
         }
+    }
+
+    public void StartTime()
+    {
+        startTime = System.DateTime.Now;
+        clickSound.Play();
+        startPanel.SetActive(false);
+        startPanelTouchscreen.SetActive(false);
     }
 
     private void ChangeToIcons()

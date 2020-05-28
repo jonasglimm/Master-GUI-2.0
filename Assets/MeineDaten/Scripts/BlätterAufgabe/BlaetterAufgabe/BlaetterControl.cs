@@ -39,6 +39,8 @@ public class BlaetterControl : MonoBehaviour
     // Number of tasks 
     private int anzahlAufgaben;
     private DateTime startTime;
+    private GameObject startPanel;
+    private GameObject startPanelTouchscreen;
 
     private void Awake()
     {
@@ -46,6 +48,8 @@ public class BlaetterControl : MonoBehaviour
         clickSound = GameObject.Find("BlaetterManager").GetComponent<AudioSource>();
         blaetterRectMovement = GameObject.Find("SnapOnScroll").GetComponent<BlaetterRectMovement>();
         buttonListBlaettern = GameObject.Find("BlaetterManager").GetComponent<ButtonListBlaettern>();
+        startPanel = GameObject.Find("StartPanel");
+        startPanelTouchscreen = GameObject.Find("StartPanelForTouchscreen");
 
         activeTime = valueControlCenter.feedbackPanelTime;
         anzahlAufgaben = valueControlCenter.numberOfTasks;
@@ -58,8 +62,8 @@ public class BlaetterControl : MonoBehaviour
         aufgabenNr = 1;
         pagesLength = buttonListBlaettern.pages.Length;
         CreateTaskOrder();
+        SetStartPanel();
         SetGesuchteSeite();
-        startTime = System.DateTime.Now;
     }
 
     //The correct text is assigned to the different textelements shown on the Canvas
@@ -79,10 +83,35 @@ public class BlaetterControl : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            StartTime();
+        }
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
             EndScreen();
         }
+    }
+
+    public void SetStartPanel()
+    {
+        if (valueControlCenter.touchscreenInput == true)
+        {
+            startPanel.SetActive(false);
+        }
+        else
+        {
+            startPanelTouchscreen.SetActive(false);
+        }
+    }
+
+    public void StartTime()
+    {
+        startTime = System.DateTime.Now;
+        clickSound.Play();
+        startPanel.SetActive(false);
+        startPanelTouchscreen.SetActive(false);
     }
 
     // Function to be assigned to each button (OnButtonClicked) - compares the name (number) of the button to the current task
