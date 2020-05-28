@@ -2993,7 +2993,7 @@ MonoBehaviour:
   errorScreen: {fileID: 619093192}
   successScreen: {fileID: 507170336}
   completionScreen: {fileID: 417443667}
-  totalTasks: 50
+  totalTasks: 10
   activeTime: 0.5
   touchscreenInput: 0
   touchpadInput: 0

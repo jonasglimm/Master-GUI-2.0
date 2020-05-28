@@ -869,7 +869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b86d1d55cea84c5088fe38c9cab7de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfTasks: 50
+  numberOfTasks: 10
   touchscreenInput: 1
   touchpadInput: 0
   iDriveInput: 0
