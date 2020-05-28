@@ -640,6 +640,7 @@
     <Compile Include="Assets\MeineDaten\Scripts\ScrollAufgabe\ScrollTaskControl.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ScrollAufgabe\StartScrollAufgabe.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ScrollAufgabe\Unused\ButtonListButton.cs" />
+    <Compile Include="Assets\MeineDaten\Scripts\Settings\SettingsController.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\SliderControl\SliderControl.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\SliderControl\StartSliderTask.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\SliderControl\Unused\SliderControlMitTasten.cs" />
