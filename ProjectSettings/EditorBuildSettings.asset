@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/MeineDaten/Scenes/AuswahlAufgabe.unity
     guid: acdf132fbafe7486984a8f2081c10835
   - enabled: 1
-    path: "Assets/MeineDaten/Scenes/Bl\xE4tterAufgabe.unity"
+    path: "Assets/MeineDaten/Scenes/Bla\u0308tterAufgabe.unity"
     guid: 01b70c66fdda64fc981b91272321f329
   - enabled: 1
     path: Assets/MeineDaten/Scenes/ScrollAufgabe.unity
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MeineDaten/Scenes/ZoomableMapForGUI.unity
     guid: 7791b3b48e8b44a56869fbd73caf81ac
+  - enabled: 1
+    path: Assets/MeineDaten/Scenes/DialTextInsertion.unity
+    guid: 59538904e71bf4e539e0dffcebfb4eb1
   m_configObjects: {}

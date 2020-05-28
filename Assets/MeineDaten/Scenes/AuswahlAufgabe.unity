@@ -2327,7 +2327,7 @@ MonoBehaviour:
   anzahlFehler: {fileID: 316203267}
   timeTextField: {fileID: 120004690}
   endPanel: {fileID: 745203129}
-  useIcons: 0
+  useIcons: 1
 --- !u!4 &526270271
 Transform:
   m_ObjectHideFlags: 0
@@ -2355,9 +2355,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfTasks: 50
-  touchscreenInput: 0
+  touchscreenInput: 1
   touchpadInput: 0
-  iDriveInput: 1
+  iDriveInput: 0
   gestureInput: 0
   cursorResetTime: 0.2
   feedbackPanelTime: 0.5

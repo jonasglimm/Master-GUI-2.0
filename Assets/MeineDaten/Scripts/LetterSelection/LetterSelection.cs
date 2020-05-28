@@ -12,15 +12,22 @@ public class LetterSelection : MonoBehaviour
     public TextMeshProUGUI selectorText;
     public GameObject returnImage;
     public GameObject backspaceImage;
+    public GameObject knob;
     public AudioSource scrollingSound;
     public AudioSource clickSound;
     private ControlManager script;
+
     private void Start() {
         selector.transform.eulerAngles =  new Vector3(selector.transform.eulerAngles.x, selector.transform.eulerAngles.y, 0f);
         inputField.text  = "";
         script = gameObject.GetComponent<ControlManager>();
-        
+
+        if (script.touchscreenInput == true)
+        {
+            knob.SetActive(false);
+        }
     }
+
     private void Update() {
         if(script.iDriveInput == true){
             if(Input.mouseScrollDelta.y > 0){
