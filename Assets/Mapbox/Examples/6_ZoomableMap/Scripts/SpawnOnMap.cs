@@ -36,7 +36,6 @@
 
 			
 			var i = mapboxTaskControl.targetCount; // all below is added - use green code for original functionality
-			Debug.Log(i);
 			var locationString = _locationStrings[i];
 			_locations[i] = Conversions.StringToLatLon(locationString);
 			var instance = Instantiate(_markerPrefab);
@@ -68,7 +67,6 @@
             {
 				i = 0;
             }
-			Debug.Log("Zweiter Wert:" + i);
 			
 			if (previousI != i)
             {
