@@ -42,7 +42,8 @@ public class MapboxTaskControl : MonoBehaviour
     private Vector2d currentLocation;
     private Vector3 lastMouseCoordinate = Vector3.zero;
 
-    private int targetCount;
+    [HideInInspector]
+    public int targetCount;
     private string[] targetNames = { "Norden", "Osten", "Süden", "Westen" };
     private string gesuchteMarkierung;
 
@@ -51,11 +52,12 @@ public class MapboxTaskControl : MonoBehaviour
 
     private Vector2d[] targetLocations;
 
-    public float _panSpeed = 1.0f;
+    public float _panSpeed = 2f;
     public float _zoomSpeed = 0.25f;
     public float zoomBarrier = 16f; //zoomvalue which has to be reached - start value = 16
     public double targetOffset = 0.005f; //offset for each target - start value = 0.005
     private DateTime startTime;
+
     private void Awake()
     {
         abstractMap = GameObject.Find("Map").GetComponent<Mapbox.Unity.Map.AbstractMap>();

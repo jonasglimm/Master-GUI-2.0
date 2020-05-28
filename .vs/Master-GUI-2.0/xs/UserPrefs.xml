@@ -1,26 +1,38 @@
 ﻿<Properties StartupConfiguration="{AE6E7F84-5196-7310-30D5-FD1955374EF5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/LetterSelection/LetterSelection.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Mapbox/Examples/Scripts/QuadTreeCameraMovement.cs">
     <Files>
       <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/ScrollSnapRect.cs" Line="242" Column="1" />
       <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/BlaetterAufgabe/BlaetterRectMovement.cs" />
       <File FileName="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlControl.cs" Line="113" Column="72" />
       <File FileName="Assets/MeineDaten/Scripts/ControlManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/MeineDaten/Scripts/LetterSelection/LetterSelection.cs" Line="15" Column="1" />
+      <File FileName="Assets/MeineDaten/Scripts/LetterSelection/LetterSelection.cs" Line="25" Column="17" />
+      <File FileName="Assets/Mapbox/Examples/6_ZoomableMap/Scripts/SpawnOnMap.cs" Line="17" Column="29" />
+      <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/MapboxTaskControl.cs" Line="75" Column="6" />
+      <File FileName="Assets/Mapbox/Examples/Scripts/QuadTreeCameraMovement.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Master-GUI-2.0" expanded="True">
             <Node name="Assets" expanded="True">
+              <Node name="Mapbox" expanded="True">
+                <Node name="Examples" expanded="True">
+                  <Node name="6_ZoomableMap" expanded="True">
+                    <Node name="Scripts" expanded="True" />
+                  </Node>
+                  <Node name="Scripts" expanded="True">
+                    <Node name="QuadTreeCameraMovement.cs" selected="True" />
+                  </Node>
+                </Node>
+              </Node>
               <Node name="MeineDaten" expanded="True">
                 <Node name="Scripts" expanded="True">
                   <Node name="AuswahlAufgabe" expanded="True" />
                   <Node name="BlätterAufgabe" expanded="True">
                     <Node name="BlaetterAufgabe" expanded="True" />
                   </Node>
-                  <Node name="LetterSelection" expanded="True">
-                    <Node name="LetterSelection.cs" selected="True" />
-                  </Node>
+                  <Node name="LetterSelection" expanded="True" />
+                  <Node name="MapAufgabe" expanded="True" />
                 </Node>
               </Node>
             </Node>
