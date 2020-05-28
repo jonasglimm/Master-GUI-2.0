@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/MeineDaten/Scenes/SliderAufgabe.unity
     guid: c600ac834e4d142abb7fe03195bc3dd1
   - enabled: 1
-    path: Assets/MeineDaten/Scenes/ZoomableMapForGUI.unity
+    path: Assets/MeineDaten/Scenes/KartenAufgabeZoom.unity
     guid: 7791b3b48e8b44a56869fbd73caf81ac
   - enabled: 1
     path: Assets/MeineDaten/Scenes/DialTextInsertion.unity

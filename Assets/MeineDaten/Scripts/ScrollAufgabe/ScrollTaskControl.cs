@@ -66,6 +66,11 @@ public class ScrollTaskControl : MonoBehaviour
                 clickSound.Play();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            EndScreen();
+        }
     }
 
     public void Comparision(TextMeshProUGUI buttonText)
@@ -151,7 +156,7 @@ public class ScrollTaskControl : MonoBehaviour
     public void EndScreen()
     {
         var totalTime = System.DateTime.Now - startTime;
-        timeTextField.text = totalTime.Minutes.ToString()+":"+totalTime.Seconds.ToString();
+        timeTextField.text = totalTime.Minutes.ToString()+" min : "+totalTime.Seconds.ToString() + " sec";
         endPanel.SetActive(true);
         endNachricht.SetActive(true);
     }

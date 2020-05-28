@@ -1,7 +1,9 @@
 ﻿<Properties StartupConfiguration="{AE6E7F84-5196-7310-30D5-FD1955374EF5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/MainMenu.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/MapAufgabe/MapboxTaskControl.cs">
     <Files>
-      <File FileName="Assets/MeineDaten/Scripts/MainMenu.cs" Line="6" Column="84" />
+      <File FileName="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlControl.cs" Line="99" Column="1" />
+      <File FileName="Assets/MeineDaten/Scripts/ScrollAufgabe/ScrollTaskControl.cs" Line="159" Column="106" />
+      <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/MapboxTaskControl.cs" Line="290" Column="60" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,8 +25,10 @@
                     <Node name="BlaetterAufgabe" expanded="True" />
                   </Node>
                   <Node name="LetterSelection" expanded="True" />
-                  <Node name="MapAufgabe" expanded="True" />
-                  <Node name="MainMenu.cs" selected="True" />
+                  <Node name="MapAufgabe" expanded="True">
+                    <Node name="MapboxTaskControl.cs" selected="True" />
+                  </Node>
+                  <Node name="ScrollAufgabe" expanded="True" />
                 </Node>
               </Node>
             </Node>

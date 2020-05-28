@@ -108,6 +108,11 @@ public class MapboxTaskControl : MonoBehaviour
         {
             handleTrackpadInput();
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            EndScreen();
+        }
     }
 
     #region ValueAdjustments
@@ -287,7 +292,7 @@ public class MapboxTaskControl : MonoBehaviour
     public void EndScreen()
     {
         var totalTime = System.DateTime.Now - startTime;
-        timeTextField.text = totalTime.Minutes.ToString()+":"+totalTime.Seconds.ToString();
+        timeTextField.text = totalTime.Minutes.ToString()+" min : "+totalTime.Seconds.ToString() + " sec";
         pointer.SetActive(false);
         endPanel.SetActive(true);
 

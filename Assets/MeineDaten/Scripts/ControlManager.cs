@@ -54,6 +54,14 @@ public class ControlManager : MonoBehaviour
         startTime = System.DateTime.Now;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            EndScreen();
+        }
+    }
+
     public void CheckModalities() // Check if exactly one modality is set to active
     {
         modalities[0] = touchscreenInput;
@@ -172,9 +180,7 @@ public class ControlManager : MonoBehaviour
         if(verificationString == inputText){
             updateValues();
             if(taskNumber > totalTasks){
-                var totalTime = System.DateTime.Now - startTime;
-                timeTextField.text = totalTime.Minutes.ToString()+":"+totalTime.Seconds.ToString();
-                completionScreen.SetActive(true);
+                EndScreen();
             }
         } else {
             // show error screen
@@ -183,4 +189,11 @@ public class ControlManager : MonoBehaviour
             errorCountTextField.text = errors.ToString();
         }
      }
+
+    public void EndScreen()
+    {
+        var totalTime = System.DateTime.Now - startTime;
+        timeTextField.text = totalTime.Minutes.ToString() + " min : " + totalTime.Seconds.ToString() + " sec";
+        completionScreen.SetActive(true);
+    }
 }

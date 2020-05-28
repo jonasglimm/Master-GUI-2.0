@@ -78,6 +78,11 @@ public class BlaetterControl : MonoBehaviour
                 clickSound.Play();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            EndScreen();
+        }
     }
 
     // Function to be assigned to each button (OnButtonClicked) - compares the name (number) of the button to the current task
@@ -174,7 +179,7 @@ public class BlaetterControl : MonoBehaviour
     public void EndScreen()
     {
         var totalTime = System.DateTime.Now - startTime;
-        timeTextField.text = totalTime.Minutes.ToString()+":"+totalTime.Seconds.ToString();
+        timeTextField.text = totalTime.Minutes.ToString()+" min : "+totalTime.Seconds.ToString() + " sek";
         endPanel.SetActive(true);
 
         if (valueControlCenter.touchpadInput == true)
