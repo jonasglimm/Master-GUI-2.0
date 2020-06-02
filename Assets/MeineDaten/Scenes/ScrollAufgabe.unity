@@ -1157,9 +1157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfTasks: 10
-  touchscreenInput: 1
+  touchscreenInput: 0
   touchpadInput: 0
-  iDriveInput: 0
+  iDriveInput: 1
   gestureInput: 0
   cursorResetTime: 0.5
   feedbackPanelTime: 0.5
@@ -3291,8 +3291,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 415, y: 0}
-  m_SizeDelta: {x: 20, y: 1050}
+  m_AnchoredPosition: {x: 411.89, y: -0.000072479}
+  m_SizeDelta: {x: 26.23, y: 1249.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6083875495409144491
 MonoBehaviour:
@@ -3337,7 +3337,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6083875496529203216}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9984798
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3386,7 +3386,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 525.0001}
+  m_AnchoredPosition: {x: 0, y: 624.90015}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &6083875495472238921
@@ -3512,8 +3512,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 415, y: 0}
-  m_SizeDelta: {x: 900, y: 1100}
+  m_AnchoredPosition: {x: 421.7, y: -96.9}
+  m_SizeDelta: {x: 885.4, y: 1322.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6083875495986832536
 CanvasRenderer:
@@ -3826,8 +3826,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: 0}
-  m_SizeDelta: {x: 750, y: 1050}
+  m_AnchoredPosition: {x: -26.8, y: 0}
+  m_SizeDelta: {x: 753.6, y: 1249.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6083875497212133099
 MonoBehaviour:
