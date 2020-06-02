@@ -1157,9 +1157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfTasks: 10
-  touchscreenInput: 0
+  touchscreenInput: 1
   touchpadInput: 0
-  iDriveInput: 1
+  iDriveInput: 0
   gestureInput: 0
   cursorResetTime: 0.5
   feedbackPanelTime: 0.5
@@ -2271,8 +2271,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.63, y: -42.9}
-  m_SizeDelta: {x: 1744.17, y: 1394.5}
+  m_AnchoredPosition: {x: 4.1, y: -78.9}
+  m_SizeDelta: {x: 1740.6, y: 1629.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2160563714690490034
 GameObject:
@@ -3086,8 +3086,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 109.21, y: -73.05}
-  m_SizeDelta: {x: 955.65, y: 1227.23}
+  m_AnchoredPosition: {x: 114.1, y: -104.1}
+  m_SizeDelta: {x: 987.6, y: 1430}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &5454707782925517722
 CanvasGroup:
@@ -3148,8 +3148,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 109.19, y: -73.99}
-  m_SizeDelta: {x: 988.09, y: 1215.08}
+  m_AnchoredPosition: {x: 112.5, y: -108.8}
+  m_SizeDelta: {x: 1009.4, y: 1442.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5454707783877121754
 CanvasRenderer:
@@ -3337,7 +3337,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6083875496529203216}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9984798
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

@@ -1073,9 +1073,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfTasks: 10
-  touchscreenInput: 0
+  touchscreenInput: 1
   touchpadInput: 0
-  iDriveInput: 1
+  iDriveInput: 0
   gestureInput: 0
   cursorResetTime: 0.3
   feedbackPanelTime: 0.5
