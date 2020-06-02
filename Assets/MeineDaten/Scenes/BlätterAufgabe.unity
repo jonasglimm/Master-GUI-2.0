@@ -491,6 +491,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2107558601}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &514674036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7041265932823173803, guid: f5129692b44184f06af348ea59861ebe,
+    type: 3}
+  m_PrefabInstance: {fileID: 654093353}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &590984087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -914,6 +920,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartPanelForTouchscreen
       objectReference: {fileID: 0}
+    - target: {fileID: 7041265932823173803, guid: f5129692b44184f06af348ea59861ebe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7041265933312624404, guid: f5129692b44184f06af348ea59861ebe,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1033,6 +1044,8 @@ MonoBehaviour:
   panelWrong: {fileID: 590984088}
   endPanel: {fileID: 2107558602}
   timeTextField: {fileID: 923606147}
+  startPanel: {fileID: 1038831626}
+  startPanelTouchscreen: {fileID: 514674036}
 --- !u!114 &724710797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1396,6 +1409,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78c57297dcc8d41c19fe59d86d5ee023, type: 3}
+--- !u!1 &1038831626 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 796237211089011483, guid: fa48f86ec600d4912bfd651ef5fceac2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1570180687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1054424408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,6 +1956,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StartPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 796237211089011483, guid: fa48f86ec600d4912bfd651ef5fceac2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 796237211089011484, guid: fa48f86ec600d4912bfd651ef5fceac2,
         type: 3}

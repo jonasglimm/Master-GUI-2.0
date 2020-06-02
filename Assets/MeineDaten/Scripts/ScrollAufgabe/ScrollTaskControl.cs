@@ -33,15 +33,13 @@ public class ScrollTaskControl : MonoBehaviour
     private float activeTime;
     private int anzahlAufgaben;
     private DateTime startTime;
-    private GameObject startPanel;
-    private GameObject startPanelTouchscreen;
+    public GameObject startPanel;
+    public GameObject startPanelTouchscreen;
 
     private void Awake()
     {
         valueControlCenter = GameObject.Find("ScrollManager").GetComponent<ValueControlCenter>();
         scrollRectMovement = GameObject.Find("ButtonScrollList").GetComponent<ScrollRectMovement>();
-        startPanel = GameObject.Find("StartPanel");
-        startPanelTouchscreen = GameObject.Find("StartPanelForTouchscreen");
     }
 
     void Start()
@@ -88,10 +86,12 @@ public class ScrollTaskControl : MonoBehaviour
         if (valueControlCenter.touchscreenInput == true)
         {
             startPanel.SetActive(false);
+            startPanelTouchscreen.SetActive(true);
         }
         else
         {
             startPanelTouchscreen.SetActive(false);
+            startPanel.SetActive(true);
         }
     }
 

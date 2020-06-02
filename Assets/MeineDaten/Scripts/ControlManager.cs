@@ -42,14 +42,8 @@ public class ControlManager : MonoBehaviour
     private int currentTaskNumber;
     private int lastTaskElement;
     private DateTime startTime;
-    private GameObject startPanel;
-    private GameObject startPanelTouchscreen;
-
-    private void Awake()
-    {
-        startPanel = GameObject.Find("StartPanel");
-        startPanelTouchscreen = GameObject.Find("StartPanelForTouchscreen");
-    }
+    public GameObject startPanel;
+    public GameObject startPanelTouchscreen;
 
     // Use this for initialization
     void Start () {
@@ -81,10 +75,12 @@ public class ControlManager : MonoBehaviour
         if (touchscreenInput == true)
         {
             startPanel.SetActive(false);
+            startPanelTouchscreen.SetActive(true);
         }
         else
         {
             startPanelTouchscreen.SetActive(false);
+            startPanel.SetActive(true);
         }
     }
 

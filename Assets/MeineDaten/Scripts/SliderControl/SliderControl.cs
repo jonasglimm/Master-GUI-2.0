@@ -37,16 +37,14 @@ public class SliderControl : MonoBehaviour
     private Vector3 lastMouseCoordinate = Vector3.zero;
     // public Slider slider;
     private bool selected = false;
-    private GameObject startPanel;
-    private GameObject startPanelTouchscreen;
+    public GameObject startPanel;
+    public GameObject startPanelTouchscreen;
 
     private void Awake() //intiate all variables which are set in different scripts
     {
         valueControlCenter = GameObject.Find("SliderControl").GetComponent<ValueControlCenter>();
         startSliderTask = GameObject.Find("SliderControl").GetComponent<StartSliderTask>();
         clickSound = GameObject.Find("ClickSound").GetComponent<AudioSource>();
-        startPanel = GameObject.Find("StartPanel");
-        startPanelTouchscreen = GameObject.Find("StartPanelForTouchscreen");
 
         endOfScale = startSliderTask.endOfScale;
         CreateTaskOrder();
@@ -128,10 +126,12 @@ public class SliderControl : MonoBehaviour
         if (valueControlCenter.touchscreenInput == true)
         {
             startPanel.SetActive(false);
+            startPanelTouchscreen.SetActive(true);
         }
         else
         {
             startPanelTouchscreen.SetActive(false);
+            startPanel.SetActive(true);
         }
     }
 

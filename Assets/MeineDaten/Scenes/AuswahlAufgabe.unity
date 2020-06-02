@@ -1575,6 +1575,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &361547096 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 796237211089011483, guid: fa48f86ec600d4912bfd651ef5fceac2,
+    type: 3}
+  m_PrefabInstance: {fileID: 796237210959683896}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &438457346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2334,6 +2340,8 @@ MonoBehaviour:
   timeTextField: {fileID: 120004690}
   endPanel: {fileID: 745203129}
   useIcons: 1
+  startPanel: {fileID: 361547096}
+  startPanelTouchscreen: {fileID: 1910337529}
 --- !u!4 &526270271
 Transform:
   m_ObjectHideFlags: 0
@@ -6092,6 +6100,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1783043451}
   m_CullTransparentMesh: 0
+--- !u!1 &1910337529 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7041265932823173803, guid: f5129692b44184f06af348ea59861ebe,
+    type: 3}
+  m_PrefabInstance: {fileID: 7041265931664572183}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1958735655
 GameObject:
   m_ObjectHideFlags: 0
@@ -6473,6 +6487,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StartPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 796237211089011483, guid: fa48f86ec600d4912bfd651ef5fceac2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 796237211089011484, guid: fa48f86ec600d4912bfd651ef5fceac2,
         type: 3}
@@ -6951,6 +6970,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StartPanelForTouchscreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041265932823173803, guid: f5129692b44184f06af348ea59861ebe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5129692b44184f06af348ea59861ebe, type: 3}

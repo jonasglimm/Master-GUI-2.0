@@ -1,12 +1,7 @@
 ﻿<Properties StartupConfiguration="{AE6E7F84-5196-7310-30D5-FD1955374EF5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/SliderControl/SliderControl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/Settings/SettingsController.cs">
     <Files>
-      <File FileName="Assets/MeineDaten/Scripts/Settings/SettingsController.cs" Line="15" Column="23" />
-      <File FileName="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlControl.cs" Line="107" Column="10" />
-      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/BlaetterAufgabe/BlaetterControl.cs" Line="44" Column="1" />
-      <File FileName="Assets/MeineDaten/Scripts/ControlManager.cs" Line="98" Column="1" />
-      <File FileName="Assets/MeineDaten/Scripts/ScrollAufgabe/ScrollTaskControl.cs" Line="84" Column="1" />
-      <File FileName="Assets/MeineDaten/Scripts/SliderControl/SliderControl.cs" Line="219" Column="106" />
+      <File FileName="Assets/MeineDaten/Scripts/Settings/SettingsController.cs" Line="13" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -30,10 +25,10 @@
                   <Node name="LetterSelection" expanded="True" />
                   <Node name="MapAufgabe" expanded="True" />
                   <Node name="ScrollAufgabe" expanded="True" />
-                  <Node name="Settings" expanded="True" />
-                  <Node name="SliderControl" expanded="True">
-                    <Node name="SliderControl.cs" selected="True" />
+                  <Node name="Settings" expanded="True">
+                    <Node name="SettingsController.cs" selected="True" />
                   </Node>
+                  <Node name="SliderControl" expanded="True" />
                 </Node>
               </Node>
             </Node>
@@ -44,7 +39,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="9914a3aa-4059-401e-b0ac-ee9cd37e31fb" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="364763f6-8fb9-44f3-aba6-a28df3047e8d" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

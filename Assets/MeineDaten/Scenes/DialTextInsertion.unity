@@ -3233,6 +3233,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 539514100}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &539514102 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 796237211089011483, guid: fa48f86ec600d4912bfd651ef5fceac2,
+    type: 3}
+  m_PrefabInstance: {fileID: 539514100}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &540146706
 GameObject:
   m_ObjectHideFlags: 0
@@ -3813,6 +3819,8 @@ MonoBehaviour:
   modalityWarning: {fileID: 1329105865}
   cursorResetTime: 0
   clickSound: {fileID: 629952212}
+  startPanel: {fileID: 539514102}
+  startPanelTouchscreen: {fileID: 1399437820}
 --- !u!82 &629952212
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6757,6 +6765,12 @@ PrefabInstance:
 --- !u!224 &1399437819 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7041265932823173802, guid: f5129692b44184f06af348ea59861ebe,
+    type: 3}
+  m_PrefabInstance: {fileID: 1399437818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1399437820 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7041265932823173803, guid: f5129692b44184f06af348ea59861ebe,
     type: 3}
   m_PrefabInstance: {fileID: 1399437818}
   m_PrefabAsset: {fileID: 0}

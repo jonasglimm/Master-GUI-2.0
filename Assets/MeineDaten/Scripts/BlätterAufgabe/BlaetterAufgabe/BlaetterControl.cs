@@ -39,8 +39,8 @@ public class BlaetterControl : MonoBehaviour
     // Number of tasks 
     private int anzahlAufgaben;
     private DateTime startTime;
-    private GameObject startPanel;
-    private GameObject startPanelTouchscreen;
+    public GameObject startPanel;
+    public GameObject startPanelTouchscreen;
 
     private void Awake()
     {
@@ -48,8 +48,6 @@ public class BlaetterControl : MonoBehaviour
         clickSound = GameObject.Find("BlaetterManager").GetComponent<AudioSource>();
         blaetterRectMovement = GameObject.Find("SnapOnScroll").GetComponent<BlaetterRectMovement>();
         buttonListBlaettern = GameObject.Find("BlaetterManager").GetComponent<ButtonListBlaettern>();
-        startPanel = GameObject.Find("StartPanel");
-        startPanelTouchscreen = GameObject.Find("StartPanelForTouchscreen");
 
         activeTime = valueControlCenter.feedbackPanelTime;
         anzahlAufgaben = valueControlCenter.numberOfTasks;
@@ -99,10 +97,12 @@ public class BlaetterControl : MonoBehaviour
         if (valueControlCenter.touchscreenInput == true)
         {
             startPanel.SetActive(false);
+            startPanelTouchscreen.SetActive(true);
         }
         else
         {
             startPanelTouchscreen.SetActive(false);
+            startPanel.SetActive(true);
         }
     }
 

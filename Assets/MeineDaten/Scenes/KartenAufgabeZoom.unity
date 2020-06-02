@@ -1209,6 +1209,8 @@ MonoBehaviour:
   _zoomSpeed: 0.25
   zoomBarrier: 16
   targetOffset: 0.005
+  startPanel: {fileID: 1309045392}
+  startPanelTouchscreen: {fileID: 1712706942}
 --- !u!1 &789113797
 GameObject:
   m_ObjectHideFlags: 0
@@ -2441,6 +2443,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 796237211089011483, guid: fa48f86ec600d4912bfd651ef5fceac2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 796237211089011484, guid: fa48f86ec600d4912bfd651ef5fceac2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2631,6 +2638,12 @@ PrefabInstance:
 --- !u!224 &1309045391 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 796237211089011484, guid: fa48f86ec600d4912bfd651ef5fceac2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1309045390}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1309045392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 796237211089011483, guid: fa48f86ec600d4912bfd651ef5fceac2,
     type: 3}
   m_PrefabInstance: {fileID: 1309045390}
   m_PrefabAsset: {fileID: 0}
@@ -4660,6 +4673,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartPanelForTouchscreen
       objectReference: {fileID: 0}
+    - target: {fileID: 7041265932823173803, guid: f5129692b44184f06af348ea59861ebe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7041265933312624404, guid: f5129692b44184f06af348ea59861ebe,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -4690,6 +4708,12 @@ PrefabInstance:
 --- !u!224 &1712706941 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7041265932823173802, guid: f5129692b44184f06af348ea59861ebe,
+    type: 3}
+  m_PrefabInstance: {fileID: 1712706940}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1712706942 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7041265932823173803, guid: f5129692b44184f06af348ea59861ebe,
     type: 3}
   m_PrefabInstance: {fileID: 1712706940}
   m_PrefabAsset: {fileID: 0}

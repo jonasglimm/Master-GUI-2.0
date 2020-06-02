@@ -433,6 +433,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 796237211089011483, guid: fa48f86ec600d4912bfd651ef5fceac2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 796237211089011484, guid: fa48f86ec600d4912bfd651ef5fceac2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -623,6 +628,12 @@ PrefabInstance:
 --- !u!224 &811525519 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 796237211089011484, guid: fa48f86ec600d4912bfd651ef5fceac2,
+    type: 3}
+  m_PrefabInstance: {fileID: 811525518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &811525520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 796237211089011483, guid: fa48f86ec600d4912bfd651ef5fceac2,
     type: 3}
   m_PrefabInstance: {fileID: 811525518}
   m_PrefabAsset: {fileID: 0}
@@ -984,6 +995,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartPanelForTouchscreen
       objectReference: {fileID: 0}
+    - target: {fileID: 7041265932823173803, guid: f5129692b44184f06af348ea59861ebe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7041265933312624404, guid: f5129692b44184f06af348ea59861ebe,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1014,6 +1030,12 @@ PrefabInstance:
 --- !u!224 &1016147707 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7041265932823173802, guid: f5129692b44184f06af348ea59861ebe,
+    type: 3}
+  m_PrefabInstance: {fileID: 1016147706}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1016147708 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7041265932823173803, guid: f5129692b44184f06af348ea59861ebe,
     type: 3}
   m_PrefabInstance: {fileID: 1016147706}
   m_PrefabAsset: {fileID: 0}
@@ -1120,6 +1142,8 @@ MonoBehaviour:
   endNachricht: {fileID: 2160563714159547278}
   endPanel: {fileID: 2160563714690490034}
   clickSound: {fileID: 1127592226}
+  startPanel: {fileID: 811525520}
+  startPanelTouchscreen: {fileID: 1016147708}
 --- !u!114 &1127592224
 MonoBehaviour:
   m_ObjectHideFlags: 0

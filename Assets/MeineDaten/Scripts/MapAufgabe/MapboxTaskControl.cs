@@ -57,8 +57,8 @@ public class MapboxTaskControl : MonoBehaviour
     public float zoomBarrier = 16f; //zoomvalue which has to be reached - start value = 16
     public double targetOffset = 0.005f; //offset for each target - start value = 0.005
     private DateTime startTime;
-    private GameObject startPanel;
-    private GameObject startPanelTouchscreen;
+    public GameObject startPanel;
+    public GameObject startPanelTouchscreen;
 
     private void Awake()
     {
@@ -67,8 +67,6 @@ public class MapboxTaskControl : MonoBehaviour
         quadTreeCameraMovement = GameObject.Find("Map").GetComponent<Mapbox.Examples.QuadTreeCameraMovement>();
         valueControlCenter = GameObject.Find("MapManager").GetComponent<ValueControlCenter>();
         clickSound = GameObject.Find("MapManager").GetComponent<AudioSource>();
-        startPanel = GameObject.Find("StartPanel");
-        startPanelTouchscreen = GameObject.Find("StartPanelForTouchscreen");
 
         //Exchanging values with quadTreeCameraMovement
         _mapManager = abstractMap;
@@ -168,10 +166,12 @@ public class MapboxTaskControl : MonoBehaviour
         if (valueControlCenter.touchscreenInput == true)
         {
             startPanel.SetActive(false);
+            startPanelTouchscreen.SetActive(true);
         }
         else
         {
             startPanelTouchscreen.SetActive(false);
+            startPanel.SetActive(true);
         }
     }
 
