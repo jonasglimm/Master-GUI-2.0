@@ -1,10 +1,11 @@
 ﻿<Properties StartupConfiguration="{AE6E7F84-5196-7310-30D5-FD1955374EF5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/MapAufgabe/MapboxTaskControl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlTrackpad.cs">
     <Files>
       <File FileName="Assets/MeineDaten/Scripts/Settings/SettingsController.cs" Line="13" Column="1" />
-      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/BlaetterAufgabe/PageSelectionCreator.cs" Line="25" Column="1" />
-      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/ScrollSnapRect.cs" Line="219" Column="28" />
+      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/BlaetterAufgabe/PageSelectionCreator.cs" />
+      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/ScrollSnapRect.cs" />
       <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/MapboxTaskControl.cs" Line="180" Column="15" />
+      <File FileName="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlTrackpad.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,14 +22,14 @@
               </Node>
               <Node name="MeineDaten" expanded="True">
                 <Node name="Scripts" expanded="True">
-                  <Node name="AuswahlAufgabe" expanded="True" />
+                  <Node name="AuswahlAufgabe" expanded="True">
+                    <Node name="AuswahlTrackpad.cs" selected="True" />
+                  </Node>
                   <Node name="BlätterAufgabe" expanded="True">
                     <Node name="BlaetterAufgabe" expanded="True" />
                   </Node>
                   <Node name="LetterSelection" expanded="True" />
-                  <Node name="MapAufgabe" expanded="True">
-                    <Node name="MapboxTaskControl.cs" selected="True" />
-                  </Node>
+                  <Node name="MapAufgabe" expanded="True" />
                   <Node name="ScrollAufgabe" expanded="True" />
                   <Node name="Settings" expanded="True" />
                   <Node name="SliderControl" expanded="True" />
@@ -42,7 +43,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="364763f6-8fb9-44f3-aba6-a28df3047e8d" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="509f0a02-f513-40b9-85ef-830f2a0f3b78" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

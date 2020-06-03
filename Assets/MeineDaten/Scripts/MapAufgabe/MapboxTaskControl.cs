@@ -82,8 +82,8 @@ public class MapboxTaskControl : MonoBehaviour
         
         if (valueControlCenter.touchpadInput == true) 
         {
-            //_zoomSpeed = 0.5f;
-            //_panSpeed = 2f;
+            _zoomSpeed = 0.5f;
+            _panSpeed = 2f;
             quadTreeCameraMovement.enabled = false; //preventing conflict with quadTreeCameraMovement script
             InvokeRepeating("CursorLock", valueControlCenter.cursorResetTime, valueControlCenter.cursorResetTime);
             HideCursor();
@@ -92,8 +92,8 @@ public class MapboxTaskControl : MonoBehaviour
 
         if (valueControlCenter.touchscreenInput == true)
         {
-            //_panSpeed = 2f;
-            //_zoomSpeed = 0.25f;
+            _panSpeed = 1.75f;
+            _zoomSpeed = 0.25f;
         }
     }
 

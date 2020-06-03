@@ -1163,11 +1163,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfTasks: 4
-  touchscreenInput: 1
-  touchpadInput: 0
+  touchscreenInput: 0
+  touchpadInput: 1
   iDriveInput: 0
   gestureInput: 0
-  cursorResetTime: 1
+  cursorResetTime: 0.2
   feedbackPanelTime: 0.5
   startButton: {fileID: 0}
   modalityWarning: {fileID: 629045821}
@@ -1717,6 +1717,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BackButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427971349346462763, guid: 70a0184ef38db44828f1c0c430246352,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a0184ef38db44828f1c0c430246352, type: 3}
@@ -4676,7 +4681,7 @@ PrefabInstance:
     - target: {fileID: 7041265932823173803, guid: f5129692b44184f06af348ea59861ebe,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7041265933312624404, guid: f5129692b44184f06af348ea59861ebe,
         type: 3}
