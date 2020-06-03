@@ -94,6 +94,7 @@ public class MapboxTaskControl : MonoBehaviour
         {
             _panSpeed = 1.75f;
             _zoomSpeed = 0.25f;
+            SetStartPanel();
         }
     }
 
