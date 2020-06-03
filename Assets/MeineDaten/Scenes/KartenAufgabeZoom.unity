@@ -3435,22 +3435,22 @@ PrefabInstance:
     - target: {fileID: 2300406100022361277, guid: 82f774b1127454950a8b04d5a87b38d4,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 2300406100022361277, guid: 82f774b1127454950a8b04d5a87b38d4,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2300406100022361277, guid: 82f774b1127454950a8b04d5a87b38d4,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300406100022361277, guid: 82f774b1127454950a8b04d5a87b38d4,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300406100022361277, guid: 82f774b1127454950a8b04d5a87b38d4,
         type: 3}
@@ -3460,7 +3460,7 @@ PrefabInstance:
     - target: {fileID: 2300406100022361277, guid: 82f774b1127454950a8b04d5a87b38d4,
         type: 3}
       propertyPath: m_text
-      value: Markierung  im Norden!
+      value: Markierung im Norden!
       objectReference: {fileID: 0}
     - target: {fileID: 2300406100022361277, guid: 82f774b1127454950a8b04d5a87b38d4,
         type: 3}
@@ -3470,7 +3470,7 @@ PrefabInstance:
     - target: {fileID: 2300406100022361277, guid: 82f774b1127454950a8b04d5a87b38d4,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2300406100022361277, guid: 82f774b1127454950a8b04d5a87b38d4,
         type: 3}

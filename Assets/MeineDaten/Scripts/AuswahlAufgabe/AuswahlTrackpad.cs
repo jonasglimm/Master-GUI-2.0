@@ -21,6 +21,8 @@ public class AuswahlTrackpad : MonoBehaviour{
     private bool gestureInput;
 
     private float cursorResetTime;
+    public float swipeMovementX = 20f;
+    public float swipeMovementy = 20f;
 
     public ValueControlCenter valueControlCenter; 
     public AudioSource clickSound; // for a click (only used for TouchpadInput - for Touch and iDrive it is played via onClick() of the button
@@ -160,14 +162,15 @@ public class AuswahlTrackpad : MonoBehaviour{
             // Debug.Log("mouseDeltaX "+mouseDeltaX.ToString());
         // Debug.Log("mouseDeltaY "+mouseDeltaY.ToString());
         // prev value -15
-            if(mouseDelta.x < -8){ // if difference less than zero, moved to left
+            if(mouseDelta.x < - swipeMovementX){ // if difference less than zero, moved to left
                 lastMouseCoordinate = Input.mousePosition; // reseting the last mouse coordinate to the new location
                 if(swipeInProgress == false){ // checking if the swipe gesture that had been started is still in progress or not. 
                     moveLeft();
                     swipeInProgress = true; // swipe gesture is taking place
                 }
                 //prev value 15
-            } else if(mouseDelta.x > 8){ // if difference greater than zero, moved to right
+            } else if(mouseDelta.x > swipeMovementX)
+            { // if difference greater than zero, moved to right
                 lastMouseCoordinate = Input.mousePosition;
                 if(swipeInProgress == false){
                     moveRight();
@@ -175,13 +178,14 @@ public class AuswahlTrackpad : MonoBehaviour{
                 }
             }
         } else if((mouseDeltaX) < mouseDeltaY) {
-             if(mouseDelta.y < -5){ // if difference less than zero, moved down
+             if(mouseDelta.y < -swipeMovementy){ // if difference less than zero, moved down
                 lastMouseCoordinate = Input.mousePosition; // reseting the last mouse coordinate to the new location
                 if(swipeInProgress == false){ // checking if the swipe gesture that had been started is still in progress or not. 
                     moveDown();
                     swipeInProgress = true; // swipe gesture is taking place
                 }
-            } else if(mouseDelta.y > 5){ // if difference greater than zero, moved up
+            } else if(mouseDelta.y > swipeMovementy)
+            { // if difference greater than zero, moved up
                 lastMouseCoordinate = Input.mousePosition;
                 if(swipeInProgress == false){
                     moveUp();

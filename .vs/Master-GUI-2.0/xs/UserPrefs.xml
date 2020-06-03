@@ -1,13 +1,5 @@
 ﻿<Properties StartupConfiguration="{AE6E7F84-5196-7310-30D5-FD1955374EF5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/MapAufgabe/MapboxTaskControl.cs">
-    <Files>
-      <File FileName="Assets/MeineDaten/Scripts/Settings/SettingsController.cs" Line="13" Column="1" />
-      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/BlaetterAufgabe/PageSelectionCreator.cs" Line="25" Column="1" />
-      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/ScrollSnapRect.cs" Line="219" Column="28" />
-      <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/MapboxTaskControl.cs" Line="173" Column="52" />
-      <File FileName="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlTrackpad.cs" Line="55" Column="14" />
-      <File FileName="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlControl.cs" Line="83" Column="32" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -29,7 +21,7 @@
                   </Node>
                   <Node name="LetterSelection" expanded="True" />
                   <Node name="MapAufgabe" expanded="True">
-                    <Node name="MapboxTaskControl.cs" selected="True" />
+                    <Node name="MapControl.cs" selected="True" />
                   </Node>
                   <Node name="ScrollAufgabe" expanded="True" />
                   <Node name="Settings" expanded="True" />

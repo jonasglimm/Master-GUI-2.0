@@ -2315,6 +2315,8 @@ MonoBehaviour:
   button4: {fileID: 357668913}
   button5: {fileID: 603107159}
   button6: {fileID: 1745941032}
+  swipeMovementX: 20
+  swipeMovementy: 20
   valueControlCenter: {fileID: 526270272}
   clickSound: {fileID: 526270273}
   scrollingSound: {fileID: 526270274}
