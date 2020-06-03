@@ -288,16 +288,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskIsTextInput: 1
   tasks:
-  - Alice
-  - Bob
   - John
-  - Chris
-  - David
-  - Joseph
-  - Harry
-  - Hanna
+  - Joe
   - Alex
-  - Caroline
+  - Max
+  - David
+  - Hanna
+  - Katharina
+  - Mike
+  - Franz
+  - Bob
   maxValue: 100
   taskTextField: {fileID: 1743249807}
   errorCountTextField: {fileID: 870628645}
