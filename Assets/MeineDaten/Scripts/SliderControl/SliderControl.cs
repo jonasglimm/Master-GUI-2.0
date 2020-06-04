@@ -40,6 +40,8 @@ public class SliderControl : MonoBehaviour
     public GameObject startPanel;
     public GameObject startPanelTouchscreen;
 
+    public float swipeDistanceX;
+
     private void Awake() //intiate all variables which are set in different scripts
     {
         valueControlCenter = GameObject.Find("SliderControl").GetComponent<ValueControlCenter>();
@@ -85,12 +87,12 @@ public class SliderControl : MonoBehaviour
             Comparision();
             clickSound.Play();
         }
-        if(mouseDelta.x < 0 ){ // if difference less than zero, moved to left
+        if(mouseDelta.x < -swipeDistanceX ){ // if difference less than zero, moved to left
             lastMouseCoordinate = Input.mousePosition; // reseting the last mouse coordinate to the new location
             if(selected == true){ // checking if the mouse button is pressed down. 
                 valueSlider.value--;
             }
-        } else if(mouseDelta.x > 0 ){ // if difference greater than zero, moved to right
+        } else if(mouseDelta.x > swipeDistanceX ){ // if difference greater than zero, moved to right
             lastMouseCoordinate = Input.mousePosition;
             if(selected == true){
                 valueSlider.value++;

@@ -28,23 +28,44 @@ public class TrackpadTextInsertion : MonoBehaviour{
     private bool swipeInProgress = false;
     private float cursorResetTime;
     private ControlManager script;
+
+    private GameObject letterLayout;
+    private TouchScreenKeyboard keyboard;
+
+    private void Awake()
+    {
+        letterLayout = GameObject.Find("LetterLayout");
+    }
+
     void Start(){
         selectorRectTransform = selector.GetComponent<RectTransform>();
         script = gameObject.GetComponent<ControlManager>();
         cursorResetTime = script.cursorResetTime;
 
-        if(script.touchscreenInput == true ||  script.touchpadInput == true ){
+        if(script.touchpadInput == true )
+        {
             InvokeRepeating("CursorLock", cursorResetTime, cursorResetTime);  // If the trackpad is used, the cursor will be reset to the middle of the screen each cursorResetTime - seconds
             HideCursor();
         }
+        if (script.touchscreenInput == true)
+        {
+            letterLayout.SetActive(false);
+        }
     }
-     void insertText(string text){
-        inputField.text = inputField.text + text;
+
+    public void OpenTouchKeyboard() //assign this to the StartButton of the StartPanel
+    {
+        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
+        inputField.Select();
+    }
+
+    void insertText(string text){
+        inputField.text = inputField.text + text; 
     }
 
     // Update is called once per frame
     void Update(){
-        if(script.touchscreenInput == true ||  script.touchpadInput == true ){
+        if(script.touchpadInput == true ){
              CursorUnlock();
             Vector3 mouseDelta = Input.mousePosition - lastMouseCoordinate;
             handleSwipeGesture(mouseDelta);
@@ -160,6 +181,20 @@ public class TrackpadTextInsertion : MonoBehaviour{
                     }
                 }
             }
+            
+        } else if (script.touchscreenInput == true){
+            
+            if (TouchScreenKeyboard.visible == false && keyboard != null)
+            {
+                insertText(keyboard.text);
+                if (keyboard.done){
+                    script.checkOutput(keyboard.text.ToUpper());
+                    inputField.text = "";
+                    keyboard.text = "";
+                    keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
+                    inputField.Select();
+                }
+            } 
         }
     }
 

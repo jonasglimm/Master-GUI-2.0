@@ -23,7 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MeineDaten/Scenes/KartenAufgabeZoom.unity
     guid: 7791b3b48e8b44a56869fbd73caf81ac
-  - enabled: 1
+  - enabled: 0
     path: Assets/MeineDaten/Scenes/DialTextInsertion.unity
     guid: 59538904e71bf4e539e0dffcebfb4eb1
+  - enabled: 1
+    path: Assets/MeineDaten/Scenes/TextInsertion.unity
+    guid: f25e6fd81c4ce4a789f065c637672122
   m_configObjects: {}

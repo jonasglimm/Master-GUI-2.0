@@ -15,7 +15,6 @@ ScriptsOnlyBuild:
     - DigitalRubyShared.FingersExampleCoRoutineScript
     - DigitalRubyShared.FingersPanRotateScaleComponentScript
     - DigitalRubyShared.FingersScript
-    - LetterSelection
     - MainMenu
     - Mapbox.Examples.CameraBillboard
     - Mapbox.Examples.DragableDirectionWaypoint
@@ -39,6 +38,7 @@ ScriptsOnlyBuild:
     - Mapbox.Unity.Utilities.DebugTools.SceneData
     - Mapbox.Unity.Utilities.DebugTools.ScenesList
     - Mapbox.Unity.Utilities.OpenUrlOnButtonClick
+    - Mapbox.Unity.Utilities.Runnable
     - Mapbox.Unity.Utilities.TelemetryConfigurationButton
     - MapboxTaskControl
     - PageSelectionCreator
@@ -50,6 +50,7 @@ ScriptsOnlyBuild:
     - StartBlaetterAufgabe
     - StartScrollAufgabe
     - StartSliderTask
+    - TrackpadTextInsertion
     - UnityARKitPluginSettings
     - ValueControlCenter
     Unity.Rider.Editor.dll:
@@ -218,77 +219,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 15032}
     - Class: 114
       Script: {instanceID: 15126}
-    - Class: 114
-      Script: {instanceID: 15720}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 196
-      Script: {instanceID: 0}
-    - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
-    - Class: 225
-      Script: {instanceID: 0}
-    Assets/MeineDaten/Scenes/DialTextInsertion.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 23
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 33
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 82
-      Script: {instanceID: 0}
-    - Class: 83
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 11410}
-    - Class: 114
-      Script: {instanceID: 11840}
-    - Class: 114
-      Script: {instanceID: 11924}
-    - Class: 114
-      Script: {instanceID: 11970}
-    - Class: 114
-      Script: {instanceID: 12372}
-    - Class: 114
-      Script: {instanceID: 12612}
-    - Class: 114
-      Script: {instanceID: 12780}
-    - Class: 114
-      Script: {instanceID: 13334}
-    - Class: 114
-      Script: {instanceID: 13758}
-    - Class: 114
-      Script: {instanceID: 14258}
-    - Class: 114
-      Script: {instanceID: 14710}
-    - Class: 114
-      Script: {instanceID: 14838}
-    - Class: 114
-      Script: {instanceID: 15032}
     - Class: 114
       Script: {instanceID: 15720}
     - Class: 115
@@ -711,6 +641,77 @@ ScriptsOnlyBuild:
       Script: {instanceID: 15720}
     - Class: 114
       Script: {instanceID: 15788}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 225
+      Script: {instanceID: 0}
+    Assets/MeineDaten/Scenes/TextInsertion.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11410}
+    - Class: 114
+      Script: {instanceID: 11840}
+    - Class: 114
+      Script: {instanceID: 11902}
+    - Class: 114
+      Script: {instanceID: 11924}
+    - Class: 114
+      Script: {instanceID: 11970}
+    - Class: 114
+      Script: {instanceID: 12372}
+    - Class: 114
+      Script: {instanceID: 12612}
+    - Class: 114
+      Script: {instanceID: 12780}
+    - Class: 114
+      Script: {instanceID: 13758}
+    - Class: 114
+      Script: {instanceID: 13800}
+    - Class: 114
+      Script: {instanceID: 14258}
+    - Class: 114
+      Script: {instanceID: 14710}
+    - Class: 114
+      Script: {instanceID: 14838}
+    - Class: 114
+      Script: {instanceID: 15032}
+    - Class: 114
+      Script: {instanceID: 15720}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1320,7 +1321,7 @@ ScriptsOnlyBuild:
     className: VoxelFetcher
   - hash:
       serializedVersion: 2
-      Hash: 18b163ed65d7f7e0b7a1c8bd2cb9e8ce
+      Hash: edd42f8abea6d8bef22a0bcd6eca899f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SliderControl
@@ -2664,7 +2665,7 @@ ScriptsOnlyBuild:
     className: DemoScript
   - hash:
       serializedVersion: 2
-      Hash: b6f92aa4b5d3939d99fe19f9c0e2a7fa
+      Hash: 7f617b10c3a1983354917b90e8cd400f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AuswahlTrackpad
@@ -3126,5 +3127,5 @@ ScriptsOnlyBuild:
   - Assets/MeineDaten/Scenes/ScrollAufgabe.unity
   - Assets/MeineDaten/Scenes/SliderAufgabe.unity
   - Assets/MeineDaten/Scenes/KartenAufgabeZoom.unity
-  - Assets/MeineDaten/Scenes/DialTextInsertion.unity
-  playerPath: /Users/jonasglimmann/UnityProject/AppBuild/Test 3.0/GUI 3.0
+  - Assets/MeineDaten/Scenes/TextInsertion.unity
+  playerPath: /Users/jonasglimmann/UnityProject/AppBuild/test 5.2

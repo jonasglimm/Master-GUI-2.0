@@ -45,6 +45,7 @@ public class ControlManager : MonoBehaviour
     public GameObject startPanel;
     public GameObject startPanelTouchscreen;
 
+
     // Use this for initialization
     void Start () {
         CheckModalities();
