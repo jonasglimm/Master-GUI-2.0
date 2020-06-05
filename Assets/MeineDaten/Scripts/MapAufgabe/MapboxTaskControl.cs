@@ -30,6 +30,7 @@ public class MapboxTaskControl : MonoBehaviour
     public GameObject endPanel;
     public TextMeshProUGUI timeTextField;
     public GameObject pointer;
+    private Slider zoomSlider;
 
     private GameObject valueAdjustmentPanel;
     private GameObject panSpeedValue;
@@ -67,6 +68,7 @@ public class MapboxTaskControl : MonoBehaviour
         quadTreeCameraMovement = GameObject.Find("Map").GetComponent<Mapbox.Examples.QuadTreeCameraMovement>();
         valueControlCenter = GameObject.Find("MapManager").GetComponent<ValueControlCenter>();
         clickSound = GameObject.Find("MapManager").GetComponent<AudioSource>();
+        zoomSlider = GameObject.Find("ZoomIndicator").GetComponentInChildren<Slider>();
 
         //Exchanging values with quadTreeCameraMovement
         _mapManager = abstractMap;
@@ -79,7 +81,8 @@ public class MapboxTaskControl : MonoBehaviour
     void Start()
     {
         targetCount = 1;
-        
+        SetStartPanel();
+
         if (valueControlCenter.touchpadInput == true) 
         {
             _zoomSpeed = 0.5f;
@@ -87,14 +90,12 @@ public class MapboxTaskControl : MonoBehaviour
             quadTreeCameraMovement.enabled = false; //preventing conflict with quadTreeCameraMovement script
             InvokeRepeating("CursorLock", valueControlCenter.cursorResetTime, valueControlCenter.cursorResetTime);
             HideCursor();
-            SetStartPanel();
         }
 
         if (valueControlCenter.touchscreenInput == true)
         {
             _panSpeed = 1.75f;
             _zoomSpeed = 0.25f;
-            SetStartPanel();
         }
     }
 
@@ -106,6 +107,7 @@ public class MapboxTaskControl : MonoBehaviour
         GetCurrentLocation();
         GetCurrentZoom();
         CheckZoomAndOffset();
+        zoomSlider.value = zoom;
 
         if(valueControlCenter.touchpadInput == true)
         {
