@@ -617,7 +617,6 @@
     <Compile Include="Assets\MeineDaten\Scripts\BlätterAufgabe\BlaetterAufgabeMitTasten\PageSelectionCreatorMitTasten.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\BlätterAufgabe\ScrollSnapRect.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\BlätterAufgabe\test.cs" />
-    <Compile Include="Assets\MeineDaten\Scripts\ButtonBackgroundHighlight.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ControlManager.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\DialButtonSelection\DialButtonSelection.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\LetterSelection\LetterSelection.cs" />
@@ -645,7 +644,6 @@
     <Compile Include="Assets\MeineDaten\Scripts\SliderControl\StartSliderTask.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\SliderControl\Unused\SliderControlMitTasten.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\SliderControl\Unused\SliderTrackpad.cs" />
-    <Compile Include="Assets\MeineDaten\Scripts\TouchInput.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\TrackpadTextInsertion\TrackpadTextInsertion.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\Unused\ButtonName.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\Unused\ClickFeedback.cs" />

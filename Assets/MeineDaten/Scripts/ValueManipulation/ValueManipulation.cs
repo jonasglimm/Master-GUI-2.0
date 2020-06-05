@@ -14,43 +14,64 @@ public class ValueManipulation : MonoBehaviour
     public AudioSource scrollSound;
     private int value;
     private ControlManager script;
-    // Start is called before the first frame update
-    void Start()
+    private TextMeshProUGUI maxValueText;
+
+    private int maxValue;
+    private float minFillAmountDisplayed = 0.11f; // Because of ackward rotation of the image a part of the image is not visible
+    private float maxFillAmountDisplayed = 0.95f; // Because of ackward rotation of the image a part of the image is not visible
+    private float usableFillAmount;
+    private float fillAmountStep;
+
+    private void Awake()
     {
-        value = 0;
-        selector.fillAmount = 0.10943f;
-        selectionValue.text = value.ToString();
+        maxValueText = GameObject.Find("MaxValue").GetComponent<TextMeshProUGUI>();
         script = gameObject.GetComponent<ControlManager>();
     }
 
-    // Update is called once per frame
-    void Update(){
-        if(script.iDriveInput == true){
-            if(Input.mouseScrollDelta.y > 0){
-                if(selector.fillAmount < 0.939f){
-                    selector.fillAmount = selector.fillAmount + 0.00835f;
-                    if(value < 100){
+    // Start is called before the first frame update
+    void Start()
+    {
+        maxValue = script.maxValue;
+        usableFillAmount = maxFillAmountDisplayed - minFillAmountDisplayed;
+        fillAmountStep = usableFillAmount / maxValue;
+
+        value = maxValue / 3;
+        selector.fillAmount = fillAmountStep * (float)value + minFillAmountDisplayed;
+        selectionValue.text = value.ToString();
+        maxValueText.text = maxValue.ToString();
+    }
+
+    void Update()
+    {
+        if (script.iDriveInput == true)
+        {
+            if (Input.mouseScrollDelta.y > 0)
+            {
+                if (value < maxValue)
+                {
+                    selector.fillAmount = selector.fillAmount + fillAmountStep;
                         scrollSound.Play();
                         value++;
                         selectionValue.text = value.ToString();
-                    }
                 }
             }
 
-            if(Input.mouseScrollDelta.y < 0){
-                if(selector.fillAmount > 0.10943f){
-                    selector.fillAmount = selector.fillAmount - 0.00835f;
-                    if(value > 0){
+            if (Input.mouseScrollDelta.y < 0)
+            {
+                if (value > 0)
+                {
+                    selector.fillAmount = selector.fillAmount - fillAmountStep;
                         scrollSound.Play();
                         value--;
                         selectionValue.text = value.ToString();
-                    }
                 }
             }
 
-            if(Input.GetMouseButtonDown(0)){
+            if (Input.GetMouseButtonDown(0))
+            {
                 script.checkOutput(selectionValue.text);
             }
         }
     }
+
 }

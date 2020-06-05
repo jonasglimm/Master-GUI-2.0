@@ -1,9 +1,12 @@
 ﻿<Properties StartupConfiguration="{AE6E7F84-5196-7310-30D5-FD1955374EF5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/MapAufgabe/MapboxTaskControl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/SliderControl/SliderControl.cs">
     <Files>
       <File FileName="Assets/MeineDaten/Scripts/ControlManager.cs" Line="48" Column="1" />
       <File FileName="Assets/MeineDaten/Scripts/TrackpadTextInsertion/TrackpadTextInsertion.cs" Line="195" Column="41" />
       <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/MapboxTaskControl.cs" Line="254" Column="46" />
+      <File FileName="Assets/MeineDaten/Scripts/ValueManipulation/ValueManipulation.cs" Line="29" Column="37" />
+      <File FileName="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlControl.cs" Line="78" Column="17" />
+      <File FileName="Assets/MeineDaten/Scripts/SliderControl/SliderControl.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -25,11 +28,14 @@
               </Node>
               <Node name="MeineDaten" expanded="True">
                 <Node name="Scripts" expanded="True">
-                  <Node name="MapAufgabe" expanded="True">
-                    <Node name="MapboxTaskControl.cs" selected="True" />
+                  <Node name="AuswahlAufgabe" expanded="True" />
+                  <Node name="LetterSelection" expanded="True" />
+                  <Node name="MapAufgabe" expanded="True" />
+                  <Node name="SliderControl" expanded="True">
+                    <Node name="SliderControl.cs" selected="True" />
                   </Node>
-                  <Node name="SliderControl" expanded="True" />
                   <Node name="TrackpadTextInsertion" expanded="True" />
+                  <Node name="ValueManipulation" expanded="True" />
                 </Node>
               </Node>
               <Node name="UnityARKitPlugin" expanded="True">
@@ -45,16 +51,11 @@
           </Node>
         </State>
       </Pad>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="Master-GUI-2.0" expanded="True" selected="True" />
-        </State>
-      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f60247be-da51-4017-9eef-a876c78cddaf" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="5b5f435d-6c6a-4605-bc1d-b213efcffc11" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

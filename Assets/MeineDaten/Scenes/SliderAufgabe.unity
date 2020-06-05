@@ -846,7 +846,7 @@ MonoBehaviour:
   valueSlider: {fileID: 691972343}
   startPanel: {fileID: 1569711414}
   startPanelTouchscreen: {fileID: 1674852724}
-  swipeDistanceX: 20
+  swipeDistanceX: 15
 --- !u!114 &242269567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -873,8 +873,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfTasks: 10
-  touchscreenInput: 0
-  touchpadInput: 1
+  touchscreenInput: 1
+  touchpadInput: 0
   iDriveInput: 0
   gestureInput: 0
   cursorResetTime: 0.3

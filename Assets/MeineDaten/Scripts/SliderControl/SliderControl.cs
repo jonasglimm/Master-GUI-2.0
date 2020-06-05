@@ -57,7 +57,7 @@ public class SliderControl : MonoBehaviour
         fehlercounter = 0;
         aufgabenNr = 1;
         valueSlider.maxValue = endOfScale;
-        valueSlider.value = endOfScale / 2;
+        valueSlider.value = endOfScale / 3;
         NewTask();
         SetStartPanel();
 
@@ -65,29 +65,25 @@ public class SliderControl : MonoBehaviour
             ColorBlock colorVar = valueSlider.colors;
             colorVar.selectedColor = new Color(1f, 0.8509804f, 0.4f, 1);
             valueSlider.colors = colorVar;
-            valueSlider.Select();
         }
 
         if (valueControlCenter.touchpadInput == true) // If the trackpad is used, the cursor will be reset to the middle of the screen each cursorResetTime - seconds
         {
-            InvokeRepeating("CursorLock", valueControlCenter.cursorResetTime, valueControlCenter.cursorResetTime);  
+            InvokeRepeating("CursorLock", valueControlCenter.cursorResetTime, valueControlCenter.cursorResetTime);
         }
     }
 
     void handleTouchpadInput(){
         Vector3 mouseDelta = Input.mousePosition - lastMouseCoordinate;
-        if(Input.GetMouseButtonDown(0) && selected == false)
+        if(Input.GetMouseButtonDown(0) && selected == true)
         {
-            valueSlider.Select();
-            selected = true;
-        }  else if(Input.GetMouseButtonDown(0) && selected == true)
-        {
-            selected = false;
+            //selected = false;
             EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(null);
             Comparision();
             clickSound.Play();
+            valueSlider.Select();
         }
-        if(mouseDelta.x < -swipeDistanceX ){ // if difference less than zero, moved to left
+        if (mouseDelta.x < -swipeDistanceX ){ // if difference less than zero, moved to left
             lastMouseCoordinate = Input.mousePosition; // reseting the last mouse coordinate to the new location
             if(selected == true){ // checking if the mouse button is pressed down. 
                 valueSlider.value--;
@@ -143,6 +139,8 @@ public class SliderControl : MonoBehaviour
         clickSound.Play();
         startPanel.SetActive(false);
         startPanelTouchscreen.SetActive(false);
+        valueSlider.Select();
+        selected = true;
     }
 
     public void Comparision()
@@ -220,6 +218,8 @@ public class SliderControl : MonoBehaviour
         var totalTime = System.DateTime.Now - startTime;
         timeTextField.text = totalTime.Minutes.ToString()+" min : "+totalTime.Seconds.ToString() + " sec";
         endPanel.SetActive(true);
+        CancelInvoke();
+        selected = false;
     }
 
     private void CursorLock() //reset the Cursor by first locking it with this function and unlock it with the next on
