@@ -236,7 +236,14 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
     //------------------------------------------------------------------------
     private void NextScreen() {
-        LerpToPage(_currentPage + 1);
+        if (_currentPage == _pageCount - 1)
+        {
+            LerpToPage(0);
+        }
+        else
+        {
+            LerpToPage(_currentPage + 1);
+        }
         scrollingSound.Play();
         buttons[_currentPage].Select();
 
@@ -244,7 +251,14 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
     //------------------------------------------------------------------------
     private void PreviousScreen() {
-        LerpToPage(_currentPage - 1);
+        if (_currentPage == 0)
+        {
+            LerpToPage(_pageCount - 1);
+        }
+        else
+        {
+            LerpToPage(_currentPage - 1);
+        }
         scrollingSound.Play();
         buttons[_currentPage].Select();
 

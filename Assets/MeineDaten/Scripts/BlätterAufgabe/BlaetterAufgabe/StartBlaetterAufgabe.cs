@@ -13,7 +13,7 @@ public class StartBlaetterAufgabe : MonoBehaviour
     {
         InitiateVariables();
         EnableBlaetterRectMovement();
-        EnableClickSound();
+        //EnableClickSound();
     }
 
     private void InitiateVariables()
