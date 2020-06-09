@@ -48,6 +48,7 @@ public class ScrollRectMovement : MonoBehaviour
         if (valueControlCenter.touchpadInput == true)
         {
             InvokeRepeating("CursorLock", valueControlCenter.cursorResetTime, valueControlCenter.cursorResetTime);  // If the trackpad is used, the cursor will be reset to the middle of the screen each cursorResetTime - seconds
+            Cursor.visible = false;
         }
 
     }

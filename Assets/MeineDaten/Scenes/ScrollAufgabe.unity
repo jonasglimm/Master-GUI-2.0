@@ -1157,8 +1157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfTasks: 10
-  touchscreenInput: 1
-  touchpadInput: 0
+  touchscreenInput: 0
+  touchpadInput: 1
   iDriveInput: 0
   gestureInput: 0
   cursorResetTime: 0.5
@@ -1177,8 +1177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1b669de7f964fa0a006a258cce1b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivityOneFinger: 2
-  sensitivityTwoFinger: 0.08
+  sensitivityOneFinger: 15
+  sensitivityTwoFinger: 0.5
 --- !u!82 &1127592226
 AudioSource:
   m_ObjectHideFlags: 0

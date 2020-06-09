@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using TrackpadTouch;
+
 // this class moves the current button into view when the task is done using buttons
 // needs tio be assigned to the SnapOnScroll-Gameobject (the gameobject with an scroll rect)
 public class BlaetterRectMovement : MonoBehaviour
@@ -20,6 +22,11 @@ public class BlaetterRectMovement : MonoBehaviour
     private Vector2 position = new Vector2(0.5f, 0.5f);
     private Vector2 positionSetTo = new Vector2(0.5f, 0.5f);
     public Button selectedButton;
+
+    //For SwipeTest()
+    private bool tap, swipeLeft, swipeRight;
+    private bool isDragging, moved = false;
+    private Vector2 startTouch, swipeDelta;
 
 
     //-------------- PageSelection
@@ -60,7 +67,7 @@ public class BlaetterRectMovement : MonoBehaviour
     {
         if (isTrackpadEnabled == true) // If the trackpad is used, the cursor will be reset to the middle of the screen each cursorResetTime - seconds
         {
-            InvokeRepeating("CursorLock", cursorResetTime, cursorResetTime);
+            //InvokeRepeating("CursorLock", cursorResetTime, cursorResetTime);
             HideCursor();
         }
     }
@@ -100,7 +107,114 @@ public class BlaetterRectMovement : MonoBehaviour
         SetPageSelection(startButton);
 
     }
-     private void handleSwipe(){
+
+    public void TrackpadSwipes()
+    {
+        tap = moved = swipeLeft = swipeRight = false;
+
+        if (TrackpadInput.touchCount > 0)
+        {
+            if (TrackpadInput.touches[0].phase == TouchPhase.Began)
+            {
+                isDragging = true;
+                startTouch = TrackpadInput.touches[0].position;
+            }
+            else if (TrackpadInput.touches[0].phase == TouchPhase.Ended || TrackpadInput.touches[0].phase == TouchPhase.Canceled)
+            {
+                isDragging = false;
+                Reset();
+            }
+        }
+
+        //calculate the distance
+        swipeDelta = Vector2.zero;
+        if (isDragging)
+        {
+            if (TrackpadInput.touchCount > 0)
+            {
+                swipeDelta = TrackpadInput.touches[0].position - startTouch;
+            }
+        }
+
+        //Did the finger move?
+        if (swipeDelta.magnitude > 50)
+        {
+            moved = true;
+        }
+
+        //Did we cross the deadzone?
+        if (swipeDelta.magnitude > 100)
+        {
+            float x = swipeDelta.x;
+            float y = swipeDelta.y;
+
+            if (Mathf.Abs(x) > Mathf.Abs(y))
+            {
+                // Left or right
+                if (x > 0)
+                {
+                    swipeRight = true;
+                    if (index > 0)
+                    {
+                        index--;
+                        selectedButton = buttons[index];
+                        buttons[index].Select();
+                        scrollingSound.Play();
+                    }
+                    else if (index == 0)
+                    {
+                        index = numberOfButtons - 1;
+                        selectedButton = buttons[index];
+                        buttons[index].Select();
+                        scrollingSound.Play();
+                    }
+                    CursorLock();
+                }
+                else
+                {
+                    swipeLeft = true;
+                    if (index < numberOfButtons - 1)
+                    {
+                        index++;
+                        selectedButton = buttons[index];
+                        buttons[index].Select();
+                        scrollingSound.Play();
+                    }
+                    else if (index == numberOfButtons - 1)
+                    {
+                        index = 0;
+                        selectedButton = buttons[index];
+                        buttons[index].Select();
+                        scrollingSound.Play();
+                    }
+                    CursorLock();
+                }
+            }
+            Reset();
+        }
+
+        /*
+        if (swipeLeft)
+            Debug.Log("SwipeLeft");
+        if (swipeRight)
+            Debug.Log("SwipeRight");
+        */
+    }
+
+    private void Reset()
+    {
+        if (moved == false)
+        {
+            if (swipeRight == swipeLeft == false)
+            {
+                tap = true;
+            }
+        }
+        isDragging = false;
+        startTouch = swipeDelta = Vector2.zero;
+    }
+
+    private void handleSwipe(){
         Vector3 mouseDelta = Input.mousePosition - lastMouseCoordinate;
         if(mouseDelta.x > swipeMovementX){ // if difference less than zero, moved to left
             if(swipeInProgress == false ){ // checking if the swipe gesture that had been started is still in progress or not.         
@@ -110,7 +224,14 @@ public class BlaetterRectMovement : MonoBehaviour
                     selectedButton = buttons[index];   
                     buttons[index].Select();
                     scrollingSound.Play();
-                }     
+                } 
+                else if (index == 0)
+                {
+                    index = numberOfButtons - 1;
+                    selectedButton = buttons[index];
+                    buttons[index].Select();
+                    scrollingSound.Play();
+                } 
             }
         } else if(mouseDelta.x < -swipeMovementX){ // if difference greater than zero, moved to right      
             if(swipeInProgress == false ){
@@ -120,7 +241,14 @@ public class BlaetterRectMovement : MonoBehaviour
                     selectedButton = buttons[index];    
                     buttons[index].Select();           
                     scrollingSound.Play();
-                } 
+                }
+                else if (index == numberOfButtons -1)
+                {
+                    index = 0;
+                    selectedButton = buttons[index];
+                    buttons[index].Select();
+                    scrollingSound.Play();
+                }
             }
         } else if(mouseDelta.x == 0) {
             swipeInProgress = false;
@@ -133,10 +261,12 @@ public class BlaetterRectMovement : MonoBehaviour
             counter++;
         }
     }
+
         void Update(){
         if(isTrackpadEnabled == true){
             CursorUnlock();
-            handleSwipe();
+            TrackpadSwipes();
+            //handleSwipe(); //exchanges with TrackpadSwipes()
         } else {
             selectedButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
             index = System.Array.IndexOf(buttons, selectedButton);

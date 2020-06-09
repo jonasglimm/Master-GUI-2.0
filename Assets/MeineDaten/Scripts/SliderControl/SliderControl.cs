@@ -70,6 +70,7 @@ public class SliderControl : MonoBehaviour
         if (valueControlCenter.touchpadInput == true) // If the trackpad is used, the cursor will be reset to the middle of the screen each cursorResetTime - seconds
         {
             InvokeRepeating("CursorLock", valueControlCenter.cursorResetTime, valueControlCenter.cursorResetTime);
+            Cursor.visible = false;
         }
     }
 
@@ -220,6 +221,7 @@ public class SliderControl : MonoBehaviour
         endPanel.SetActive(true);
         CancelInvoke();
         selected = false;
+        Cursor.visible = true;
     }
 
     private void CursorLock() //reset the Cursor by first locking it with this function and unlock it with the next on

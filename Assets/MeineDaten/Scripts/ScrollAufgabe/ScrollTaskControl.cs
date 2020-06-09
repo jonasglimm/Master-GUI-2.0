@@ -189,6 +189,7 @@ public class ScrollTaskControl : MonoBehaviour
         timeTextField.text = totalTime.Minutes.ToString()+" min : "+totalTime.Seconds.ToString() + " sec";
         endPanel.SetActive(true);
         endNachricht.SetActive(true);
+        Cursor.visible = true;
     }
 
 }

@@ -30,11 +30,9 @@ public class AuswahlTrackpad : MonoBehaviour{
     public AudioSource clickSound; // for a click (only used for TouchpadInput - for Touch and iDrive it is played via onClick() of the button
     public AudioSource scrollingSound;
 
-    //For SwipeTest()
-    [HideInInspector]
+    //For TrackpadSwipe()
     private bool tap, swipeLeft, swipeRight, swipeUp, swipeDown;
     private bool isDragging, moved = false;
-    [HideInInspector]
     private Vector2 startTouch, swipeDelta;
 
 

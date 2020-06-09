@@ -9,6 +9,10 @@ namespace TrackpadTouch
 	public class TrackpadInputExample : MonoBehaviour
 	{
 		public GameObject prefab;
+		public Text dragRightText;
+		public Text dragLeftText;
+		public Text dragUpText;
+		public Text dragDownText;
 
 		//For OwnTestingZoom()
 		private Vector3 touchZeroPrevPos = new Vector3(0,0,0);
@@ -21,6 +25,22 @@ namespace TrackpadTouch
 		private bool isDragging = false;
 		[HideInInspector]
 		public Vector2 startTouch, swipeDelta;
+		public int minSwipeLength = 100;
+
+		//For DragTest() 
+		[HideInInspector]
+		public bool dragLeft, dragRight, dragUp, dragDown;
+		//private bool isDragging = false;
+		[HideInInspector]
+		public Vector2 dragDelta; // + startTouch
+		public int dragLength = 200;
+
+		private int dragRightCounter = 0;
+		private int dragLeftCounter = 0;
+		private int dragUpCounter = 0;
+		private int dragDownCounter = 0;
+
+
 
 		Dictionary<int, GameObject> touchObjects = new Dictionary<int, GameObject>();
 
@@ -41,7 +61,6 @@ namespace TrackpadTouch
 
 				switch (touch.phase)
 				{
-
 					case TouchPhase.Began:
 						if (touchObjects.TryGetValue(touch.fingerId, out debugSphere))
 							Object.Destroy(debugSphere);
@@ -75,7 +94,9 @@ namespace TrackpadTouch
 			}
 			//Debug.Log(TrackpadInput.touchCount);
 			//OwnTestingZoom();
-			SwipeTest();
+			//SwipeTest();
+			DragTest();
+			ShowCanvas();
 		}
 
 		void OnDisable()
@@ -133,7 +154,7 @@ namespace TrackpadTouch
 				else if (TrackpadInput.touches[0].phase == TouchPhase.Ended || TrackpadInput.touches[0].phase == TouchPhase.Canceled)
                 {
 					isDragging = false;
-					Reset();
+					ResetSwipe();
                 }
             }
 
@@ -148,7 +169,7 @@ namespace TrackpadTouch
             }
 
 			//Did we cross the deadzone?
-			if (swipeDelta.magnitude > 100)
+			if (swipeDelta.magnitude > minSwipeLength)
             {
 				float x = swipeDelta.x;
 				float y = swipeDelta.y;
@@ -177,7 +198,7 @@ namespace TrackpadTouch
 						swipeUp = true;
 					}
 				}
-				Reset();
+				ResetSwipe();
             }
 
 			if (swipeLeft)
@@ -191,10 +212,104 @@ namespace TrackpadTouch
 
 		}
 
-		private void Reset()
+		private void ResetSwipe()
         {
 			isDragging = false;
 			startTouch = swipeDelta = Vector2.zero;
         }
-    }
+
+		public void DragTest()
+        {
+			dragDown = dragLeft = dragRight = dragUp = false;
+
+			if (TrackpadInput.touchCount > 0)
+			{
+				if (TrackpadInput.touches[0].phase == TouchPhase.Began)
+				{
+					isDragging = true;
+					startTouch = TrackpadInput.touches[0].position;
+				}
+				else if (TrackpadInput.touches[0].phase == TouchPhase.Ended || TrackpadInput.touches[0].phase == TouchPhase.Canceled)
+				{
+					isDragging = false;
+					ResetDrag();
+				}
+			}
+
+			//calculate the distance
+			dragDelta = Vector2.zero;
+			if (isDragging)
+			{
+				if (TrackpadInput.touchCount > 0)
+				{
+					dragDelta = TrackpadInput.touches[0].position - startTouch;
+				}
+			}
+
+			//Did we cross the deadzone?
+			if (Mathf.Abs(dragDelta.magnitude) > dragLength)
+			{
+				float x = dragDelta.x;
+				float y = dragDelta.y;
+
+				if (Mathf.Abs(x) > Mathf.Abs(y))
+				{
+					// Left or right
+					if (x < 0)
+					{
+						dragLeft = true;
+						dragLeftCounter++;
+						ResetDrag();
+					}
+					else
+					{
+						dragRight = true;
+						dragRightCounter++;
+						ResetDrag();
+					}
+				}
+				else
+				{
+					//Up or down
+					if (y < 0)
+					{
+						dragDown = true;
+						dragDownCounter++;
+						ResetDrag();
+					}
+					else
+					{
+						dragUp = true;
+						dragUpCounter++;
+						ResetDrag();
+					}
+				}
+				ResetDrag();
+			}
+			/*
+			if (dragLeft)
+				Debug.Log("dragLeft");
+			if (dragRight)
+				Debug.Log("dragRight");
+			if (dragUp)
+				Debug.Log("dragUp");
+			if (dragDown)
+				Debug.Log("dragDown");
+			*/
+		}
+
+		private void ResetDrag()
+		{
+			startTouch = TrackpadInput.touches[0].position;
+			dragDelta = Vector2.zero;
+		}
+
+		private void ShowCanvas()
+        {
+			dragRightText.text = "DragRight = " + dragRightCounter.ToString();
+			dragLeftText.text = "DragLeft = " + dragLeftCounter.ToString();
+			dragUpText.text = "DragUp = " + dragUpCounter.ToString();
+			dragDownText.text = "DragDown = " + dragDownCounter.ToString();
+		}
+	}
 }
