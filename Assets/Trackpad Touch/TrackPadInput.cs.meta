@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 6573e932139bf4bfc92ecc404a113445
+labels:
+- Input
+- Touch
+- Trackpad
+- Controller
+- Multitouch
+timeCreated: 1435326305
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

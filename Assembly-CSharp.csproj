@@ -628,6 +628,7 @@
     <Compile Include="Assets\MeineDaten\Scripts\MapAufgabe\PinNorthCollider.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\MapAufgabe\PinSouthCollider.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\MapAufgabe\PinWestCollider.cs" />
+    <Compile Include="Assets\MeineDaten\Scripts\MapAufgabe\TrackpadInputMapbox.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\MapAufgabe\Unused\EnteringTrigger.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\MapAufgabe\Unused\MapControlAlt.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ScrollAufgabe\ButtonListControl.cs" />
@@ -649,6 +650,9 @@
     <Compile Include="Assets\MeineDaten\Scripts\Unused\ClickFeedback.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ValueControlCenter.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ValueManipulation\ValueManipulation.cs" />
+    <Compile Include="Assets\Trackpad Touch Example\LockCursor.cs" />
+    <Compile Include="Assets\Trackpad Touch Example\TrackpadInputExample.cs" />
+    <Compile Include="Assets\Trackpad Touch\TrackPadInput.cs" />
     <Compile Include="Assets\UnityARInterface\ARRemote\Scripts\ARRemoteDevice.cs" />
     <Compile Include="Assets\UnityARInterface\ARRemote\Scripts\ARRemoteEditor.cs" />
     <Compile Include="Assets\UnityARInterface\ARRemote\Scripts\ARRemoteEditorInterface.cs" />
@@ -733,6 +737,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\Mapbox\link.xml" />
     <None Include="Assets\MapboxAR\Examples\ARTabletop\Shaders\Clip_MapBoxStylesPerRenderer.shader" />
+    <None Include="Assets\Trackpad Touch\TrackpadTouch README.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Mapbox\Shaders\MapboxStyles.shader" />
     <None Include="Assets\Fingers\Prefab\Script\Other\XamarinAndroidTouchAdapter.txt" />

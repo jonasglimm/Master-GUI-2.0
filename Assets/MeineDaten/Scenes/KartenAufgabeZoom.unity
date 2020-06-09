@@ -1166,7 +1166,11 @@ MonoBehaviour:
   _zoomSpeed: 0.75
   _referenceCamera: {fileID: 1787361574}
   _mapManager: {fileID: 555018383}
+  valueControlCenter: {fileID: 656718575}
   _useDegreeMethod: 0
+  _origin: {x: 0, y: 0, z: 0}
+  _mousePosition: {x: 0, y: 0, z: 0}
+  _mousePositionPrevious: {x: 0, y: 0, z: 0}
   _shouldDrag: 0
 --- !u!114 &555018388
 MonoBehaviour:
@@ -1221,6 +1225,7 @@ GameObject:
   - component: {fileID: 656718577}
   - component: {fileID: 656718572}
   - component: {fileID: 656718573}
+  - component: {fileID: 656718574}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -1336,6 +1341,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d5cbfc53f744c2b9395c12f259b927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &656718574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656718571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a3fae0171bb4b8d889ad66df158f0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 116866, guid: f2f919f9312a145be9d2b28bd450d3e0, type: 3}
 --- !u!114 &656718575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1353,7 +1371,7 @@ MonoBehaviour:
   touchpadInput: 1
   iDriveInput: 0
   gestureInput: 0
-  cursorResetTime: 0.2
+  cursorResetTime: 2
   feedbackPanelTime: 0.5
   startButton: {fileID: 0}
   modalityWarning: {fileID: 629045821}

@@ -10,6 +10,8 @@ using Mapbox.Unity.Map;
 using System;
 using Mapbox.Unity.Utilities;
 
+using TrackpadTouch;
+
 public class MapboxTaskControl : MonoBehaviour
 {
     private Mapbox.Unity.Map.AbstractMap abstractMap;
@@ -17,6 +19,7 @@ public class MapboxTaskControl : MonoBehaviour
     private Mapbox.Examples.QuadTreeCameraMovement quadTreeCameraMovement;
     private ValueControlCenter valueControlCenter;
     private AudioSource clickSound;
+    private TrackpadInputMapbox trackpadInputMapbox;
 
     private AbstractMap _mapManager;
 
@@ -67,6 +70,7 @@ public class MapboxTaskControl : MonoBehaviour
         spawnOnMap = GameObject.Find("Map").GetComponent<Mapbox.Examples.SpawnOnMap>();
         quadTreeCameraMovement = GameObject.Find("Map").GetComponent<Mapbox.Examples.QuadTreeCameraMovement>();
         valueControlCenter = GameObject.Find("MapManager").GetComponent<ValueControlCenter>();
+        trackpadInputMapbox = GameObject.Find("MapManager").GetComponent<TrackpadInputMapbox>();
         clickSound = GameObject.Find("MapManager").GetComponent<AudioSource>();
         zoomSlider = GameObject.Find("ZoomIndicator").GetComponentInChildren<Slider>();
 
@@ -86,10 +90,14 @@ public class MapboxTaskControl : MonoBehaviour
         if (valueControlCenter.touchpadInput == true) 
         {
             _zoomSpeed = 0.5f;
-            _panSpeed = 2f;
+            _panSpeed = 2.5f;
             quadTreeCameraMovement.enabled = false; //preventing conflict with quadTreeCameraMovement script
             InvokeRepeating("CursorLock", valueControlCenter.cursorResetTime, valueControlCenter.cursorResetTime);
             HideCursor();
+        }
+        else
+        {
+            trackpadInputMapbox.enabled = false;
         }
 
         if (valueControlCenter.touchscreenInput == true)
@@ -250,12 +258,15 @@ public class MapboxTaskControl : MonoBehaviour
     {
         CursorUnlock();
 
+        //PinchTrackpadZoom(); //Problem with touchdetection on trackpad - detects multiple fingers instate of just one
+
         UseMeterConversion();
 
-        float scrollDelta = 0.0f;
-        scrollDelta = Input.GetAxis("Mouse ScrollWheel");
-        ZoomMapUsingTouchOrMouse(scrollDelta);
-
+        //float scrollDelta = 0.0f;
+        //scrollDelta = Input.GetAxis("Mouse ScrollWheel");
+        //ZoomMapUsingTouchOrMouse(scrollDelta);
+        
+        //zoom is done using the TrackpadInputMapbox script
     }
 
     public void UseMeterConversion()
@@ -312,7 +323,35 @@ public class MapboxTaskControl : MonoBehaviour
         }
     }
 
-    void ZoomMapUsingTouchOrMouse(float zoomFactor)
+    public void PinchTrackpadZoom()
+    {
+        if(TrackpadInput.touchCount == 2)
+        {
+            // Store both touches.
+            Touch touchZero = TrackpadInput.GetTouch(0);
+            Touch touchOne = TrackpadInput.GetTouch(1);
+
+            // Find the position in the previous frame of each touch.
+            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+            // Find the magnitude of the vector (the distance) between the touches in each frame.
+            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+            // Find the difference in the distances between each frame.
+            var zoomDelta = 0.01f * (touchDeltaMag - prevTouchDeltaMag);
+
+            if (Math.Abs(zoomDelta) < 0.5) //sometimes the touchdelta is detected incorrectly, then the zoomDelta is very high -> therefore this 
+            {
+                ZoomMapUsingTouchOrMouse(zoomDelta);
+            }
+
+            Debug.Log(zoomDelta);
+        }
+    }
+
+    public void ZoomMapUsingTouchOrMouse(float zoomFactor)
     {
         var zoom = Mathf.Max(0.0f, Mathf.Min(_mapManager.Zoom + zoomFactor * _zoomSpeed, 21.0f));
         if (Math.Abs(zoom - _mapManager.Zoom) > 0.0f)
@@ -365,7 +404,7 @@ public class MapboxTaskControl : MonoBehaviour
     private void ShowCursor()
     {
         Cursor.visible = true;
-    } 
+    }
 }
 
 

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 05f1ca1323b3b409db51c80082cd2636
+labels:
+- Input
+- Touch
+- Trackpad
+- Controller
+- Multitouch
+timeCreated: 1435358178
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -110,6 +110,7 @@ public class AuswahlControl : MonoBehaviour
         {
             EndScreen();
         }
+
     }
 
     public void StartTime()
