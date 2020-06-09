@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using TrackpadTouch;
+
 public class AuswahlTrackpad : MonoBehaviour{
     public Button button1;
     public Button button2;
@@ -28,6 +30,14 @@ public class AuswahlTrackpad : MonoBehaviour{
     public AudioSource clickSound; // for a click (only used for TouchpadInput - for Touch and iDrive it is played via onClick() of the button
     public AudioSource scrollingSound;
 
+    //For SwipeTest()
+    [HideInInspector]
+    private bool tap, swipeLeft, swipeRight, swipeUp, swipeDown;
+    private bool isDragging, moved = false;
+    [HideInInspector]
+    private Vector2 startTouch, swipeDelta;
+
+
     void Awake()
     {
         isTrackpadEnabled = valueControlCenter.touchpadInput;
@@ -46,7 +56,7 @@ public class AuswahlTrackpad : MonoBehaviour{
 
             if (isTrackpadEnabled == true)
             {
-                InvokeRepeating("CursorLock", cursorResetTime, cursorResetTime);  // If the trackpad is used, the cursor will be reset to the middle of the screen each cursorResetTime - seconds
+                //InvokeRepeating("CursorLock", cursorResetTime, cursorResetTime);  // If the trackpad is used, the cursor will be reset to the middle of the screen each cursorResetTime - seconds
                 HideCursor();
             }
         }
@@ -71,7 +81,11 @@ public class AuswahlTrackpad : MonoBehaviour{
             StartCoroutine(waiter(button5));
             // SelectButton(button5);
         }
-        scrollingSound.Play();
+
+        if(currentButton != button1 && currentButton != button4)
+        {
+            scrollingSound.Play();
+        }
     }
 
     void moveRight(){
@@ -88,7 +102,11 @@ public class AuswahlTrackpad : MonoBehaviour{
             StartCoroutine(waiter(button6));
             // SelectButton(button6);
         }
-        scrollingSound.Play();
+
+        if (currentButton != button3 && currentButton != button6)
+        {
+            scrollingSound.Play();
+        }
     }
 
     void moveUp(){
@@ -102,7 +120,11 @@ public class AuswahlTrackpad : MonoBehaviour{
             StartCoroutine(waiter(button3));
             // SelectButton(button3);
         }
-        scrollingSound.Play();
+
+        if (currentButton != button1 && currentButton != button2 && currentButton != button3)
+        {
+            scrollingSound.Play();
+        }
     }
 
     void moveDown(){
@@ -116,7 +138,11 @@ public class AuswahlTrackpad : MonoBehaviour{
             StartCoroutine(waiter(button6));
             // SelectButton(button6);
         }
-        scrollingSound.Play();
+
+        if (currentButton != button4 && currentButton != button5 && currentButton != button6)
+        {
+            scrollingSound.Play();
+        }
     }
     
     
@@ -132,14 +158,122 @@ public class AuswahlTrackpad : MonoBehaviour{
         if (isTrackpadEnabled == true){
             CursorUnlock(); // Unlock and reset Cursor if it is locked
             //handling trackpad swipe as input
-            handleTrackpadGesture();
+            //handleTrackpadGesture(); //exchanged with TrackpadSwipes()
+            TrackpadSwipes();
         } else if(iDriveInput == true){
             //handling keyboard arrrow keys as input
             handleKeyboardInput();
         }
 
-
     }
+
+    public void TrackpadSwipes()
+    {
+        tap = moved = swipeDown = swipeLeft = swipeRight = swipeUp = false;
+
+        if (TrackpadInput.touchCount > 0)
+        {
+            if (TrackpadInput.touches[0].phase == TouchPhase.Began)
+            {
+                isDragging = true;
+                startTouch = TrackpadInput.touches[0].position;
+            }
+            else if (TrackpadInput.touches[0].phase == TouchPhase.Ended || TrackpadInput.touches[0].phase == TouchPhase.Canceled)
+            {
+                isDragging = false;
+                Reset();
+            }
+        }
+
+        //calculate the distance
+        swipeDelta = Vector2.zero;
+        if (isDragging)
+        {
+            if (TrackpadInput.touchCount > 0)
+            {
+                swipeDelta = TrackpadInput.touches[0].position - startTouch;
+            }
+        }
+
+        //Did the finger move?
+        if(swipeDelta.magnitude > 50)
+        {
+            moved = true;
+        }
+
+        //Did we cross the deadzone?
+        if (swipeDelta.magnitude > 100)
+        {
+            float x = swipeDelta.x;
+            float y = swipeDelta.y;
+
+            if (Mathf.Abs(x) > Mathf.Abs(y))
+            {
+                // Left or right
+                if (x < 0)
+                {
+                    swipeLeft = true;
+                    moveLeft();
+                    CursorLock();
+                }
+                else
+                {
+                    swipeRight = true;
+                    moveRight();
+                    CursorLock();
+                }
+            }
+            else
+            {
+                //Up or down
+                if (y < 0)
+                {
+                    swipeDown = true;
+                    moveDown();
+                    CursorLock();
+                }
+                else
+                {
+                    swipeUp = true;
+                    moveUp();
+                    CursorLock();
+                }
+            }
+            Reset();
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            AuswahlControl script = gameObject.GetComponent<AuswahlControl>();
+            script.Comparision(currentButton);
+            clickSound.Play();
+            SelectButton(currentButton);
+        }
+        /*
+        if (swipeLeft)
+            Debug.Log("SwipeLeft");
+        if (swipeRight)
+            Debug.Log("SwipeRight");
+        if (swipeUp)
+            Debug.Log("SwipeUp");
+        if (swipeDown)
+            Debug.Log("SwipeDown");
+        */
+    }
+
+    private void Reset()
+    {
+        if (moved == false)
+        {
+            if(swipeDown == swipeUp == swipeRight == swipeLeft == false)
+            {
+                tap = true;
+            }
+        }
+        isDragging = false;
+        startTouch = swipeDelta = Vector2.zero;
+    }
+
     void handleTrackpadGesture(){
         Vector3 mouseDelta = Input.mousePosition - lastMouseCoordinate;
         //value 20 works for normal move ment without gesture for both directions
@@ -166,6 +300,7 @@ public class AuswahlTrackpad : MonoBehaviour{
                 lastMouseCoordinate = Input.mousePosition; // reseting the last mouse coordinate to the new location
                 if(swipeInProgress == false){ // checking if the swipe gesture that had been started is still in progress or not. 
                     moveLeft();
+                    CursorLock();
                     swipeInProgress = true; // swipe gesture is taking place
                 }
                 //prev value 15
@@ -174,6 +309,7 @@ public class AuswahlTrackpad : MonoBehaviour{
                 lastMouseCoordinate = Input.mousePosition;
                 if(swipeInProgress == false){
                     moveRight();
+                    CursorLock();
                     swipeInProgress = true;
                 }
             }
@@ -182,6 +318,7 @@ public class AuswahlTrackpad : MonoBehaviour{
                 lastMouseCoordinate = Input.mousePosition; // reseting the last mouse coordinate to the new location
                 if(swipeInProgress == false){ // checking if the swipe gesture that had been started is still in progress or not. 
                     moveDown();
+                    CursorLock();
                     swipeInProgress = true; // swipe gesture is taking place
                 }
             } else if(mouseDelta.y > swipeMovementy)
@@ -189,6 +326,7 @@ public class AuswahlTrackpad : MonoBehaviour{
                 lastMouseCoordinate = Input.mousePosition;
                 if(swipeInProgress == false){
                     moveUp();
+                    CursorLock();
                     swipeInProgress = true;
                 }
             }

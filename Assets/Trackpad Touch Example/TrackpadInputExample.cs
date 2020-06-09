@@ -10,10 +10,17 @@ namespace TrackpadTouch
 	{
 		public GameObject prefab;
 
+		//For OwnTestingZoom()
 		private Vector3 touchZeroPrevPos = new Vector3(0,0,0);
 		private Vector3 touchOnePrevPos = new Vector3(0,0,0);
 		private int counter = 0;
 
+		//For SwipeTest()
+		[HideInInspector]
+		public bool tap, swipeLeft, swipeRight, swipeUp, swipeDown;
+		private bool isDragging = false;
+		[HideInInspector]
+		public Vector2 startTouch, swipeDelta;
 
 		Dictionary<int, GameObject> touchObjects = new Dictionary<int, GameObject>();
 
@@ -67,7 +74,8 @@ namespace TrackpadTouch
 				}
 			}
 			//Debug.Log(TrackpadInput.touchCount);
-			//OwnTesting();
+			//OwnTestingZoom();
+			SwipeTest();
 		}
 
 		void OnDisable()
@@ -77,7 +85,7 @@ namespace TrackpadTouch
 			touchObjects.Clear();
 		}
 
-		public void OwnTesting() //added for own testing
+		public void OwnTestingZoom() //added for own testing
 		{
 			if (TrackpadInput.touchCount != 0)
 			{
@@ -110,5 +118,83 @@ namespace TrackpadTouch
 
 		}
 
-	}
+		public void SwipeTest()
+        {
+			tap = swipeDown = swipeLeft = swipeRight = swipeUp = false;
+
+			if(TrackpadInput.touchCount > 0)
+            {
+				if (TrackpadInput.touches[0].phase == TouchPhase.Began)
+                {
+					isDragging = true;
+					tap = true;
+					startTouch = TrackpadInput.touches[0].position;
+                }
+				else if (TrackpadInput.touches[0].phase == TouchPhase.Ended || TrackpadInput.touches[0].phase == TouchPhase.Canceled)
+                {
+					isDragging = false;
+					Reset();
+                }
+            }
+
+			//calculate the distance
+			swipeDelta = Vector2.zero;
+            if (isDragging)
+            {
+				if(TrackpadInput.touchCount > 0)
+                {
+					swipeDelta = TrackpadInput.touches[0].position - startTouch;
+                }
+            }
+
+			//Did we cross the deadzone?
+			if (swipeDelta.magnitude > 100)
+            {
+				float x = swipeDelta.x;
+				float y = swipeDelta.y;
+
+				if (Mathf.Abs(x) > Mathf.Abs(y))
+                {
+                    // Left or right
+                    if (x < 0)
+                    {
+						swipeLeft = true;
+                    }
+                    else
+                    {
+						swipeRight = true;
+                    }
+                }
+                else
+                {
+					//Up or down
+					if (y < 0)
+					{
+						swipeDown = true;
+					}
+					else
+					{
+						swipeUp = true;
+					}
+				}
+				Reset();
+            }
+
+			if (swipeLeft)
+				Debug.Log("SwipeLeft");
+			if (swipeRight)
+				Debug.Log("SwipeRight");
+			if (swipeUp)
+				Debug.Log("SwipeUp");
+			if (swipeDown)
+				Debug.Log("SwipeDown");
+
+		}
+
+		private void Reset()
+        {
+			isDragging = false;
+			startTouch = swipeDelta = Vector2.zero;
+        }
+    }
 }

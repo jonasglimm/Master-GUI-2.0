@@ -1,7 +1,9 @@
 ﻿<Properties StartupConfiguration="{AE6E7F84-5196-7310-30D5-FD1955374EF5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/MapAufgabe/TrackpadInputMapbox.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlTrackpad.cs">
     <Files>
-      <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/TrackpadInputMapbox.cs" Line="110" Column="9" />
+      <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/TrackpadInputMapbox.cs" Line="110" Column="47" />
+      <File FileName="Assets/Trackpad Touch Example/TrackpadInputExample.cs" Line="115" Column="1" />
+      <File FileName="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlTrackpad.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,14 +25,14 @@
               </Node>
               <Node name="MeineDaten" expanded="True">
                 <Node name="Scripts" expanded="True">
-                  <Node name="AuswahlAufgabe" expanded="True" />
+                  <Node name="AuswahlAufgabe" expanded="True">
+                    <Node name="AuswahlTrackpad.cs" selected="True" />
+                  </Node>
                   <Node name="BlätterAufgabe" expanded="True">
                     <Node name="BlaetterAufgabe" expanded="True" />
                   </Node>
                   <Node name="LetterSelection" expanded="True" />
-                  <Node name="MapAufgabe" expanded="True">
-                    <Node name="TrackpadInputMapbox.cs" selected="True" />
-                  </Node>
+                  <Node name="MapAufgabe" expanded="True" />
                   <Node name="SliderControl" expanded="True" />
                   <Node name="TrackpadTextInsertion" expanded="True" />
                   <Node name="ValueManipulation" expanded="True" />

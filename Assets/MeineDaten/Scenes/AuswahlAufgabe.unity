@@ -932,8 +932,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10.37, y: -122.42}
-  m_SizeDelta: {x: 1216.8, y: 540.38}
+  m_AnchoredPosition: {x: -10.37, y: -168.5}
+  m_SizeDelta: {x: 1216.8, y: 606.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &195429261
 CanvasGroup:
@@ -1478,7 +1478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af24a3b17d12421d955840a603d3a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  feedback: {fileID: 0}
 --- !u!82 &357668917
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2371,8 +2370,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfTasks: 10
-  touchscreenInput: 1
-  touchpadInput: 0
+  touchscreenInput: 0
+  touchpadInput: 1
   iDriveInput: 0
   gestureInput: 0
   cursorResetTime: 0.2
@@ -2893,7 +2892,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af24a3b17d12421d955840a603d3a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  feedback: {fileID: 0}
 --- !u!82 &603107163
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3590,8 +3588,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -12.329834, y: -95.27261}
-  m_SizeDelta: {x: 1619.0862, y: 910.73596}
+  m_AnchoredPosition: {x: -12.329834, y: -107.7}
+  m_SizeDelta: {x: 1619.1, y: 991.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &745203131
 CanvasGroup:
@@ -4109,8 +4107,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -8.8, y: -120.87}
-  m_SizeDelta: {x: 1206.54, y: 520.11}
+  m_AnchoredPosition: {x: -8.8, y: -173.8}
+  m_SizeDelta: {x: 1206.5, y: 578.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1192306109 stripped
 RectTransform:
@@ -4762,7 +4760,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383401568}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13, y: -1, z: -1576.875}
+  m_LocalPosition: {x: 13, y: -173, z: -1576.875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 174452986}
@@ -5385,7 +5383,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af24a3b17d12421d955840a603d3a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  feedback: {fileID: 0}
 --- !u!82 &1702933953
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5901,7 +5898,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af24a3b17d12421d955840a603d3a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  feedback: {fileID: 0}
 --- !u!82 &1745941036
 AudioSource:
   m_ObjectHideFlags: 0
