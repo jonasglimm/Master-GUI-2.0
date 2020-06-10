@@ -1030,10 +1030,10 @@ MonoBehaviour:
           visibleBuffer: 0
           disposeBuffer: 0
         rangeAroundCenterOptions:
-          west: 1
-          north: 1
-          east: 1
-          south: 1
+          west: 2
+          north: 2
+          east: 2
+          south: 2
         rangeAroundTransformOptions:
           targetTransform: {fileID: 0}
           visibleBuffer: 0
@@ -1071,7 +1071,7 @@ MonoBehaviour:
           Id: mapbox.terrain-rgb
           Modified: 
           UserName: 
-      elevationLayerType: 1
+      elevationLayerType: 0
       requiredOptions:
         exaggerationFactor: 1
       colliderOptions:
@@ -1095,25 +1095,19 @@ MonoBehaviour:
         - admin
         - aeroway
         - airport_label
-        - barrier_line
         - building
-        - country_label
         - housenum_label
         - landuse
         - landuse_overlay
-        - marine_label
         - motorway_junction
-        - mountain_peak_label
+        - natural_label
         - place_label
         - poi_label
-        - rail_station_label
         - road
-        - road_label
-        - state_label
+        - structure
+        - transit_stop_label
         - water
-        - water_label
         - waterway
-        - waterway_label
       _sourceType: 1
       sourceOptions:
         isActive: 1
@@ -1129,7 +1123,7 @@ MonoBehaviour:
         Modified: 
         UserName: 
       performanceOptions:
-        isEnabled: 1
+        isEnabled: 0
         entityPerCoroutine: 20
       vectorSubLayers: []
       locationPrefabList: []
@@ -1223,9 +1217,9 @@ GameObject:
   - component: {fileID: 656718576}
   - component: {fileID: 656718575}
   - component: {fileID: 656718577}
+  - component: {fileID: 656718574}
   - component: {fileID: 656718572}
   - component: {fileID: 656718573}
-  - component: {fileID: 656718574}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged

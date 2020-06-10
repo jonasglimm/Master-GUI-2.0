@@ -1,13 +1,12 @@
 ﻿<Properties StartupConfiguration="{AE6E7F84-5196-7310-30D5-FD1955374EF5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/TrackpadTextInsertion/TrackpadTextInsertion.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/BlätterAufgabe/BlaetterAufgabe/BlaetterRectMovement.cs">
     <Files>
-      <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/TrackpadInputMapbox.cs" Line="110" Column="47" />
-      <File FileName="Assets/Trackpad Touch Example/TrackpadInputExample.cs" Line="27" Column="16" />
-      <File FileName="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlTrackpad.cs" Line="33" Column="24" />
-      <File FileName="Assets/MeineDaten/Scripts/ScrollAufgabe/ScrollTaskControl.cs" Line="192" Column="31" />
-      <File FileName="Assets/MeineDaten/Scripts/ScrollAufgabe/ScrollRectMovement.cs" Line="100" Column="25" />
-      <File FileName="Assets/MeineDaten/Scripts/SliderControl/SliderControl.cs" Line="224" Column="31" />
-      <File FileName="Assets/MeineDaten/Scripts/TrackpadTextInsertion/TrackpadTextInsertion.cs" Line="1" Column="1" />
+      <File FileName="Assets/Trackpad Touch Example/TrackpadInputExample.cs" Line="220" Column="1" />
+      <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/TrackpadInputMapbox.cs" Line="122" Column="1" />
+      <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/MapboxTaskControl.cs" Line="263" Column="9" />
+      <File FileName="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlTrackpad.cs" Line="150" Column="27" />
+      <File FileName="Assets/Mapbox/Examples/Scripts/QuadTreeCameraMovement.cs" Line="178" Column="28" />
+      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/BlaetterAufgabe/BlaetterRectMovement.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -31,15 +30,15 @@
                 <Node name="Scripts" expanded="True">
                   <Node name="AuswahlAufgabe" expanded="True" />
                   <Node name="BlätterAufgabe" expanded="True">
-                    <Node name="BlaetterAufgabe" expanded="True" />
+                    <Node name="BlaetterAufgabe" expanded="True">
+                      <Node name="BlaetterRectMovement.cs" selected="True" />
+                    </Node>
                   </Node>
                   <Node name="LetterSelection" expanded="True" />
                   <Node name="MapAufgabe" expanded="True" />
                   <Node name="ScrollAufgabe" expanded="True" />
                   <Node name="SliderControl" expanded="True" />
-                  <Node name="TrackpadTextInsertion" expanded="True">
-                    <Node name="TrackpadTextInsertion.cs" selected="True" />
-                  </Node>
+                  <Node name="TrackpadTextInsertion" expanded="True" />
                   <Node name="ValueManipulation" expanded="True" />
                 </Node>
               </Node>
@@ -65,16 +64,11 @@
           </Node>
         </State>
       </Pad>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="Master-GUI-2.0" expanded="True" selected="True" />
-        </State>
-      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0ba689d7-91c9-49b9-aa00-eeba3de40cf1" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c67a1cf6-4e72-4a22-92d0-f7f400ca0e22" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

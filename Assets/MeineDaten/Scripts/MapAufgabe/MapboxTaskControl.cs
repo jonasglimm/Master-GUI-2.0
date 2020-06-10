@@ -90,7 +90,7 @@ public class MapboxTaskControl : MonoBehaviour
         if (valueControlCenter.touchpadInput == true) 
         {
             _zoomSpeed = 0.5f;
-            _panSpeed = 2.5f;
+            _panSpeed = 40.0f;
             quadTreeCameraMovement.enabled = false; //preventing conflict with quadTreeCameraMovement script
             InvokeRepeating("CursorLock", valueControlCenter.cursorResetTime, valueControlCenter.cursorResetTime);
             HideCursor();
@@ -260,12 +260,14 @@ public class MapboxTaskControl : MonoBehaviour
 
         //PinchTrackpadZoom(); //Problem with touchdetection on trackpad - detects multiple fingers instate of just one
 
-        UseMeterConversion();
+        //UseMeterConversion(); //Exchanged with PanWithTrackpad
+
+        PanWithTrackpad();
 
         //float scrollDelta = 0.0f;
         //scrollDelta = Input.GetAxis("Mouse ScrollWheel");
         //ZoomMapUsingTouchOrMouse(scrollDelta);
-        
+
         //zoom is done using the TrackpadInputMapbox script
     }
 
@@ -323,6 +325,17 @@ public class MapboxTaskControl : MonoBehaviour
         }
     }
 
+    public void PanWithTrackpad()
+    {
+        Vector2 offset = trackpadInputMapbox.TrackpadPan() * 0.01f;
+
+        float factor = _panSpeed * Conversions.GetTileScaleInMeters((float)0, _mapManager.AbsoluteZoom) / _mapManager.UnityTileSize;
+        var latlongDelta = Conversions.MetersToLatLon(new Vector2d(offset.x * factor, offset.y * factor));
+        var newLatLong = _mapManager.CenterLatitudeLongitude + latlongDelta;
+
+        _mapManager.UpdateMap(newLatLong, _mapManager.Zoom);
+    }
+
     public void PinchTrackpadZoom()
     {
         if(TrackpadInput.touchCount == 2)
@@ -349,7 +362,7 @@ public class MapboxTaskControl : MonoBehaviour
 
             Debug.Log(zoomDelta);
         }
-    }
+    } //Problem with multiple touches detected -> done in TrackpadInputMapbox script
 
     public void ZoomMapUsingTouchOrMouse(float zoomFactor)
     {

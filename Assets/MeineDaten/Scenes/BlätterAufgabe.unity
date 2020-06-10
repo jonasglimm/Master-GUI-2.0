@@ -2796,6 +2796,7 @@ MonoBehaviour:
   pageSelectionIcons: {fileID: 198523012}
   buttonText: []
   swipeMovementX: 8
+  swipeDistanceMagicTrackpad: 20
   scrollingSound: {fileID: 1960606706}
 --- !u!1 &2080611330
 GameObject:

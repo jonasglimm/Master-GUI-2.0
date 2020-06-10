@@ -389,7 +389,7 @@ MonoBehaviour:
   dragUp: 0
   dragDown: 0
   dragDelta: {x: 0, y: 0}
-  dragLength: 200
+  dragLength: 100
 --- !u!4 &593148146
 Transform:
   m_ObjectHideFlags: 0

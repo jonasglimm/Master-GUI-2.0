@@ -12,6 +12,8 @@ namespace TrackpadTouch
 
 		private Vector3 touchZeroPrevPos = new Vector3(0,0,0);
 		private Vector3 touchOnePrevPos = new Vector3(0,0,0);
+		private Vector2 panTouchPrevPos = new Vector2(0, 0);
+		private Vector2 touchStart = new Vector2();
 		private int counter = 0;
 
 		private MapboxTaskControl mapboxTaskControl;
@@ -73,7 +75,7 @@ namespace TrackpadTouch
 				}
 			}
 			//Debug.Log(TrackpadInput.touchCount);
-			OwnTesting();
+			PinchToZoom();
 		}
 
 		void OnDisable()
@@ -83,7 +85,7 @@ namespace TrackpadTouch
 			touchObjects.Clear();
 		}
 
-		public void OwnTesting()
+		public void PinchToZoom()
 		{
 			if (TrackpadInput.touchCount != 0)
 			{
@@ -102,22 +104,54 @@ namespace TrackpadTouch
 
 						float touchDeltaMag = (touch0.transform.position - touch1.transform.position).magnitude;
 						var zoomDelta = 0.01f * (touchDeltaMag - prevTouchDeltaMag);
-
-						if (Mathf.Abs(zoomDelta) < 0.5)
+						Debug.Log(zoomDelta);
+						if (TrackpadInput.touches[0].phase != TouchPhase.Ended || TrackpadInput.touches[0].phase != TouchPhase.Canceled)
 						{
-							mapboxTaskControl.ZoomMapUsingTouchOrMouse(zoomDelta);
+							if (Mathf.Abs(zoomDelta) < 0.5)
+							{
+								mapboxTaskControl.ZoomMapUsingTouchOrMouse(zoomDelta);
+							}
 						}
 						//Debug.Log("ZoomDelta = " + zoomDelta);
 					}
 					touchZeroPrevPos = touch0.transform.position;
 					touchOnePrevPos = touch1.transform.position;
 				}
-
-
 			}
-
-
 		}
 
+		
+
+		public Vector2 TrackpadPan()
+        {
+			if (TrackpadInput.touchCount != 0)
+			{
+				if (GameObject.Find("Touch 0") && !GameObject.Find("Touch 1"))
+				{
+					if(TrackpadInput.touches[0].phase == TouchPhase.Began)
+                    {
+						touchStart = TrackpadInput.touches[0].position;
+						return Vector2.zero;
+					}
+
+					else if(TrackpadInput.touches[0].phase == TouchPhase.Moved)
+					{
+						Vector2 panTouchDelta = touchStart - TrackpadInput.touches[0].position ;
+						touchStart = TrackpadInput.touches[0].position;
+						if (panTouchDelta.x > 80 || panTouchDelta.y > 80) //avoid pan jumps caused by incorrectly detected touchInput
+						{
+							return Vector2.zero;
+						}
+						else
+						{
+							return panTouchDelta;
+						}
+					}
+					return Vector2.zero;
+				}
+				return Vector2.zero;
+			}
+			return Vector2.zero;
+		}
 	}
 }

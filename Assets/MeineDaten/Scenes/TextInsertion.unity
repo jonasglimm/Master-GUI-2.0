@@ -174,8 +174,8 @@ MonoBehaviour:
   maxSelectorX: 527
   minSelectorY: -300
   maxSelectorY: -171
-  swipeDistanceX: 20
-  swipeDistanceY: 30
+  swipeDistanceX: 10
+  swipeDistanceY: 10
   clickSound: {fileID: 19742075}
   scrollSound: {fileID: 19742073}
 --- !u!82 &19742073

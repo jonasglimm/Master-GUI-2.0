@@ -25,6 +25,7 @@ public class AuswahlTrackpad : MonoBehaviour{
     private float cursorResetTime;
     public float swipeMovementX = 20f;
     public float swipeMovementy = 20f;
+    public float swipeDistanceMagicTrackpad = 50f;
 
     public ValueControlCenter valueControlCenter; 
     public AudioSource clickSound; // for a click (only used for TouchpadInput - for Touch and iDrive it is played via onClick() of the button
@@ -194,13 +195,13 @@ public class AuswahlTrackpad : MonoBehaviour{
         }
 
         //Did the finger move?
-        if(swipeDelta.magnitude > 50)
+        if(swipeDelta.magnitude > 25)
         {
             moved = true;
         }
 
         //Did we cross the deadzone?
-        if (swipeDelta.magnitude > 100)
+        if (swipeDelta.magnitude > swipeDistanceMagicTrackpad)
         {
             float x = swipeDelta.x;
             float y = swipeDelta.y;

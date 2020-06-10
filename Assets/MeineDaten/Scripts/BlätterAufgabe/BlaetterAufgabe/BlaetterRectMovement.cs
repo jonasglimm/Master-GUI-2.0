@@ -46,6 +46,7 @@ public class BlaetterRectMovement : MonoBehaviour
     private bool swipeInProgress = false;
     public TextMeshProUGUI[] buttonText;
     public float swipeMovementX;
+    public float swipeDistanceMagicTrackpad = 50f;
 
     private float cursorResetTime; //set in ValueControlCenter
     private int counter =0;
@@ -143,7 +144,7 @@ public class BlaetterRectMovement : MonoBehaviour
         }
 
         //Did we cross the deadzone?
-        if (swipeDelta.magnitude > 100)
+        if (swipeDelta.magnitude > swipeDistanceMagicTrackpad)
         {
             float x = swipeDelta.x;
             float y = swipeDelta.y;

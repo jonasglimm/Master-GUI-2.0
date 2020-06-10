@@ -1177,7 +1177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1b669de7f964fa0a006a258cce1b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivityOneFinger: 15
+  sensitivityOneFinger: 25
   sensitivityTwoFinger: 0.5
 --- !u!82 &1127592226
 AudioSource:
