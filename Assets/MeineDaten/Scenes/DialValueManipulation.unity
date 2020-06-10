@@ -3493,9 +3493,9 @@ MonoBehaviour:
   completionScreen: {fileID: 417443667}
   totalTasks: 10
   activeTime: 0.5
-  touchscreenInput: 0
+  touchscreenInput: 1
   touchpadInput: 0
-  iDriveInput: 1
+  iDriveInput: 0
   gestureInput: 0
   modalityWarning: {fileID: 1908381636}
   cursorResetTime: 0

@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{AE6E7F84-5196-7310-30D5-FD1955374EF5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/BlätterAufgabe/BlaetterAufgabe/BlaetterRectMovement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/MapAufgabe/TrackpadInputMapbox.cs">
     <Files>
       <File FileName="Assets/Trackpad Touch Example/TrackpadInputExample.cs" Line="220" Column="1" />
-      <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/TrackpadInputMapbox.cs" Line="122" Column="1" />
-      <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/MapboxTaskControl.cs" Line="263" Column="9" />
+      <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/TrackpadInputMapbox.cs" Line="130" Column="6" />
+      <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/MapboxTaskControl.cs" Line="333" Column="69" />
       <File FileName="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlTrackpad.cs" Line="150" Column="27" />
       <File FileName="Assets/Mapbox/Examples/Scripts/QuadTreeCameraMovement.cs" Line="178" Column="28" />
-      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/BlaetterAufgabe/BlaetterRectMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/BlaetterAufgabe/BlaetterRectMovement.cs" Line="155" Column="24" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -30,12 +30,12 @@
                 <Node name="Scripts" expanded="True">
                   <Node name="AuswahlAufgabe" expanded="True" />
                   <Node name="BlätterAufgabe" expanded="True">
-                    <Node name="BlaetterAufgabe" expanded="True">
-                      <Node name="BlaetterRectMovement.cs" selected="True" />
-                    </Node>
+                    <Node name="BlaetterAufgabe" expanded="True" />
                   </Node>
                   <Node name="LetterSelection" expanded="True" />
-                  <Node name="MapAufgabe" expanded="True" />
+                  <Node name="MapAufgabe" expanded="True">
+                    <Node name="TrackpadInputMapbox.cs" selected="True" />
+                  </Node>
                   <Node name="ScrollAufgabe" expanded="True" />
                   <Node name="SliderControl" expanded="True" />
                   <Node name="TrackpadTextInsertion" expanded="True" />
