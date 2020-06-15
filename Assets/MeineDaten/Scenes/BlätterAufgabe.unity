@@ -2600,6 +2600,7 @@ MonoBehaviour:
   pageSelectionIcons: {fileID: 198523012}
   swipeMovementX: 8
   scrollingSound: {fileID: 1960606706}
+  buttons: []
 --- !u!114 &1960606702
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -64,7 +64,8 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     public float swipeMovementX = 8f ;
 
     public AudioSource scrollingSound;
-    private Button[] buttons; //used to select the currently shown button to change the color
+    [HideInInspector]
+    public Button[] buttons; //used to select the currently shown button to change the color
 
     //------------------------------------------------------------------------
     void Start() {

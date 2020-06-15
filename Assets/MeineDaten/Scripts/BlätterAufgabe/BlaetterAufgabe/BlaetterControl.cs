@@ -9,6 +9,7 @@ public class BlaetterControl : MonoBehaviour
     private ButtonListBlaettern buttonListBlaettern;
     private ValueControlCenter valueControlCenter;
     private BlaetterRectMovement blaetterRectMovement;
+    private ScrollSnapRect scrollSnapRect;
     private AudioSource clickSound;
 
     // Gameobjects need to be assigned in the inspector in Unity
@@ -47,6 +48,7 @@ public class BlaetterControl : MonoBehaviour
         valueControlCenter = GameObject.Find("BlaetterManager").GetComponent<ValueControlCenter>();
         clickSound = GameObject.Find("BlaetterManager").GetComponent<AudioSource>();
         blaetterRectMovement = GameObject.Find("SnapOnScroll").GetComponent<BlaetterRectMovement>();
+        scrollSnapRect = GameObject.Find("SnapOnScroll").GetComponent<ScrollSnapRect>();
         buttonListBlaettern = GameObject.Find("BlaetterManager").GetComponent<ButtonListBlaettern>();
 
         activeTime = valueControlCenter.feedbackPanelTime;
@@ -112,6 +114,11 @@ public class BlaetterControl : MonoBehaviour
         clickSound.Play();
         startPanel.SetActive(false);
         startPanelTouchscreen.SetActive(false);
+
+        if (valueControlCenter.touchscreenInput)
+        {
+            scrollSnapRect.buttons[scrollSnapRect.startingPage].Select();
+        }
     }
 
     // Function to be assigned to each button (OnButtonClicked) - compares the name (number) of the button to the current task
