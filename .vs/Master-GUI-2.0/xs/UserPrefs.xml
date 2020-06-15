@@ -1,8 +1,11 @@
 ﻿<Properties StartupConfiguration="{AE6E7F84-5196-7310-30D5-FD1955374EF5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/TrackpadTextInsertion/TrackpadTextInsertion.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/ScrollAufgabe/ScrollRectMovement.cs">
     <Files>
       <File FileName="Assets/MeineDaten/Scripts/ControlManager.cs" Line="98" Column="37" />
       <File FileName="Assets/MeineDaten/Scripts/TrackpadTextInsertion/TrackpadTextInsertion.cs" Line="54" Column="18" />
+      <File FileName="Assets/MeineDaten/Scripts/ScrollAufgabe/ScrollTaskControl.cs" Line="66" Column="10" />
+      <File FileName="Assets/MeineDaten/Scripts/ValueManipulation/ValueManipulation.cs" Line="48" Column="45" />
+      <File FileName="Assets/MeineDaten/Scripts/ScrollAufgabe/ScrollRectMovement.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -30,11 +33,11 @@
                   </Node>
                   <Node name="LetterSelection" expanded="True" />
                   <Node name="MapAufgabe" expanded="True" />
-                  <Node name="ScrollAufgabe" expanded="True" />
-                  <Node name="SliderControl" expanded="True" />
-                  <Node name="TrackpadTextInsertion" expanded="True">
-                    <Node name="TrackpadTextInsertion.cs" selected="True" />
+                  <Node name="ScrollAufgabe" expanded="True">
+                    <Node name="ScrollRectMovement.cs" selected="True" />
                   </Node>
+                  <Node name="SliderControl" expanded="True" />
+                  <Node name="TrackpadTextInsertion" expanded="True" />
                   <Node name="ValueManipulation" expanded="True" />
                 </Node>
               </Node>
@@ -64,7 +67,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="853dc5cb-7722-4d3c-9f84-cf9370d2476a" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="89a0b804-f65e-47e0-baac-aa400fb2ba2f" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

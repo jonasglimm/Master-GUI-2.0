@@ -29,10 +29,22 @@ public class ScrollRectMovement : MonoBehaviour
 
     public AudioSource scrollingSound;
 
+    private GameObject normalScrollbar;
+    private GameObject normalSlidingArea;
+    private GameObject iDriveScrollbar;
+    private GameObject roundHandle;
+
+
+
     private void Awake()
     {
         valueControlCenter = GameObject.Find("ScrollManager").GetComponent<ValueControlCenter>();
         startScrollAufgabe = GameObject.Find("ScrollManager").GetComponent<StartScrollAufgabe>();
+        normalScrollbar = GameObject.Find("ButtonListScrollbar");
+        normalSlidingArea = GameObject.Find("Sliding Area");
+        iDriveScrollbar = GameObject.Find("RoundScrollbar");
+        roundHandle = GameObject.Find("RoundHandle");
+
         oneFingerScrollMovement = startScrollAufgabe.sensitivityOneFinger;
         twoFingerScrollMovement = startScrollAufgabe.sensitivityTwoFinger;
     }
@@ -51,6 +63,15 @@ public class ScrollRectMovement : MonoBehaviour
             Cursor.visible = false;
         }
 
+        if (valueControlCenter.iDriveInput)
+        {
+            normalScrollbar.GetComponent<Image>().enabled = false;
+            normalSlidingArea.SetActive(false);
+        }
+        else
+        {
+            iDriveScrollbar.SetActive(false);
+        }
     }
 
     void Update()
@@ -67,6 +88,7 @@ public class ScrollRectMovement : MonoBehaviour
             selectedButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
             index = System.Array.IndexOf(buttons, selectedButton);
             iDriveScrollingSound();
+            IDriveScrollbar();
         }
         verticalPosition = 1f - ((float)index / (buttons.Length - 1));
         scrollRect.verticalNormalizedPosition = Mathf.Lerp(scrollRect.verticalNormalizedPosition, verticalPosition, Time.deltaTime / lerpTime);
@@ -127,4 +149,27 @@ public class ScrollRectMovement : MonoBehaviour
             }
         }
     }
+
+    private void IDriveScrollbar()
+    {
+        var handleRotation = roundHandle.GetComponent<Transform>().rotation.eulerAngles;
+        //topRotation is 24.25 degrees
+        //buttonRotatin is 335.75 degrees
+        //rotation within = 48.5 degrees
+        
+        float rotationStep = 48.5f / (float)(numberOfButtons - 1);
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) && (handleRotation.z < 24.25 || handleRotation.z >= 330))
+        {
+            handleRotation.z = handleRotation.z + rotationStep;
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && (handleRotation.z <= 30 || handleRotation.z > 335.75))
+        {
+            handleRotation.z = handleRotation.z - rotationStep;
+        }
+        //Debug.Log(handleRotation);
+        
+        roundHandle.GetComponent<Transform>().rotation = Quaternion.Euler(handleRotation);
+    }
+
 }

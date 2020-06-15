@@ -28,7 +28,7 @@ public class ScrollTaskControl : MonoBehaviour
 
     private int fehlercounter;
     private int aufgabenNr;
-    private int namesLength; 
+    private int namesLength;
 
     private float activeTime;
     private int anzahlAufgaben;
@@ -162,7 +162,6 @@ public class ScrollTaskControl : MonoBehaviour
         aufgabenListe[13] = namesLength * 5/6;
         aufgabenListe[14] = namesLength - 1;
     }
-
 
     IEnumerator FeedbackCorrect()
         {
