@@ -35,14 +35,15 @@ public class TrackpadTextInsertion : MonoBehaviour{
     private void Awake()
     {
         letterLayout = GameObject.Find("LetterLayout");
-    }
-
-    void Start(){
         selectorRectTransform = selector.GetComponent<RectTransform>();
         script = gameObject.GetComponent<ControlManager>();
+    }
+
+    void Start()
+    {
         cursorResetTime = script.cursorResetTime;
 
-        if(script.touchpadInput == true )
+        if (script.touchpadInput == true )
         {
             InvokeRepeating("CursorLock", cursorResetTime, cursorResetTime);  // If the trackpad is used, the cursor will be reset to the middle of the screen each cursorResetTime - seconds
             HideCursor();
@@ -50,12 +51,18 @@ public class TrackpadTextInsertion : MonoBehaviour{
         if (script.touchscreenInput == true)
         {
             letterLayout.SetActive(false);
+            //new
+            inputField.enabled = false;
+            TouchScreenKeyboard.hideInput = true;
         }
     }
 
     public void OpenTouchKeyboard() //assign this to the StartButton of the StartPanel
     {
-        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
+        TouchScreenKeyboard.hideInput = true;
+        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false);
+        //new
+        inputField.enabled = true;
         inputField.Select();
     }
 
@@ -64,7 +71,8 @@ public class TrackpadTextInsertion : MonoBehaviour{
     }
 
     // Update is called once per frame
-    void Update(){
+    void Update()
+    {
         if(script.touchpadInput == true ){
              CursorUnlock();
             Vector3 mouseDelta = Input.mousePosition - lastMouseCoordinate;
@@ -183,18 +191,50 @@ public class TrackpadTextInsertion : MonoBehaviour{
             }
             
         } else if (script.touchscreenInput == true){
-            
-            if (TouchScreenKeyboard.visible == false && keyboard != null)
+
+            if (script.endscreenIsActive == true)
             {
-                insertText(keyboard.text);
-                if (keyboard.done){
+                keyboard.active = false;
+            }
+
+            if (TouchScreenKeyboard.visible == true && keyboard != null && script.endscreenIsActive == false)
+            {
+                if (keyboard.text != inputField.text)
+                {
+                    inputField.text = keyboard.text;
+                    clickSound.Play();
+                }
+
+                if (keyboard.status == TouchScreenKeyboard.Status.Done)
+                {
                     script.checkOutput(keyboard.text.ToUpper());
                     inputField.text = "";
                     keyboard.text = "";
-                    keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
-                    inputField.Select();
+
+                        OpenTouchKeyboard();
                 }
-            } 
+            }
+
+            /*
+            if (TouchScreenKeyboard.visible == false && keyboard != null)
+            {
+                insertText(keyboard.text);
+                if (keyboard.status == TouchScreenKeyboard.Status.Done){
+                    script.checkOutput(keyboard.text.ToUpper());
+                    inputField.text = "";
+                    keyboard.text = "";
+
+                    OpenTouchKeyboard();
+                    //keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
+                    //inputField.Select();
+                }
+            }
+
+            if (script.endscreenIsActive)
+            {
+                keyboard.active = false;
+            }
+            */
         }
     }
 

@@ -137,7 +137,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 15726}
     - Class: 114
-      Script: {instanceID: 28180}
+      Script: {instanceID: 23396}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1409,7 +1409,7 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
-      Hash: 979f480a7a44080597172d7a84988d09
+      Hash: 791a14e96baf8580863fcee433418421
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ControlManager
@@ -2603,7 +2603,7 @@ ScriptsOnlyBuild:
     className: TextMeshOutline
   - hash:
       serializedVersion: 2
-      Hash: 2d9673419f6a954a1558f4fec630c91a
+      Hash: cb545042db1e458db7d205e62874f45e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MapboxTaskControl
@@ -3138,4 +3138,4 @@ ScriptsOnlyBuild:
   - Assets/MeineDaten/Scenes/SliderAufgabe.unity
   - Assets/MeineDaten/Scenes/KartenAufgabeZoom.unity
   - Assets/MeineDaten/Scenes/TextInsertion.unity
-  playerPath: /Users/jonasglimmann/UnityProject/AppBuild/test 6.0
+  playerPath: /Users/jonasglimmann/UnityProject/AppBuild/test 6.10

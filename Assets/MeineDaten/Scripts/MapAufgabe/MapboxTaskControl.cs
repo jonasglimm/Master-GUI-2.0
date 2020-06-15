@@ -35,6 +35,7 @@ public class MapboxTaskControl : MonoBehaviour
     public GameObject pointer;
     private Slider zoomSlider;
 
+    private GameObject valueCanvas;
     private GameObject valueAdjustmentPanel;
     private GameObject panSpeedValue;
     private GameObject zoomSpeedValue;
@@ -56,6 +57,7 @@ public class MapboxTaskControl : MonoBehaviour
 
     private Vector2d[] targetLocations;
 
+    public bool valueCanvasIsVisible;
     public float _panSpeed = 2f;
     public float _zoomSpeed = 0.25f;
     public float zoomBarrier = 16f; //zoomvalue which has to be reached - start value = 16
@@ -73,6 +75,7 @@ public class MapboxTaskControl : MonoBehaviour
         trackpadInputMapbox = GameObject.Find("MapManager").GetComponent<TrackpadInputMapbox>();
         clickSound = GameObject.Find("MapManager").GetComponent<AudioSource>();
         zoomSlider = GameObject.Find("ZoomIndicator").GetComponentInChildren<Slider>();
+        valueCanvas = GameObject.Find("ReloadMapCanvas");
 
         //Exchanging values with quadTreeCameraMovement
         _mapManager = abstractMap;
@@ -92,7 +95,7 @@ public class MapboxTaskControl : MonoBehaviour
             _zoomSpeed = 0.5f;
             _panSpeed = 40.0f;
             quadTreeCameraMovement.enabled = false; //preventing conflict with quadTreeCameraMovement script
-            InvokeRepeating("CursorLock", valueControlCenter.cursorResetTime, valueControlCenter.cursorResetTime);
+            //InvokeRepeating("CursorLock", valueControlCenter.cursorResetTime, valueControlCenter.cursorResetTime);
             HideCursor();
         }
         else
@@ -105,12 +108,20 @@ public class MapboxTaskControl : MonoBehaviour
             _panSpeed = 1.75f;
             _zoomSpeed = 0.25f;
         }
+
+        if (valueCanvasIsVisible == false)
+        {
+            valueCanvas.SetActive(false);
+        }
     }
 
     void Update()
     {
         SetGUI();
-        ValueAdjustment();
+        if (valueCanvasIsVisible == true)
+        {
+            ValueAdjustment();
+        }
         GetTargetLocations();
         GetCurrentLocation();
         GetCurrentZoom();
@@ -217,6 +228,7 @@ public class MapboxTaskControl : MonoBehaviour
     private void GetCurrentZoom()
     {
         zoom = abstractMap.Options.locationOptions.zoom;
+        Debug.Log(zoom);
     }
 
     private void CheckZoomAndOffset()
@@ -240,7 +252,7 @@ public class MapboxTaskControl : MonoBehaviour
                 if (target == 3)
                 {
                     EndScreen();
-                    targetCount = 0; 
+                    targetCount = 1; 
                 }
             }
         }
@@ -258,11 +270,11 @@ public class MapboxTaskControl : MonoBehaviour
     {
         CursorUnlock();
 
+        PanWithTrackpad();
+
         //PinchTrackpadZoom(); //Problem with touchdetection on trackpad - detects multiple fingers instate of just one
 
         //UseMeterConversion(); //Exchanged with PanWithTrackpad
-
-        PanWithTrackpad();
 
         //float scrollDelta = 0.0f;
         //scrollDelta = Input.GetAxis("Mouse ScrollWheel");
@@ -323,7 +335,7 @@ public class MapboxTaskControl : MonoBehaviour
                 _origin = _mousePosition;
             }
         }
-    }
+    } //exchanged with PanWithTrackpad
 
     public void PanWithTrackpad()
     {
@@ -336,7 +348,7 @@ public class MapboxTaskControl : MonoBehaviour
         _mapManager.UpdateMap(newLatLong, _mapManager.Zoom);
     }
 
-    public void PinchTrackpadZoom()
+    public void PinchTrackpadZoom() //Problem with multiple touches detected -> done in TrackpadInputMapbox script
     {
         if(TrackpadInput.touchCount == 2)
         {
@@ -382,7 +394,7 @@ public class MapboxTaskControl : MonoBehaviour
 
         if (valueControlCenter.touchpadInput == true)
         {
-            CancelInvoke();
+            //CancelInvoke();
             ShowCursor();
         } 
     }

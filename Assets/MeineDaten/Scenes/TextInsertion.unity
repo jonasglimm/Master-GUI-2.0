@@ -130,8 +130,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 19742071}
-  - component: {fileID: 19742072}
   - component: {fileID: 19742074}
+  - component: {fileID: 19742072}
   - component: {fileID: 19742075}
   - component: {fileID: 19742073}
   - component: {fileID: 19742076}
@@ -317,6 +317,8 @@ MonoBehaviour:
   clickSound: {fileID: 19742075}
   startPanel: {fileID: 1372316642}
   startPanelTouchscreen: {fileID: 533250305}
+  endscreenIsActive: 0
+  startPanelIsActive: 0
 --- !u!82 &19742075
 AudioSource:
   m_ObjectHideFlags: 0
@@ -459,7 +461,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -370.99997, y: -222}
+  m_AnchoredPosition: {x: -372, y: 117}
   m_SizeDelta: {x: 505.4, y: 132.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &41086478
@@ -1832,7 +1834,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -37.54, y: -15.999977}
+  m_AnchoredPosition: {x: -40, y: 230.00003}
   m_SizeDelta: {x: 576.42, y: 132.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &346628327
@@ -3607,7 +3609,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -212, y: -222}
+  m_AnchoredPosition: {x: -212.00005, y: 117.000015}
   m_SizeDelta: {x: 77.5, y: 132.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &870895234
@@ -4232,7 +4234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10.000013, y: 279}
+  m_AnchoredPosition: {x: -373, y: 375}
   m_SizeDelta: {x: 505.4, y: 132.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1028795667
@@ -8190,7 +8192,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -369, y: -16}
+  m_AnchoredPosition: {x: -371.46002, y: 230.00002}
   m_SizeDelta: {x: 505.4, y: 132.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1875050101

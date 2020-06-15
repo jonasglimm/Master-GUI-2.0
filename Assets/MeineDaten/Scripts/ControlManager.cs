@@ -45,6 +45,10 @@ public class ControlManager : MonoBehaviour
     public GameObject startPanel;
     public GameObject startPanelTouchscreen;
 
+    [HideInInspector]
+    public bool endscreenIsActive = false;
+    public bool startPanelIsActive;
+
 
     // Use this for initialization
     void Start () {
@@ -77,11 +81,13 @@ public class ControlManager : MonoBehaviour
         {
             startPanel.SetActive(false);
             startPanelTouchscreen.SetActive(true);
+            startPanelIsActive = true;
         }
         else
         {
             startPanelTouchscreen.SetActive(false);
             startPanel.SetActive(true);
+            startPanelIsActive = true;
         }
     }
 
@@ -91,6 +97,7 @@ public class ControlManager : MonoBehaviour
         clickSound.Play();
         startPanel.SetActive(false);
         startPanelTouchscreen.SetActive(false);
+        startPanelIsActive = false;
     }
 
     public void CheckModalities() // Check if exactly one modality is set to active
@@ -225,6 +232,7 @@ public class ControlManager : MonoBehaviour
     {
         var totalTime = System.DateTime.Now - startTime;
         timeTextField.text = totalTime.Minutes.ToString() + " min : " + totalTime.Seconds.ToString() + " sec";
+        endscreenIsActive = true;
         completionScreen.SetActive(true);
     }
 }

@@ -1,12 +1,8 @@
 ﻿<Properties StartupConfiguration="{AE6E7F84-5196-7310-30D5-FD1955374EF5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/MapAufgabe/TrackpadInputMapbox.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/TrackpadTextInsertion/TrackpadTextInsertion.cs">
     <Files>
-      <File FileName="Assets/Trackpad Touch Example/TrackpadInputExample.cs" Line="220" Column="1" />
-      <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/TrackpadInputMapbox.cs" Line="130" Column="6" />
-      <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/MapboxTaskControl.cs" Line="333" Column="69" />
-      <File FileName="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlTrackpad.cs" Line="150" Column="27" />
-      <File FileName="Assets/Mapbox/Examples/Scripts/QuadTreeCameraMovement.cs" Line="178" Column="28" />
-      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/BlaetterAufgabe/BlaetterRectMovement.cs" Line="155" Column="24" />
+      <File FileName="Assets/MeineDaten/Scripts/ControlManager.cs" Line="98" Column="37" />
+      <File FileName="Assets/MeineDaten/Scripts/TrackpadTextInsertion/TrackpadTextInsertion.cs" Line="54" Column="18" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -33,12 +29,12 @@
                     <Node name="BlaetterAufgabe" expanded="True" />
                   </Node>
                   <Node name="LetterSelection" expanded="True" />
-                  <Node name="MapAufgabe" expanded="True">
-                    <Node name="TrackpadInputMapbox.cs" selected="True" />
-                  </Node>
+                  <Node name="MapAufgabe" expanded="True" />
                   <Node name="ScrollAufgabe" expanded="True" />
                   <Node name="SliderControl" expanded="True" />
-                  <Node name="TrackpadTextInsertion" expanded="True" />
+                  <Node name="TrackpadTextInsertion" expanded="True">
+                    <Node name="TrackpadTextInsertion.cs" selected="True" />
+                  </Node>
                   <Node name="ValueManipulation" expanded="True" />
                 </Node>
               </Node>
@@ -68,7 +64,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c67a1cf6-4e72-4a22-92d0-f7f400ca0e22" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="853dc5cb-7722-4d3c-9f84-cf9370d2476a" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

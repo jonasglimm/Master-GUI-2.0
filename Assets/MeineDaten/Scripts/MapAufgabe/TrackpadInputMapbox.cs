@@ -104,7 +104,7 @@ namespace TrackpadTouch
 
 						float touchDeltaMag = (touch0.transform.position - touch1.transform.position).magnitude;
 						var zoomDelta = 0.01f * (touchDeltaMag - prevTouchDeltaMag);
-						Debug.Log(zoomDelta);
+						//Debug.Log(zoomDelta);
 						if (TrackpadInput.touches[0].phase != TouchPhase.Ended || TrackpadInput.touches[0].phase != TouchPhase.Canceled)
 						{
 							if (Mathf.Abs(zoomDelta) < 0.5)
@@ -146,6 +146,10 @@ namespace TrackpadTouch
 						{
 							return panTouchDelta;
 						}
+					}
+					else if (TrackpadInput.touches[0].phase == TouchPhase.Ended || TrackpadInput.touches[0].phase == TouchPhase.Canceled)
+					{
+						Cursor.lockState = CursorLockMode.Locked;
 					}
 					return Vector2.zero;
 				}
