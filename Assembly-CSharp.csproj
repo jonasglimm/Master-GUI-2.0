@@ -619,6 +619,7 @@
     <Compile Include="Assets\MeineDaten\Scripts\BlätterAufgabe\test.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ControlManager.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\DialButtonSelection\DialButtonSelection.cs" />
+    <Compile Include="Assets\MeineDaten\Scripts\IDriveController.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\LetterSelection\LetterSelection.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\MainMenu.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\MapAufgabe\MapControl.cs" />

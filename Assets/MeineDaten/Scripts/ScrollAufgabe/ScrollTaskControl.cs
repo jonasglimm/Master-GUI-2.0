@@ -6,6 +6,7 @@ using TMPro;
 using System;
 public class ScrollTaskControl : MonoBehaviour
 {
+
     public ButtonListControl buttonListControl;
     private ScrollRectMovement scrollRectMovement;
     private ValueControlCenter valueControlCenter;
