@@ -118,7 +118,7 @@ public class MapboxTaskControl : MonoBehaviour
 
         if (valueControlCenter.iDriveInput)
         {
-            _panSpeed = 4.5f;
+            _panSpeed = 20f;
         }
         else
         {

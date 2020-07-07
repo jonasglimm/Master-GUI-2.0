@@ -104,8 +104,8 @@ public class IDriveController : MonoBehaviour
         CheckRotation();
         CheckPushedDown();
         //Debug.Log("RotartyEx = " + RotaryEx);
-        Debug.Log("Clockwise: " + rotationClockwiseSteps);
-        Debug.Log("Counterclockwise: " + rotationCounterclockwiseSteps);
+        //Debug.Log("Clockwise: " + rotationClockwiseSteps);
+        //Debug.Log("Counterclockwise: " + rotationCounterclockwiseSteps);
 
         /*
         if (movedLeftOnce)

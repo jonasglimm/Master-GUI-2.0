@@ -10,6 +10,7 @@ public class ScrollTaskControl : MonoBehaviour
     public ButtonListControl buttonListControl;
     private ScrollRectMovement scrollRectMovement;
     private ValueControlCenter valueControlCenter;
+    private IDriveController iDriveController;
     public TextMeshProUGUI timeTextField;
     public GameObject nameAufgabe;
     public GameObject anzahlFehler;
@@ -41,6 +42,7 @@ public class ScrollTaskControl : MonoBehaviour
     {
         valueControlCenter = GameObject.Find("ScrollManager").GetComponent<ValueControlCenter>();
         scrollRectMovement = GameObject.Find("ButtonScrollList").GetComponent<ScrollRectMovement>();
+        iDriveController = GameObject.Find("ScrollManager").GetComponent<IDriveController>();
     }
 
     void Start()
@@ -53,6 +55,11 @@ public class ScrollTaskControl : MonoBehaviour
         CreateTaskOrder();
         SetStartPanel();
         NewTask();
+
+        if (!valueControlCenter.iDriveInput)
+        {
+            iDriveController.enabled = false;
+        }
     }
 
     private void Update()
@@ -65,6 +72,16 @@ public class ScrollTaskControl : MonoBehaviour
         if (valueControlCenter.touchpadInput == true)
         {
             if (Input.GetMouseButtonDown(0)){
+                Comparision(scrollRectMovement.buttonText[0]);
+                scrollRectMovement.selectedButton.Select();
+                clickSound.Play();
+            }
+        }
+
+        if (valueControlCenter.iDriveInput)
+        {
+            if (iDriveController.pushedOnce)
+            {
                 Comparision(scrollRectMovement.buttonText[0]);
                 scrollRectMovement.selectedButton.Select();
                 clickSound.Play();

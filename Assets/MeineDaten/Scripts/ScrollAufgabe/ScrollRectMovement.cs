@@ -26,6 +26,7 @@ public class ScrollRectMovement : MonoBehaviour
 
     private ValueControlCenter valueControlCenter;
     private StartScrollAufgabe startScrollAufgabe;
+    private IDriveController iDriveController;
 
     public AudioSource scrollingSound;
 
@@ -44,6 +45,7 @@ public class ScrollRectMovement : MonoBehaviour
         normalSlidingArea = GameObject.Find("Sliding Area");
         iDriveScrollbar = GameObject.Find("RoundScrollbar");
         roundHandle = GameObject.Find("RoundHandle");
+        iDriveController = GameObject.Find("ScrollManager").GetComponent<IDriveController>();
 
         oneFingerScrollMovement = startScrollAufgabe.sensitivityOneFinger;
         twoFingerScrollMovement = startScrollAufgabe.sensitivityTwoFinger;
@@ -85,10 +87,13 @@ public class ScrollRectMovement : MonoBehaviour
             buttonText = selectedButton.GetComponentsInChildren<TextMeshProUGUI>();
         } else if(valueControlCenter.iDriveInput == true)
         {
-            selectedButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
-            index = System.Array.IndexOf(buttons, selectedButton);
-            iDriveScrollingSound();
+            //selectedButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+            //index = System.Array.IndexOf(buttons, selectedButton);
+            iDriveScrolling();
             IDriveScrollbar();
+            selectedButton = buttons[index];
+            selectedButton.Select();
+            buttonText = selectedButton.GetComponentsInChildren<TextMeshProUGUI>();
         }
         verticalPosition = 1f - ((float)index / (buttons.Length - 1));
         scrollRect.verticalNormalizedPosition = Mathf.Lerp(scrollRect.verticalNormalizedPosition, verticalPosition, Time.deltaTime / lerpTime);
@@ -139,13 +144,31 @@ public class ScrollRectMovement : MonoBehaviour
         }
     }
 
-    private void iDriveScrollingSound()
+    private void iDriveScrolling()
     {
         if (valueControlCenter.iDriveInput == true)
         {
+            /* // Using the keyboard
             if (Input.GetKeyDown(KeyCode.DownArrow) | Input.GetKeyDown(KeyCode.UpArrow))
             {
                 scrollingSound.Play();
+            }*/
+
+            if (iDriveController.rotationClockwiseSteps > 0)
+            {
+                if (index < numberOfButtons - 1)
+                {
+                    index = index + iDriveController.rotationClockwiseSteps;
+                    scrollingSound.Play();
+                }
+            }
+            else if (iDriveController.rotationCounterclockwiseSteps > 0)
+            {
+                if (index > 0)
+                {
+                    index = index - iDriveController.rotationCounterclockwiseSteps;
+                    scrollingSound.Play();
+                }
             }
         }
     }
@@ -159,13 +182,13 @@ public class ScrollRectMovement : MonoBehaviour
         
         float rotationStep = 48.5f / (float)(numberOfButtons - 1);
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && (handleRotation.z < 24.25 || handleRotation.z >= 330))
+        if (iDriveController.turnedCounterclockwise && (handleRotation.z < 24.25 || handleRotation.z >= 330))
         {
-            handleRotation.z = handleRotation.z + rotationStep;
+            handleRotation.z = handleRotation.z + rotationStep * iDriveController.rotationCounterclockwiseSteps;
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && (handleRotation.z <= 30 || handleRotation.z > 335.75))
+        else if (iDriveController.turnedClockwise && (handleRotation.z <= 30 || handleRotation.z > 335.75))
         {
-            handleRotation.z = handleRotation.z - rotationStep;
+            handleRotation.z = handleRotation.z - rotationStep * iDriveController.rotationClockwiseSteps;
         }
         //Debug.Log(handleRotation);
         
