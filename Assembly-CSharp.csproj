@@ -632,6 +632,7 @@
     <Compile Include="Assets\MeineDaten\Scripts\MapAufgabe\TrackpadInputMapbox.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\MapAufgabe\Unused\EnteringTrigger.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\MapAufgabe\Unused\MapControlAlt.cs" />
+    <Compile Include="Assets\MeineDaten\Scripts\OldIDriveController.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ScrollAufgabe\ButtonListControl.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ScrollAufgabe\ScrollAufgabeMitTasten\ButtonListControlMitTasten.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ScrollAufgabe\ScrollAufgabeMitTasten\ButtonSelectionController.cs" />

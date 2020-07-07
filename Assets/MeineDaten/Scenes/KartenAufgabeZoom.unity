@@ -1220,6 +1220,7 @@ GameObject:
   - component: {fileID: 656718574}
   - component: {fileID: 656718572}
   - component: {fileID: 656718573}
+  - component: {fileID: 656718578}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -1361,9 +1362,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfTasks: 4
-  touchscreenInput: 1
+  touchscreenInput: 0
   touchpadInput: 0
-  iDriveInput: 0
+  iDriveInput: 1
   gestureInput: 0
   cursorResetTime: 2
   feedbackPanelTime: 0.5
@@ -1410,6 +1411,55 @@ MonoBehaviour:
   targetOffset: 0.005
   startPanel: {fileID: 1309045392}
   startPanelTouchscreen: {fileID: 1712706942}
+--- !u!114 &656718578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656718571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a972864d721e34308877fb854934dd4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movedLeftOnce: 0
+  movedRightOnce: 0
+  movedUpOnce: 0
+  movedDownOnce: 0
+  pushedOnce: 0
+  pushStarted: 0
+  pushHeld: 0
+  pushEnded: 0
+  leftStarted: 0
+  leftHeld: 0
+  leftEnded: 0
+  rightStarted: 0
+  rightHeld: 0
+  rightEnded: 0
+  upStarted: 0
+  upHeld: 0
+  upEnded: 0
+  downStarted: 0
+  downHeld: 0
+  downEnded: 0
+  turnedClockwise: 0
+  turnedCounterclockwise: 0
+  rotationClockwiseSteps: 0
+  rotationCounterclockwiseSteps: 0
+  RotaryPush: 0
+  RotaryLeft: 0
+  RotaryRight: 0
+  RotaryUp: 0
+  RotaryDown: 0
+  MainOption: 0
+  MainBack: 0
+  MainMedia: 0
+  MainRadio: 0
+  MainTel: 0
+  MainNav: 0
+  MainMenue: 0
+  RotaryEx: 0
 --- !u!1 &725011321
 GameObject:
   m_ObjectHideFlags: 0
@@ -2788,6 +2838,11 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114225640444197696, guid: 00f5bf1ff996842fc82384f8f686fda6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 223082131773786238, guid: 00f5bf1ff996842fc82384f8f686fda6,
         type: 3}
       propertyPath: m_Enabled
       value: 1

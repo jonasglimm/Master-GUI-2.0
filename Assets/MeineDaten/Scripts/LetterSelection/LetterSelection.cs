@@ -16,29 +16,46 @@ public class LetterSelection : MonoBehaviour
     public AudioSource scrollingSound;
     public AudioSource clickSound;
     private ControlManager script;
+    private IDriveController iDriveController;
 
     private void Start() {
         selector.transform.eulerAngles =  new Vector3(selector.transform.eulerAngles.x, selector.transform.eulerAngles.y, 0f);
         inputField.text  = "";
         script = gameObject.GetComponent<ControlManager>();
+        iDriveController = GameObject.Find("Manager").GetComponent<IDriveController>();
 
         if (script.touchscreenInput == true)
         {
             knob.SetActive(false);
         }
+        if (!script.iDriveInput)
+        {
+            iDriveController.enabled = false;
+        }
     }
 
     private void Update() {
         if(script.iDriveInput == true){
-            if(Input.mouseScrollDelta.y > 0){
+
+            if(iDriveController.turnedClockwise)
+            {
+                scrollingSound.Play();
+                selector.transform.eulerAngles = new Vector3(selector.transform.eulerAngles.x, selector.transform.eulerAngles.y, selector.transform.eulerAngles.z - (iDriveController.rotationClockwiseSteps * 11.25f));
+            }
+            else if(iDriveController.turnedCounterclockwise)
+            {
+                scrollingSound.Play();
+                selector.transform.eulerAngles = new Vector3(selector.transform.eulerAngles.x, selector.transform.eulerAngles.y, selector.transform.eulerAngles.z + (iDriveController.rotationCounterclockwiseSteps * 11.25f));
+            }
+            /*
+            if (Input.mouseScrollDelta.y > 0){
                 scrollingSound.Play();
                 selector.transform.eulerAngles =  new Vector3(selector.transform.eulerAngles.x, selector.transform.eulerAngles.y, selector.transform.eulerAngles.z + 11.25f);
             }
-
-            if(Input.mouseScrollDelta.y < 0){
+            else if(Input.mouseScrollDelta.y < 0){
                 scrollingSound.Play();
                 selector.transform.eulerAngles =  new Vector3(selector.transform.eulerAngles.x, selector.transform.eulerAngles.y, selector.transform.eulerAngles.z - 11.25f);
-            }
+            }*/
             void insertText(string text){
                 inputField.text = inputField.text + text;
             }
@@ -48,7 +65,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "A";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("A");
                     clickSound.Play();
                 }
@@ -56,7 +74,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "B";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("B");
                     clickSound.Play();
                 }
@@ -64,7 +83,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "C";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("C");
                     clickSound.Play();
                 }
@@ -72,7 +92,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "D";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("D");
                     clickSound.Play();
                 }
@@ -80,7 +101,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "E";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("E");
                     clickSound.Play();
                 }
@@ -88,7 +110,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "F";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("F");
                     clickSound.Play();
                 }
@@ -96,7 +119,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "G";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("G");
                     clickSound.Play();
                 }
@@ -104,7 +128,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "H";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("H");
                     clickSound.Play();
                 }
@@ -112,7 +137,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "I";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("I");
                     clickSound.Play();
                 }
@@ -120,7 +146,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "J";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("J");
                     clickSound.Play();
                 }
@@ -128,7 +155,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "K";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("K");
                     clickSound.Play();
                 }
@@ -136,7 +164,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "L";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("L");
                     clickSound.Play();
                 }
@@ -144,7 +173,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "M";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("M");
                     clickSound.Play();
                 }
@@ -152,7 +182,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "N";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("N");
                     clickSound.Play();
                 }
@@ -160,7 +191,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "O";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("O");
                     clickSound.Play();
                 }
@@ -168,7 +200,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "P";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("P");
                     clickSound.Play();
                 }
@@ -176,7 +209,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "Q";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("Q");
                     clickSound.Play();
                 }
@@ -184,7 +218,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "R";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("R");
                     clickSound.Play();
                 }
@@ -192,7 +227,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "S";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("S");
                     clickSound.Play();
                 }
@@ -200,7 +236,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "T";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("T");
                     clickSound.Play();
                 }
@@ -208,7 +245,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "U";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("U");
                     clickSound.Play();
                 }
@@ -216,7 +254,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "V";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("V");
                     clickSound.Play();
                 }
@@ -224,7 +263,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "W";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("W");
                     clickSound.Play();
                 }
@@ -232,7 +272,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "X";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("X");
                     clickSound.Play();
                 }
@@ -240,7 +281,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "Y";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("Y");
                     clickSound.Play();
                 }
@@ -248,7 +290,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "Z";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("Z");
                     clickSound.Play();
                 }
@@ -256,7 +299,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "Ä";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("Ä");
                     clickSound.Play();
                 }
@@ -264,7 +308,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "Ö";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("Ö");
                     clickSound.Play();
                 }
@@ -272,7 +317,8 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "Ü";
-                if(Input.GetMouseButtonDown(0)){
+                if(iDriveController.pushedOnce)
+                {
                     insertText("Ü");
                     clickSound.Play();
                 }
@@ -280,7 +326,9 @@ public class LetterSelection : MonoBehaviour
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "_";
-                if(Input.GetMouseButtonDown(0)){
+
+                if(iDriveController.pushedOnce)
+                {
                     insertText(" ");
                     clickSound.Play();
                 }
@@ -289,7 +337,8 @@ public class LetterSelection : MonoBehaviour
                 selectorText.text = "";
                 returnImage.SetActive(true);
                 backspaceImage.SetActive(false);
-                if(Input.GetMouseButtonDown(0)){
+
+                if(iDriveController.pushedOnce){
                     script.checkOutput(inputField.text);
                     inputField.text  = "";
                 }
@@ -298,7 +347,8 @@ public class LetterSelection : MonoBehaviour
                 selectorText.text = "";
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(true);
-                if(Input.GetMouseButtonDown(0)){
+
+                if(iDriveController.pushedOnce){
                     string temp = inputField.text;
                     if(temp.Length != 0){
                         clickSound.Play();

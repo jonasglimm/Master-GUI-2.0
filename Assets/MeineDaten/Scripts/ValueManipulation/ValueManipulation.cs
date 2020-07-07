@@ -21,11 +21,13 @@ public class ValueManipulation : MonoBehaviour
     private float maxFillAmountDisplayed = 0.95f; // Because of ackward rotation of the image a part of the image is not visible
     private float usableFillAmount;
     private float fillAmountStep;
+    private IDriveController iDriveController;
 
     private void Awake()
     {
         maxValueText = GameObject.Find("MaxValue").GetComponent<TextMeshProUGUI>();
         script = gameObject.GetComponent<ControlManager>();
+        iDriveController = GameObject.Find("Manager").GetComponent<IDriveController>();
     }
 
     // Start is called before the first frame update
@@ -39,35 +41,40 @@ public class ValueManipulation : MonoBehaviour
         selector.fillAmount = fillAmountStep * (float)value + minFillAmountDisplayed;
         selectionValue.text = value.ToString();
         maxValueText.text = maxValue.ToString();
+
+        if (!script.iDriveInput)
+        {
+            iDriveController.enabled = false;
+        }
     }
 
     void Update()
     {
-        if (script.iDriveInput == true)
+        if (script.iDriveInput == true) //script.iDriveInput == true  - for control with mouse wheel
         {
-            if (Input.mouseScrollDelta.y > 0)
+            if (iDriveController.turnedClockwise)
             {
                 if (value < maxValue)
                 {
-                    selector.fillAmount = selector.fillAmount + fillAmountStep;
+                    selector.fillAmount = selector.fillAmount + (iDriveController.rotationClockwiseSteps * fillAmountStep);
                         scrollSound.Play();
-                        value++;
+                        value = value + iDriveController.rotationClockwiseSteps;
                         selectionValue.text = value.ToString();
                 }
             }
 
-            if (Input.mouseScrollDelta.y < 0)
+            if (iDriveController.turnedCounterclockwise)
             {
                 if (value > 0)
                 {
-                    selector.fillAmount = selector.fillAmount - fillAmountStep;
+                    selector.fillAmount = selector.fillAmount - (iDriveController.rotationCounterclockwiseSteps * fillAmountStep);
                         scrollSound.Play();
-                        value--;
+                        value = value - iDriveController.rotationCounterclockwiseSteps;
                         selectionValue.text = value.ToString();
                 }
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (iDriveController.pushedOnce) //Input.GetMouseButtonDown(0) - for mouse input
             {
                 script.checkOutput(selectionValue.text);
             }

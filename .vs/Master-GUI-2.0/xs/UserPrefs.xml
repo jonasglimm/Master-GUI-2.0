@@ -1,10 +1,10 @@
 ﻿<Properties StartupConfiguration="{AE6E7F84-5196-7310-30D5-FD1955374EF5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MeineDaten/Scripts/IDriveController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Mapbox/Examples/Scripts/QuadTreeCameraMovement.cs">
     <Files>
-      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/BlaetterAufgabe/BlaetterControl.cs" Line="120" Column="74" />
-      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/ScrollSnapRect.cs" />
-      <File FileName="Assets/MeineDaten/Scripts/ScrollAufgabe/ScrollTaskControl.cs" />
-      <File FileName="Assets/MeineDaten/Scripts/IDriveController.cs" Line="46" Column="1" />
+      <File FileName="Assets/MeineDaten/Scripts/IDriveController.cs" Line="190" Column="51" />
+      <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/MapboxTaskControl.cs" Line="231" Column="1" />
+      <File FileName="Assets/MeineDaten/Scripts/MapAufgabe/TrackpadInputMapbox.cs" Line="1" Column="1" />
+      <File FileName="Assets/Mapbox/Examples/Scripts/QuadTreeCameraMovement.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,7 +16,9 @@
                   <Node name="6_ZoomableMap" expanded="True">
                     <Node name="Scripts" expanded="True" />
                   </Node>
-                  <Node name="Scripts" expanded="True" />
+                  <Node name="Scripts" expanded="True">
+                    <Node name="QuadTreeCameraMovement.cs" selected="True" />
+                  </Node>
                 </Node>
                 <Node name="Unity" expanded="True">
                   <Node name="Editor" expanded="True">
@@ -37,7 +39,6 @@
                   <Node name="TrackpadTextInsertion" expanded="True" />
                   <Node name="Unused" expanded="True" />
                   <Node name="ValueManipulation" expanded="True" />
-                  <Node name="IDriveController.cs" selected="True" />
                 </Node>
               </Node>
               <Node name="ThirdPartyAssets" expanded="True">
@@ -66,7 +67,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0a030c70-6be0-4ebc-bd7c-dcc16677951c" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="e24bb1a2-c939-41fb-ba88-792e05d12178" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Catchpoint exceptionName="System.IO.IOException" includeSubclasses="True" />

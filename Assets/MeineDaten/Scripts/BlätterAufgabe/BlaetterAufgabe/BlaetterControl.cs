@@ -43,6 +43,9 @@ public class BlaetterControl : MonoBehaviour
     public GameObject startPanel;
     public GameObject startPanelTouchscreen;
 
+    //For iDriveController
+    private IDriveController iDriveController;
+
     private void Awake()
     {
         valueControlCenter = GameObject.Find("BlaetterManager").GetComponent<ValueControlCenter>();
@@ -50,6 +53,7 @@ public class BlaetterControl : MonoBehaviour
         blaetterRectMovement = GameObject.Find("SnapOnScroll").GetComponent<BlaetterRectMovement>();
         scrollSnapRect = GameObject.Find("SnapOnScroll").GetComponent<ScrollSnapRect>();
         buttonListBlaettern = GameObject.Find("BlaetterManager").GetComponent<ButtonListBlaettern>();
+        iDriveController = GameObject.Find("BlaetterManager").GetComponent<IDriveController>();
 
         activeTime = valueControlCenter.feedbackPanelTime;
         anzahlAufgaben = valueControlCenter.numberOfTasks;
@@ -73,9 +77,20 @@ public class BlaetterControl : MonoBehaviour
         anzahlFehler.GetComponent<TextMeshProUGUI>().text = fehlercounter.ToString();
         nummerDerAufgabe.GetComponent<TextMeshProUGUI>().text = aufgabenNr.ToString();
         maxAnzahlAufgabe.GetComponent<TextMeshProUGUI>().text = anzahlAufgaben.ToString();
+
         if (valueControlCenter.touchpadInput == true)
         {
             if (Input.GetMouseButtonDown(0))
+            {
+                Comparision(blaetterRectMovement.buttonText[0]);
+                blaetterRectMovement.selectedButton.Select();
+                clickSound.Play();
+            }
+        }
+
+        if (valueControlCenter.iDriveInput)
+        {
+            if (iDriveController.pushedOnce)
             {
                 Comparision(blaetterRectMovement.buttonText[0]);
                 blaetterRectMovement.selectedButton.Select();

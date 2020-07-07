@@ -28,6 +28,9 @@ public class BlaetterRectMovement : MonoBehaviour
     private bool isDragging, moved = false;
     private Vector2 startTouch, swipeDelta;
 
+    //For iDriveController
+    private IDriveController iDriveController;
+
 
     //-------------- PageSelection
     public Sprite unselectedPage;
@@ -57,6 +60,7 @@ public class BlaetterRectMovement : MonoBehaviour
     public void Awake()
     {
         valueControlCenter = GameObject.Find("BlaetterManager").GetComponent<ValueControlCenter>();
+        iDriveController = GameObject.Find("BlaetterManager").GetComponent<IDriveController>();
 
         cursorResetTime = valueControlCenter.cursorResetTime;
         isTrackpadEnabled = valueControlCenter.touchpadInput;
@@ -70,6 +74,10 @@ public class BlaetterRectMovement : MonoBehaviour
         {
             //InvokeRepeating("CursorLock", cursorResetTime, cursorResetTime);
             HideCursor();
+        }
+        if (!valueControlCenter.iDriveInput)
+        {
+            iDriveController.enabled = false;
         }
     }
 
@@ -263,6 +271,7 @@ public class BlaetterRectMovement : MonoBehaviour
         }
     }
 
+
         void Update(){
         if(isTrackpadEnabled == true){
             CursorUnlock();
@@ -271,7 +280,7 @@ public class BlaetterRectMovement : MonoBehaviour
         } else {
             selectedButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
             index = System.Array.IndexOf(buttons, selectedButton);
-            IDriveScrollingSound();
+            IDriveScrolling();
             buttons[index].Select();
         }
         buttonText = selectedButton.GetComponentsInChildren<TextMeshProUGUI>();
@@ -282,13 +291,48 @@ public class BlaetterRectMovement : MonoBehaviour
        
     }
 
-   private void IDriveScrollingSound()
+   private void IDriveScrolling()
     {
         if (iDriveInput == true)
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow) | Input.GetKeyDown(KeyCode.RightArrow)) //keys must be changed for actual iDrive-Controller
             {
                 scrollingSound.Play();
+            }
+
+            if (iDriveController.movedRightOnce)
+            {
+                if (index < numberOfButtons - 1)
+                {
+                    index++;
+                    selectedButton = buttons[index];
+                    buttons[index].Select();
+                    scrollingSound.Play();
+                }
+                else if (index == numberOfButtons - 1)
+                {
+                    index = 0;
+                    selectedButton = buttons[index];
+                    buttons[index].Select();
+                    scrollingSound.Play();
+                }
+            }
+            else if (iDriveController.movedLeftOnce)
+            {
+                if (index > 0)
+                {
+                    index--;
+                    selectedButton = buttons[index];
+                    buttons[index].Select();
+                    scrollingSound.Play();
+                }
+                else if (index == 0)
+                {
+                    index = numberOfButtons - 1;
+                    selectedButton = buttons[index];
+                    buttons[index].Select();
+                    scrollingSound.Play();
+                }
             }
         }
     }

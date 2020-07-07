@@ -465,7 +465,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -110, y: -10}
+  m_AnchoredPosition: {x: -127.99998, y: -10}
   m_SizeDelta: {x: 505.4, y: 132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &174449467
@@ -514,8 +514,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3643,6 +3643,7 @@ GameObject:
   - component: {fileID: 629952210}
   - component: {fileID: 629952212}
   - component: {fileID: 629952213}
+  - component: {fileID: 629952214}
   m_Layer: 5
   m_Name: Manager
   m_TagString: Untagged
@@ -3819,15 +3820,17 @@ MonoBehaviour:
   completionScreen: {fileID: 1659766239}
   totalTasks: 5
   activeTime: 0.5
-  touchscreenInput: 1
+  touchscreenInput: 0
   touchpadInput: 0
-  iDriveInput: 0
+  iDriveInput: 1
   gestureInput: 0
   modalityWarning: {fileID: 1329105865}
   cursorResetTime: 0
   clickSound: {fileID: 629952212}
   startPanel: {fileID: 539514102}
   startPanelTouchscreen: {fileID: 1399437820}
+  endscreenIsActive: 0
+  startPanelIsActive: 0
 --- !u!82 &629952212
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3936,6 +3939,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d5cbfc53f744c2b9395c12f259b927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &629952214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629952207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a972864d721e34308877fb854934dd4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movedLeftOnce: 0
+  movedRightOnce: 0
+  movedUpOnce: 0
+  movedDownOnce: 0
+  pushedOnce: 0
+  pushStarted: 0
+  pushHeld: 0
+  pushEnded: 0
+  leftStarted: 0
+  leftHeld: 0
+  leftEnded: 0
+  rightStarted: 0
+  rightHeld: 0
+  rightEnded: 0
+  upStarted: 0
+  upHeld: 0
+  upEnded: 0
+  downStarted: 0
+  downHeld: 0
+  downEnded: 0
+  turnedClockwise: 0
+  turnedCounterclockwise: 0
+  rotationClockwiseSteps: 0
+  rotationCounterclockwiseSteps: 0
+  RotaryPush: 0
+  RotaryLeft: 0
+  RotaryRight: 0
+  RotaryUp: 0
+  RotaryDown: 0
+  MainOption: 0
+  MainBack: 0
+  MainMedia: 0
+  MainRadio: 0
+  MainTel: 0
+  MainNav: 0
+  MainMenue: 0
+  RotaryEx: 0
 --- !u!1 &660376070
 GameObject:
   m_ObjectHideFlags: 0
@@ -6142,7 +6194,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -110, y: 26}
+  m_AnchoredPosition: {x: -127.99998, y: 26}
   m_SizeDelta: {x: 505.4, y: 132.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1301693827
@@ -6415,7 +6467,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: 26.4}
+  m_AnchoredPosition: {x: -142.99997, y: 26.4}
   m_SizeDelta: {x: 77.5, y: 132.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1329105865 stripped
@@ -7160,8 +7212,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7248,7 +7300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: -10}
+  m_AnchoredPosition: {x: 1, y: -10}
   m_SizeDelta: {x: 400, y: 132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1515802078

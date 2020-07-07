@@ -147,7 +147,7 @@
 			}
 		}
 
-		void PanMapUsingKeyBoard(float xMove, float zMove)
+		public void PanMapUsingKeyBoard(float xMove, float zMove)
 		{
 			if (Math.Abs(xMove) > 0.0f || Math.Abs(zMove) > 0.0f)
 			{

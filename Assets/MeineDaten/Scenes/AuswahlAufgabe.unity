@@ -2289,6 +2289,7 @@ GameObject:
   - component: {fileID: 526270273}
   - component: {fileID: 526270274}
   - component: {fileID: 526270275}
+  - component: {fileID: 526270276}
   m_Layer: 0
   m_Name: AufgabenManager
   m_TagString: Untagged
@@ -2371,9 +2372,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfTasks: 10
-  touchscreenInput: 1
+  touchscreenInput: 0
   touchpadInput: 0
-  iDriveInput: 0
+  iDriveInput: 1
   gestureInput: 0
   cursorResetTime: 0.2
   feedbackPanelTime: 0.5
@@ -2583,6 +2584,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d5cbfc53f744c2b9395c12f259b927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &526270276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526270268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a972864d721e34308877fb854934dd4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movedLeftOnce: 0
+  movedRightOnce: 0
+  movedUpOnce: 0
+  movedDownOnce: 0
+  pushedOnce: 0
+  pushStarted: 0
+  pushHeld: 0
+  pushEnded: 0
+  leftStarted: 0
+  leftHeld: 0
+  leftEnded: 0
+  rightStarted: 0
+  rightHeld: 0
+  rightEnded: 0
+  upStarted: 0
+  upHeld: 0
+  upEnded: 0
+  downStarted: 0
+  downHeld: 0
+  downEnded: 0
+  rotatedClockwiseOneStep: 0
+  rotatedCounterclockwiseOneStep: 0
+  RotaryPush: 0
+  RotaryLeft: 0
+  RotaryRight: 0
+  RotaryUp: 0
+  RotaryDown: 0
+  MainOption: 0
+  MainBack: 0
+  MainMedia: 0
+  MainRadio: 0
+  MainTel: 0
+  MainNav: 0
+  MainMenue: 0
+  RotaryEx: 0
 --- !u!1 &554687165
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ public class MapboxTaskControl : MonoBehaviour
     private ValueControlCenter valueControlCenter;
     private AudioSource clickSound;
     private TrackpadInputMapbox trackpadInputMapbox;
+    private IDriveController iDriveController;
 
     private AbstractMap _mapManager;
 
@@ -76,6 +77,7 @@ public class MapboxTaskControl : MonoBehaviour
         clickSound = GameObject.Find("MapManager").GetComponent<AudioSource>();
         zoomSlider = GameObject.Find("ZoomIndicator").GetComponentInChildren<Slider>();
         valueCanvas = GameObject.Find("ReloadMapCanvas");
+        iDriveController = GameObject.Find("MapManager").GetComponent<IDriveController>();
 
         //Exchanging values with quadTreeCameraMovement
         _mapManager = abstractMap;
@@ -111,7 +113,16 @@ public class MapboxTaskControl : MonoBehaviour
 
         if (valueCanvasIsVisible == false)
         {
-            valueCanvas.SetActive(false);
+            valueCanvas.GetComponent<Canvas>().enabled = false;
+        }
+
+        if (valueControlCenter.iDriveInput)
+        {
+            _panSpeed = 4.5f;
+        }
+        else
+        {
+            iDriveController.enabled = false;
         }
     }
 
@@ -131,6 +142,10 @@ public class MapboxTaskControl : MonoBehaviour
         if(valueControlCenter.touchpadInput == true)
         {
             handleTrackpadInput();
+        }
+        else if (valueControlCenter.iDriveInput)
+        {
+            handleIDriveController();
         }
 
         if (Input.GetKeyDown(KeyCode.S))
@@ -228,7 +243,7 @@ public class MapboxTaskControl : MonoBehaviour
     private void GetCurrentZoom()
     {
         zoom = abstractMap.Options.locationOptions.zoom;
-        Debug.Log(zoom);
+        //Debug.Log(zoom);
     }
 
     private void CheckZoomAndOffset()
@@ -265,7 +280,38 @@ public class MapboxTaskControl : MonoBehaviour
         panelCorrect.SetActive(false);
     }
 
-    
+    private void handleIDriveController()
+    {
+        if (iDriveController.RotaryLeft)
+        {
+            quadTreeCameraMovement.PanMapUsingKeyBoard(-1f, 0f);
+        }
+        else if (iDriveController.RotaryRight)
+        {
+            quadTreeCameraMovement.PanMapUsingKeyBoard(1f, 0f);
+        }
+        else if (iDriveController.RotaryUp)
+        {
+            quadTreeCameraMovement.PanMapUsingKeyBoard(0f, 1f);
+        }
+        else if (iDriveController.RotaryDown)
+        {
+            quadTreeCameraMovement.PanMapUsingKeyBoard(0f, -1f);
+        }
+
+        if (iDriveController.turnedClockwise)
+        {
+            float zoomDelta = iDriveController.rotationClockwiseSteps;
+            ZoomMapUsingTouchOrMouse(zoomDelta);
+        }
+        else if (iDriveController.turnedCounterclockwise)
+        {
+            float zoomDelta = -1 * iDriveController.rotationCounterclockwiseSteps;
+            ZoomMapUsingTouchOrMouse(zoomDelta);
+        }
+
+    }
+
     private void handleTrackpadInput()
     {
         CursorUnlock();

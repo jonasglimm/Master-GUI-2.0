@@ -6,6 +6,10 @@ using UnityEngine.EventSystems;
 using TMPro;
 using TrackpadTouch;
 
+/// <summary>
+/// Not only Trackpad Control... Also control for iDrive Controller!!
+/// </summary>
+
 public class AuswahlTrackpad : MonoBehaviour{
     public Button button1;
     public Button button2;
@@ -36,6 +40,9 @@ public class AuswahlTrackpad : MonoBehaviour{
     private bool isDragging, moved = false;
     private Vector2 startTouch, swipeDelta;
 
+    //For IDriveController
+    private IDriveController iDriveController;
+
 
     void Awake()
     {
@@ -45,6 +52,7 @@ public class AuswahlTrackpad : MonoBehaviour{
         gestureInput = valueControlCenter.gestureInput;
 
         cursorResetTime = valueControlCenter.cursorResetTime;
+        iDriveController = GameObject.Find("AufgabenManager").GetComponent<IDriveController>();
     }
 
     void Start()
@@ -58,6 +66,10 @@ public class AuswahlTrackpad : MonoBehaviour{
                 //InvokeRepeating("CursorLock", cursorResetTime, cursorResetTime);  // If the trackpad is used, the cursor will be reset to the middle of the screen each cursorResetTime - seconds
                 HideCursor();
             }
+        }
+        if (!iDriveInput)
+        {
+            iDriveController.enabled = false;
         }
     }
 
@@ -162,6 +174,7 @@ public class AuswahlTrackpad : MonoBehaviour{
         } else if(iDriveInput == true){
             //handling keyboard arrrow keys as input
             handleKeyboardInput();
+            handleIDriveControllerInput();
         }
 
     }
@@ -351,8 +364,34 @@ public class AuswahlTrackpad : MonoBehaviour{
         if(Input.GetKeyDown(KeyCode.DownArrow)){
            moveDown();
         }
+    }
 
-        
+    private void handleIDriveControllerInput()
+    {
+        if (iDriveController.movedLeftOnce)
+        {
+            moveLeft();
+        }
+        if (iDriveController.movedRightOnce)
+        {
+            moveRight();
+        }
+        if (iDriveController.movedUpOnce)
+        {
+            moveUp();
+        }
+        if (iDriveController.movedDownOnce)
+        {
+            moveDown();
+        }
+        if (iDriveController.pushedOnce)
+        {
+            AuswahlControl script = gameObject.GetComponent<AuswahlControl>();
+            script.Comparision(currentButton);
+            clickSound.Play();
+            SelectButton(currentButton);
+        }
+
     }
 
     private void CursorLock() //reset the Cursor by first locking it with this function and unlock it with the next on
