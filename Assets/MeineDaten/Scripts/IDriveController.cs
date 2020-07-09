@@ -129,7 +129,6 @@ public class IDriveController : MonoBehaviour
             Debug.Log("pushedOnce");
         }
         */
-
         //Debug.Log(RotaryEx);
         //Debug.Log("Done");
     }
@@ -151,9 +150,9 @@ public class IDriveController : MonoBehaviour
         }
         else if (!RotaryPush)
         {
-            if (pushHeld)
+            if (pushHeld || pushStarted)
             {
-                pushHeld = false;
+                pushHeld = pushStarted = pushedOnce = false;
                 pushEnded = true;
             }
         }
@@ -242,9 +241,9 @@ public class IDriveController : MonoBehaviour
         }
         else if (!RotaryLeft)
         {
-            if (leftHeld)
+            if (leftHeld || leftStarted)
             {
-                leftHeld = false;
+                leftHeld = leftStarted = movedLeftOnce = false;
                 leftEnded = true;
             }
         }
@@ -267,9 +266,9 @@ public class IDriveController : MonoBehaviour
         }
         else if (!RotaryRight)
         {
-            if (rightHeld)
+            if (rightHeld || rightStarted)
             {
-                rightHeld = false;
+                rightHeld = rightStarted = movedRightOnce = false;
                 rightEnded = true;
             }
         }
@@ -292,9 +291,9 @@ public class IDriveController : MonoBehaviour
         }
         else if (!RotaryUp)
         {
-            if (upHeld)
+            if (upHeld || upStarted)
             {
-                upHeld = false;
+                upHeld = upStarted = movedUpOnce = false;
                 upEnded = true;
             }
         }
@@ -317,9 +316,9 @@ public class IDriveController : MonoBehaviour
         }
         else if (!RotaryDown)
         {
-            if (downHeld)
+            if (downHeld || downStarted)
             {
-                downHeld = false;
+                downHeld = downStarted = movedDownOnce = false;
                 downEnded = true;
             }
         }

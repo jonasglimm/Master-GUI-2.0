@@ -30,7 +30,7 @@ public class BlaetterRectMovement : MonoBehaviour
 
     //For iDriveController
     private IDriveController iDriveController;
-
+    public bool rotationIsActive = true;
 
     //-------------- PageSelection
     public Sprite unselectedPage;
@@ -332,6 +332,59 @@ public class BlaetterRectMovement : MonoBehaviour
                     selectedButton = buttons[index];
                     buttons[index].Select();
                     scrollingSound.Play();
+                }
+            }
+
+            if (rotationIsActive)
+            {
+                if (iDriveController.rotationClockwiseSteps > 0)
+                {
+                    if (index + iDriveController.rotationClockwiseSteps < numberOfButtons - 1)
+                    {
+                        index = index + iDriveController.rotationClockwiseSteps;
+                        selectedButton = buttons[index];
+                        buttons[index].Select();
+                        scrollingSound.Play();
+                    }
+                    else if (index + iDriveController.rotationClockwiseSteps >= numberOfButtons - 1)
+                    {
+                        if (index + iDriveController.rotationClockwiseSteps == numberOfButtons - 1)
+                        {
+                            index = 0;
+                        }
+                        else
+                        {
+                            index = iDriveController.rotationClockwiseSteps - ((numberOfButtons - 1) - index);
+                        }
+                        selectedButton = buttons[index];
+                        buttons[index].Select();
+                        scrollingSound.Play();
+                    }
+                }
+
+                if (iDriveController.rotationCounterclockwiseSteps > 0)
+                {
+                    if (index - iDriveController.rotationCounterclockwiseSteps > 0)
+                    {
+                        index = index - iDriveController.rotationCounterclockwiseSteps;
+                        selectedButton = buttons[index];
+                        buttons[index].Select();
+                        scrollingSound.Play();
+                    }
+                    else if (index - iDriveController.rotationCounterclockwiseSteps <= 0)
+                    {
+                        if (index - iDriveController.rotationCounterclockwiseSteps == 0)
+                        {
+                            index = numberOfButtons - 1;
+                        }
+                        else
+                        {
+                            index = (0 + (iDriveController.rotationCounterclockwiseSteps - index));
+                        }
+                        selectedButton = buttons[index];
+                        buttons[index].Select();
+                        scrollingSound.Play();
+                    }
                 }
             }
         }

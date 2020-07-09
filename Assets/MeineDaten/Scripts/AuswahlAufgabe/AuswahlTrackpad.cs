@@ -42,7 +42,7 @@ public class AuswahlTrackpad : MonoBehaviour{
 
     //For IDriveController
     private IDriveController iDriveController;
-
+    public bool rotationIsActive = true;
 
     void Awake()
     {
@@ -92,11 +92,11 @@ public class AuswahlTrackpad : MonoBehaviour{
             StartCoroutine(waiter(button5));
             // SelectButton(button5);
         }
-
+        /*
         if(currentButton != button1 && currentButton != button4)
         {
             scrollingSound.Play();
-        }
+        }*/
     }
 
     void moveRight(){
@@ -113,11 +113,11 @@ public class AuswahlTrackpad : MonoBehaviour{
             StartCoroutine(waiter(button6));
             // SelectButton(button6);
         }
-
+        /*
         if (currentButton != button3 && currentButton != button6)
         {
             scrollingSound.Play();
-        }
+        }*/
     }
 
     void moveUp(){
@@ -131,11 +131,11 @@ public class AuswahlTrackpad : MonoBehaviour{
             StartCoroutine(waiter(button3));
             // SelectButton(button3);
         }
-
+        /*
         if (currentButton != button1 && currentButton != button2 && currentButton != button3)
         {
             scrollingSound.Play();
-        }
+        }*/
     }
 
     void moveDown(){
@@ -149,19 +149,23 @@ public class AuswahlTrackpad : MonoBehaviour{
             StartCoroutine(waiter(button6));
             // SelectButton(button6);
         }
-
+        /*
         if (currentButton != button4 && currentButton != button5 && currentButton != button6)
         {
             scrollingSound.Play();
-        }
+        }*/
     }
     
     
     IEnumerator waiter(Button btn){
         yield return new WaitForSeconds(0.115f);
+        if (currentButton != btn)
+        {
+            scrollingSound.Play();
+        }
         SelectButton(btn);
     }
-    
+
 
     // Update is called once per frame
     void Update()
@@ -391,7 +395,333 @@ public class AuswahlTrackpad : MonoBehaviour{
             clickSound.Play();
             SelectButton(currentButton);
         }
+        //
+        // Integrate rotation - there is surely a smarter way - was a late change
+        //
 
+        #region Buttonrotation
+        if (rotationIsActive)
+        {
+            if (currentButton == button1)
+            {
+                if (iDriveController.turnedClockwise)
+                {
+                    moveRight();
+                }
+                else if (iDriveController.turnedCounterclockwise)
+                {
+                    moveDown();
+                }
+            }
+
+            if (currentButton == button2)
+            {
+                if (iDriveController.turnedClockwise)
+                {
+                    moveRight();
+                }
+                else if (iDriveController.turnedCounterclockwise)
+                {
+                    moveLeft();
+                }
+            }
+
+            if (currentButton == button3)
+            {
+                if (iDriveController.turnedClockwise)
+                {
+                    moveDown();
+                }
+                else if (iDriveController.turnedCounterclockwise)
+                {
+                    moveLeft();
+                }
+            }
+
+            if (currentButton == button4)
+            {
+                if (iDriveController.turnedClockwise)
+                {
+                    moveUp();
+                }
+                else if (iDriveController.turnedCounterclockwise)
+                {
+                    moveRight();
+                }
+            }
+
+            if (currentButton == button5)
+            {
+                if (iDriveController.turnedClockwise)
+                {
+                    moveLeft();
+                }
+                else if (iDriveController.turnedCounterclockwise)
+                {
+                    moveRight();
+                }
+            }
+
+            if (currentButton == button6)
+            {
+                if (iDriveController.turnedClockwise)
+                {
+                    moveLeft();
+                }
+                else if (iDriveController.turnedCounterclockwise)
+                {
+                    moveUp();
+                }
+            }
+
+            /*
+            if (currentButton == button1)
+            {
+                if(iDriveController.rotationClockwiseSteps > 0)
+                {
+                    if(iDriveController.rotationClockwiseSteps == 1)
+                    {
+                        moveRight();
+                    }
+                    else if (iDriveController.rotationClockwiseSteps == 2)
+                    {
+                        moveRight();
+                        moveRight();
+                    }
+                    else if (iDriveController.rotationClockwiseSteps >= 3)
+                    {
+                        moveRight();
+                        moveRight();
+                        moveDown();
+                    }
+                }
+            }
+            else if(iDriveController.rotationCounterclockwiseSteps > 0)
+            {
+                if (iDriveController.rotationCounterclockwiseSteps == 1)
+                {
+                    moveDown();
+                }
+                else if (iDriveController.rotationCounterclockwiseSteps == 2)
+                {
+                    moveDown();
+                    moveRight();
+                }
+                else if (iDriveController.rotationCounterclockwiseSteps >= 3)
+                {
+                    moveDown();
+                    moveRight();
+                    moveRight();
+                }
+
+            }
+
+            if (currentButton == button2)
+            {
+                if (iDriveController.rotationClockwiseSteps > 0)
+                {
+                    if (iDriveController.rotationClockwiseSteps == 1)
+                    {
+                        moveRight();
+                    }
+                    else if (iDriveController.rotationClockwiseSteps == 2)
+                    {
+                        moveRight();
+                        moveDown();
+                    }
+                    else if (iDriveController.rotationClockwiseSteps >= 3)
+                    {
+                        moveRight();
+                        moveDown();
+                        moveLeft();
+                    }
+                }
+            }
+            else if (iDriveController.rotationCounterclockwiseSteps > 0)
+            {
+                if (iDriveController.rotationCounterclockwiseSteps == 1)
+                {
+                    moveLeft();
+                }
+                else if (iDriveController.rotationCounterclockwiseSteps == 2)
+                {
+                    moveLeft();
+                    moveDown();
+                }
+                else if (iDriveController.rotationCounterclockwiseSteps >= 3)
+                {
+                    moveLeft();
+                    moveDown();
+                    moveRight();
+                }
+
+            }
+
+            if (currentButton == button3)
+            {
+                if (iDriveController.rotationClockwiseSteps > 0)
+                {
+                    if (iDriveController.rotationClockwiseSteps == 1)
+                    {
+                        moveDown();
+                    }
+                    else if (iDriveController.rotationClockwiseSteps == 2)
+                    {
+                        moveDown();
+                        moveLeft();
+                    }
+                    else if (iDriveController.rotationClockwiseSteps >= 3)
+                    {
+                        moveDown();
+                        moveLeft();
+                        moveLeft();
+                    }
+                }
+            }
+            else if (iDriveController.rotationCounterclockwiseSteps > 0)
+            {
+                if (iDriveController.rotationCounterclockwiseSteps == 1)
+                {
+                    moveLeft();
+                }
+                else if (iDriveController.rotationCounterclockwiseSteps == 2)
+                {
+                    moveLeft();
+                    moveLeft();
+                }
+                else if (iDriveController.rotationCounterclockwiseSteps >= 3)
+                {
+                    moveLeft();
+                    moveLeft();
+                    moveDown();
+                }
+            }
+            //
+            if (currentButton == button4)
+            {
+                if (iDriveController.rotationClockwiseSteps > 0)
+                {
+                    if (iDriveController.rotationClockwiseSteps == 1)
+                    {
+                        moveUp();
+                    }
+                    else if (iDriveController.rotationClockwiseSteps == 2)
+                    {
+                        moveUp();
+                        moveRight();
+                    }
+                    else if (iDriveController.rotationClockwiseSteps >= 3)
+                    {
+                        moveUp();
+                        moveRight();
+                        moveRight();
+                    }
+                }
+            }
+            else if (iDriveController.rotationCounterclockwiseSteps > 0)
+            {
+                if (iDriveController.rotationCounterclockwiseSteps == 1)
+                {
+                    moveRight();
+                }
+                else if (iDriveController.rotationCounterclockwiseSteps == 2)
+                {
+                    moveRight();
+                    moveRight();
+                }
+                else if (iDriveController.rotationCounterclockwiseSteps >= 3)
+                {
+                    moveRight();
+                    moveRight();
+                    moveUp();
+                }
+
+            }
+
+            if (currentButton == button5)
+            {
+                if (iDriveController.rotationClockwiseSteps > 0)
+                {
+                    if (iDriveController.rotationClockwiseSteps == 1)
+                    {
+                        moveLeft();
+                    }
+                    else if (iDriveController.rotationClockwiseSteps == 2)
+                    {
+                        moveLeft();
+                        moveUp();
+                    }
+                    else if (iDriveController.rotationClockwiseSteps >= 3)
+                    {
+                        moveLeft();
+                        moveUp();
+                        moveRight();
+                    }
+                }
+            }
+            else if (iDriveController.rotationCounterclockwiseSteps > 0)
+            {
+                if (iDriveController.rotationCounterclockwiseSteps == 1)
+                {
+                    moveRight();
+                }
+                else if (iDriveController.rotationCounterclockwiseSteps == 2)
+                {
+                    moveRight();
+                    moveUp();
+                }
+                else if (iDriveController.rotationCounterclockwiseSteps >= 3)
+                {
+                    moveRight();
+                    moveUp();
+                    moveLeft();
+                }
+
+            }
+
+            if (currentButton == button6)
+            {
+                if (iDriveController.rotationClockwiseSteps > 0)
+                {
+                    if (iDriveController.rotationClockwiseSteps == 1)
+                    {
+                        moveLeft();
+                    }
+                    else if (iDriveController.rotationClockwiseSteps == 2)
+                    {
+                        moveLeft();
+                        moveLeft();
+                    }
+                    else if (iDriveController.rotationClockwiseSteps >= 3)
+                    {
+                        moveLeft();
+                        moveLeft();
+                        moveUp();
+                    }
+                }
+            }
+            else if (iDriveController.rotationCounterclockwiseSteps > 0)
+            {
+                if (iDriveController.rotationCounterclockwiseSteps == 1)
+                {
+                    moveUp();
+                }
+                else if (iDriveController.rotationCounterclockwiseSteps == 2)
+                {
+                    moveUp();
+                    moveLeft();
+                }
+                else if (iDriveController.rotationCounterclockwiseSteps >= 3)
+                {
+                    moveUp();
+                    moveLeft();
+                    moveLeft();
+                }
+
+            }
+            */
+        }
+        #endregion
     }
 
     private void CursorLock() //reset the Cursor by first locking it with this function and unlock it with the next on
