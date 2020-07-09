@@ -3,9 +3,8 @@
     <Files>
       <File FileName="Assets/MeineDaten/Scripts/IDriveController.cs" Line="148" Column="31" />
       <File FileName="Assets/MeineDaten/Scripts/ValueManipulation/ValueManipulation.cs" />
-      <File FileName="Assets/MeineDaten/Scripts/BlätterAufgabe/BlaetterAufgabe/BlaetterRectMovement.cs" Line="26" Column="22" />
       <File FileName="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlControl.cs" Line="54" Column="1" />
-      <File FileName="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlTrackpad.cs" Line="45" Column="34" />
+      <File FileName="Assets/MeineDaten/Scripts/AuswahlAufgabe/AuswahlTrackpad.cs" Line="177" Column="24" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
