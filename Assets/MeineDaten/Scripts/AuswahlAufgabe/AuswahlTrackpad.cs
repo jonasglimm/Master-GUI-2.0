@@ -20,6 +20,7 @@ public class AuswahlTrackpad : MonoBehaviour{
     private Button currentButton;
     private Vector3 lastMouseCoordinate = Vector3.zero; // used to store the last mose moved co-ordinates. Initialized with (0,0,0)
     private bool swipeInProgress = false;
+    private Button[] buttonListForRotation;
 
     private bool isTrackpadEnabled;
     private bool touchscreenInput;
@@ -53,6 +54,12 @@ public class AuswahlTrackpad : MonoBehaviour{
 
         cursorResetTime = valueControlCenter.cursorResetTime;
         iDriveController = GameObject.Find("AufgabenManager").GetComponent<IDriveController>();
+        buttonListForRotation[0] = button1;
+        buttonListForRotation[1] = button2;
+        buttonListForRotation[2] = button3;
+        buttonListForRotation[3] = button6;
+        buttonListForRotation[4] = button5;
+        buttonListForRotation[5] = button4;
     }
 
     void Start()
@@ -400,6 +407,66 @@ public class AuswahlTrackpad : MonoBehaviour{
         //
 
         #region Buttonrotation
+
+        if (rotationIsActive)
+        {
+            if(iDriveController.rotationClockwiseSteps > 0 || iDriveController.rotationCounterclockwiseSteps > 0)
+            {
+                int counter = 0;
+
+                if(currentButton == button1)
+                {
+                    counter = 0;
+                }
+                else if (currentButton == button2)
+                {
+                    counter = 1;
+                }
+                else if (currentButton == button3)
+                {
+                    counter = 2;
+                }
+                else if (currentButton == button6)
+                {
+                    counter = 3;
+                }
+                else if(currentButton == button5)
+                {
+                    counter = 4;
+                }
+                else if (currentButton == button4)
+                {
+                    counter = 5;
+                }
+
+                if(iDriveController.rotationClockwiseSteps > 0)
+                {
+                    if(counter + iDriveController.rotationClockwiseSteps < 6)
+                    {
+                        counter = counter + iDriveController.rotationClockwiseSteps;
+                    }
+                    else if(counter + iDriveController.rotationClockwiseSteps < 12)
+                    {
+                        counter = counter + iDriveController.rotationClockwiseSteps - 6;
+                    }
+                }
+                if (iDriveController.rotationCounterclockwiseSteps > 0)
+                {
+                    if (counter - iDriveController.rotationCounterclockwiseSteps >= 0)
+                    {
+                        counter = counter - iDriveController.rotationCounterclockwiseSteps;
+                    }
+                    else if (counter - iDriveController.rotationCounterclockwiseSteps > -6)
+                    {
+                        counter = counter - iDriveController.rotationCounterclockwiseSteps + 6;
+                    }
+                }
+                currentButton = buttonListForRotation[counter];
+            }
+        }
+
+        #region Alternative
+        /*
         if (rotationIsActive)
         {
             if (currentButton == button1)
@@ -473,7 +540,10 @@ public class AuswahlTrackpad : MonoBehaviour{
                     moveUp();
                 }
             }
+        */
+            #endregion
 
+            #region Alternative2
             /*
             if (currentButton == button1)
             {
@@ -720,7 +790,8 @@ public class AuswahlTrackpad : MonoBehaviour{
 
             }
             */
-        }
+        
+        #endregion
         #endregion
     }
 

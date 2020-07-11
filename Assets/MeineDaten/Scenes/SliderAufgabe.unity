@@ -847,7 +847,7 @@ MonoBehaviour:
   valueSlider: {fileID: 691972343}
   startPanel: {fileID: 796237209654486575}
   startPanelTouchscreen: {fileID: 7041265932255634393}
-  swipeDistanceX: 25
+  swipeDistanceX: 20
 --- !u!114 &242269567
 MonoBehaviour:
   m_ObjectHideFlags: 0

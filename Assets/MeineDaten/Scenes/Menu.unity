@@ -189,7 +189,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Text Aufgabe
+  m_Text: Text
 --- !u!222 &171736665
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -567,7 +567,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Karte Aufgabe
+  m_Text: Karte
 --- !u!222 &278031095
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -773,7 +773,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Werte Aufgabe
+  m_Text: Werte
 --- !u!222 &450638055
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1195,6 +1195,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a972864d721e34308877fb854934dd4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movedLeftOnce: 0
+  movedRightOnce: 0
+  movedUpOnce: 0
+  movedDownOnce: 0
+  pushedOnce: 0
+  pushStarted: 0
+  pushHeld: 0
+  pushEnded: 0
+  leftStarted: 0
+  leftHeld: 0
+  leftEnded: 0
+  rightStarted: 0
+  rightHeld: 0
+  rightEnded: 0
+  upStarted: 0
+  upHeld: 0
+  upEnded: 0
+  downStarted: 0
+  downHeld: 0
+  downEnded: 0
+  turnedClockwise: 0
+  turnedCounterclockwise: 0
+  rotationClockwiseSteps: 0
+  rotationCounterclockwiseSteps: 0
+  RotaryPush: 0
+  RotaryLeft: 0
+  RotaryRight: 0
+  RotaryUp: 0
+  RotaryDown: 0
+  MainOption: 0
+  MainBack: 0
+  MainMedia: 0
+  MainRadio: 0
+  MainTel: 0
+  MainNav: 0
+  MainMenue: 0
+  RotaryEx: 0
 --- !u!1 &1021439674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,7 +1366,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Auswahl Aufgabe
+  m_Text: Auswahl
 --- !u!222 &1344270854
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1824,7 +1861,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Scrollen Aufgabe
+  m_Text: Scrollen
 --- !u!222 &1784243247
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1901,7 +1938,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Bl\xE4tter Aufgabe"
+  m_Text: "Bl\xE4ttern"
 --- !u!222 &1994450586
 CanvasRenderer:
   m_ObjectHideFlags: 0
