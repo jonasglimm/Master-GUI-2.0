@@ -34,6 +34,7 @@ public class BlaetterControl : MonoBehaviour
     private int fehlercounter;
     private int aufgabenNr;
     private int pagesLength;
+    private bool trackpadWasClicked;
 
     // Active time is the time in sec how long a feedback panel is shown
     private float activeTime;

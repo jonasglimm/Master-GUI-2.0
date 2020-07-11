@@ -225,7 +225,8 @@ public class MapboxTaskControl : MonoBehaviour
         nameAufgabe.GetComponent<TextMeshProUGUI>().text = gesuchteMarkierung;
         nummerDerAufgabe.GetComponent<TextMeshProUGUI>().text = targetCount.ToString();
         maxAnzahlAufgabe.GetComponent<TextMeshProUGUI>().text = valueControlCenter.numberOfTasks.ToString();
-        gesuchteMarkierung = "Markierung im " + targetNames[targetCount - 1] + "!";
+        //gesuchteMarkierung = "Markierung im " + targetNames[targetCount - 1] + "!";
+        gesuchteMarkierung = "Bewegen Sie sich zum markierten Ziel!";
 
     }
 
