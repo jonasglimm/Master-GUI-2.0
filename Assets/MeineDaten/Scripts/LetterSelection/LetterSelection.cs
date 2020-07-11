@@ -60,8 +60,16 @@ public class LetterSelection : MonoBehaviour
                 inputField.text = inputField.text + text;
             }
 
-        
-            if(selector.transform.eulerAngles.z >= 0f-1f && selector.transform.eulerAngles.z < 0f+1f ){
+            if (iDriveController.movedLeftOnce)
+            {
+                inputField.caretPosition = inputField.caretPosition - 1;
+            }
+            else if (iDriveController.movedRightOnce)
+            {
+                inputField.caretPosition = inputField.caretPosition + 1;
+            }
+
+            if (selector.transform.eulerAngles.z >= 0f-1f && selector.transform.eulerAngles.z < 0f+1f ){
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "A";
