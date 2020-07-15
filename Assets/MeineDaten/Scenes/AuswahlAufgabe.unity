@@ -833,6 +833,7 @@ GameObject:
   - component: {fileID: 174452988}
   - component: {fileID: 174452987}
   - component: {fileID: 174452990}
+  - component: {fileID: 174452991}
   m_Layer: 5
   m_Name: 1
   m_TagString: Untagged
@@ -1058,6 +1059,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &174452991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174452985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f592a70621844a3ac63d139a78d783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueControlCenter: {fileID: 526270272}
+  button: {fileID: 174452985}
 --- !u!1 &195429259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,6 +1583,7 @@ GameObject:
   - component: {fileID: 357668913}
   - component: {fileID: 357668916}
   - component: {fileID: 357668917}
+  - component: {fileID: 357668918}
   m_Layer: 5
   m_Name: 4
   m_TagString: Untagged
@@ -1805,6 +1821,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &357668918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357668911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f592a70621844a3ac63d139a78d783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueControlCenter: {fileID: 526270272}
+  button: {fileID: 357668911}
 --- !u!1 &438457346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,6 +1848,7 @@ GameObject:
   - component: {fileID: 438457349}
   - component: {fileID: 438457348}
   - component: {fileID: 438457351}
+  - component: {fileID: 438457352}
   m_Layer: 5
   m_Name: 2
   m_TagString: Untagged
@@ -2043,6 +2074,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &438457352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438457346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f592a70621844a3ac63d139a78d783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueControlCenter: {fileID: 526270272}
+  button: {fileID: 438457346}
 --- !u!1 &461858463
 GameObject:
   m_ObjectHideFlags: 0
@@ -2756,8 +2801,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfTasks: 10
   touchscreenInput: 0
-  touchpadInput: 1
-  iDriveInput: 0
+  touchpadInput: 0
+  iDriveInput: 1
   gestureInput: 0
   cursorResetTime: 0.2
   feedbackPanelTime: 0.5
@@ -3498,6 +3543,7 @@ GameObject:
   - component: {fileID: 603107159}
   - component: {fileID: 603107162}
   - component: {fileID: 603107163}
+  - component: {fileID: 603107164}
   m_Layer: 5
   m_Name: 5
   m_TagString: Untagged
@@ -3735,6 +3781,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &603107164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603107157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f592a70621844a3ac63d139a78d783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueControlCenter: {fileID: 526270272}
+  button: {fileID: 603107157}
 --- !u!1 &634809081 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3305670148686694550, guid: 78c57297dcc8d41c19fe59d86d5ee023,
@@ -6139,6 +6199,7 @@ GameObject:
   - component: {fileID: 1702933949}
   - component: {fileID: 1702933953}
   - component: {fileID: 1702933952}
+  - component: {fileID: 1702933954}
   m_Layer: 5
   m_Name: 3
   m_TagString: Untagged
@@ -6376,6 +6437,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1702933954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702933947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f592a70621844a3ac63d139a78d783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueControlCenter: {fileID: 526270272}
+  button: {fileID: 1702933947}
 --- !u!1 &1707456513
 GameObject:
   m_ObjectHideFlags: 0
@@ -6813,6 +6888,7 @@ GameObject:
   - component: {fileID: 1745941032}
   - component: {fileID: 1745941035}
   - component: {fileID: 1745941036}
+  - component: {fileID: 1745941037}
   m_Layer: 5
   m_Name: 6
   m_TagString: Untagged
@@ -7050,6 +7126,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1745941037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745941030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f592a70621844a3ac63d139a78d783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueControlCenter: {fileID: 526270272}
+  button: {fileID: 1745941030}
 --- !u!1 &1774686474
 GameObject:
   m_ObjectHideFlags: 0

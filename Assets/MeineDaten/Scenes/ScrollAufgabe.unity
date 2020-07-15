@@ -1032,8 +1032,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfTasks: 10
-  touchscreenInput: 0
-  touchpadInput: 1
+  touchscreenInput: 1
+  touchpadInput: 0
   iDriveInput: 0
   gestureInput: 0
   cursorResetTime: 0.5
@@ -1644,9 +1644,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.26666668, g: 0.44705883, b: 0.76862746, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.8509804, b: 0.4, a: 0.78431374}
+    m_HighlightedColor: {r: 0.21960786, g: 0.454902, b: 0.75294125, a: 1}
     m_PressedColor: {r: 0.73333335, g: 0.68235296, b: 0.28235295, a: 1}
-    m_SelectedColor: {r: 1, g: 0.8509804, b: 0.4, a: 0.78431374}
+    m_SelectedColor: {r: 1, g: 0.8509804, b: 0.4, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -5607,6 +5607,7 @@ GameObject:
   - component: {fileID: 604105772698688560}
   - component: {fileID: 6083875496586348954}
   - component: {fileID: 458901445}
+  - component: {fileID: 7530810622358068704}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -5614,6 +5615,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &7530810622358068704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7530810622358068703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f592a70621844a3ac63d139a78d783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueControlCenter: {fileID: 1127592224}
+  button: {fileID: 7530810622358068703}
 --- !u!222 &7616788213148706223
 CanvasRenderer:
   m_ObjectHideFlags: 0

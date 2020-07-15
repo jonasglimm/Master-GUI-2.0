@@ -56,10 +56,18 @@ public class ValueManipulation : MonoBehaviour
             {
                 if (value < maxValue)
                 {
-                    selector.fillAmount = selector.fillAmount + (iDriveController.rotationClockwiseSteps * fillAmountStep);
-                        scrollSound.Play();
+                    if (value + iDriveController.rotationClockwiseSteps <= maxValue)
+                    {
+                        selector.fillAmount = selector.fillAmount + (iDriveController.rotationClockwiseSteps * fillAmountStep);
                         value = value + iDriveController.rotationClockwiseSteps;
-                        selectionValue.text = value.ToString();
+                    }
+                    else
+                    {
+                        selector.fillAmount = maxFillAmountDisplayed;
+                        value = maxValue;
+                    }
+                    scrollSound.Play();
+                    selectionValue.text = value.ToString();
                 }
             }
 
@@ -67,10 +75,18 @@ public class ValueManipulation : MonoBehaviour
             {
                 if (value > 0)
                 {
-                    selector.fillAmount = selector.fillAmount - (iDriveController.rotationCounterclockwiseSteps * fillAmountStep);
-                        scrollSound.Play();
+                    if (value - iDriveController.rotationCounterclockwiseSteps >= 0)
+                    {
+                        selector.fillAmount = selector.fillAmount - (iDriveController.rotationCounterclockwiseSteps * fillAmountStep);
                         value = value - iDriveController.rotationCounterclockwiseSteps;
-                        selectionValue.text = value.ToString();
+                    }
+                    else
+                    {
+                        selector.fillAmount = minFillAmountDisplayed;
+                        value = 0;
+                    }
+                    scrollSound.Play();
+                    selectionValue.text = value.ToString();
                 }
             }
 

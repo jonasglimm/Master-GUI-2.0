@@ -156,9 +156,16 @@ public class ScrollRectMovement : MonoBehaviour
 
             if (iDriveController.rotationClockwiseSteps > 0)
             {
-                if (index < numberOfButtons - 1)
+                if (index <= numberOfButtons - 1)
                 {
-                    index = index + iDriveController.rotationClockwiseSteps;
+                    if (index + iDriveController.rotationClockwiseSteps < numberOfButtons - 1)
+                    {
+                        index = index + iDriveController.rotationClockwiseSteps;
+                    }
+                    else
+                    {
+                        index = numberOfButtons - 1;
+                    }
                     scrollingSound.Play();
                 }
             }
@@ -166,7 +173,14 @@ public class ScrollRectMovement : MonoBehaviour
             {
                 if (index > 0)
                 {
-                    index = index - iDriveController.rotationCounterclockwiseSteps;
+                    if (index - iDriveController.rotationCounterclockwiseSteps >= 0)
+                    {
+                        index = index - iDriveController.rotationCounterclockwiseSteps;
+                    }
+                    else
+                    {
+                        index = 0;
+                    }
                     scrollingSound.Play();
                 }
             }

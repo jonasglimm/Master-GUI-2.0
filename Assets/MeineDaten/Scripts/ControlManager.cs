@@ -165,7 +165,14 @@ public class ControlManager : MonoBehaviour
                     currentTaskElement++;
                 }
             }
-            currentTaskTextField.text = tasks[currentTaskElement].ToUpper();
+            if (touchscreenInput)
+            {
+                currentTaskTextField.text = tasks[currentTaskElement];
+            }
+            else
+            {
+                currentTaskTextField.text = tasks[currentTaskElement].ToUpper();
+            }
             lastTaskElement = currentTaskElement;
         }
     }

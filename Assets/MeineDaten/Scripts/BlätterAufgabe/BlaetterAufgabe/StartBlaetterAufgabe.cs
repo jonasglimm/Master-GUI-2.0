@@ -8,11 +8,13 @@ public class StartBlaetterAufgabe : MonoBehaviour
     private ValueControlCenter valueControlCenter;
     private GameObject snapOnScroll;
     private AudioSource clickSound;
+    private Button firstButton;
 
     public void Awake()
     {
         InitiateVariables();
         EnableBlaetterRectMovement();
+        ChangeColorForTouchscreen();
         //EnableClickSound();
     }
 
@@ -21,6 +23,7 @@ public class StartBlaetterAufgabe : MonoBehaviour
         valueControlCenter = GameObject.Find("BlaetterManager").GetComponent<ValueControlCenter>();
         snapOnScroll = GameObject.Find("SnapOnScroll");
         clickSound = GameObject.Find("BlaetterManager").GetComponent<AudioSource>();
+        firstButton = GameObject.Find("FirstButton").GetComponent<Button>();
     }
 
     private void EnableBlaetterRectMovement()
@@ -44,6 +47,17 @@ public class StartBlaetterAufgabe : MonoBehaviour
         else
         {
             clickSound.enabled = false;
+        }
+    }
+
+    private void ChangeColorForTouchscreen()
+    {
+        if (valueControlCenter.touchscreenInput)
+        {
+            ColorBlock colorVar = firstButton.colors;
+            colorVar.selectedColor = new Color(0.2666667f, 0.4470588f, 0.7686275f, 1);
+            colorVar.highlightedColor = new Color(0.2666667f, 0.4470588f, 0.7686275f, 1);
+            firstButton.colors = colorVar;
         }
     }
 }
