@@ -6,12 +6,12 @@ using TMPro;
 using System;
 public class ControlManager : MonoBehaviour
 {
-    [Header("Task Values")]
+    [Header("Task Values")] // set the tasks
     public bool taskIsTextInput;
     public string[] tasks;
     public int maxValue =100;
 
-    [Header("GUI Elements")]
+    [Header("GUI Elements")] // Set the different GUI-Elements
     public TextMeshProUGUI taskTextField;
     public TextMeshProUGUI errorCountTextField;
     public TextMeshProUGUI currentTaskTextField;
@@ -21,24 +21,27 @@ public class ControlManager : MonoBehaviour
     public GameObject completionScreen;
     
     [Header("Task overview")]
-    public int totalTasks;
-    public float activeTime;
-    [Header("Input modality")]
+    public int totalTasks; // set the number of tasks
+    public float activeTime; // set the time for visual feedback panel
+
+    [Header("Input modality")] //checkbox for which modality should currently be used
     public bool touchscreenInput;
     public bool touchpadInput;
     public bool iDriveInput;
     public bool gestureInput;
-    [Header("Start requirements")]
-    public GameObject modalityWarning;
-    public  float cursorResetTime;
+
+    [Header("Start requirements")] 
+    public GameObject modalityWarning; //warning panel if multiple modalities are activ
+    public  float cursorResetTime; //time intervall after which the cursor is hidden to be reset into the screen center
+
     [Header("Sounds")]
     public AudioSource clickSound;
     
-    private int taskNumber;
+    private int taskNumber; //task counter
     
-    private int errors;
-    private bool[] modalities = new bool[4];
-    private int[] taskList = new int[15];
+    private int errors; //error counter
+    private bool[] modalities = new bool[4]; 
+    private int[] taskList = new int[15]; //list to generate a diverse but still repetitive order of tasks which change depending on the total amount of tasks
     private int currentTaskNumber;
     private int lastTaskElement;
     private DateTime startTime;
@@ -47,6 +50,7 @@ public class ControlManager : MonoBehaviour
 
     [HideInInspector]
     public bool endscreenIsActive = false;
+    [HideInInspector]
     public bool startPanelIsActive;
 
 
@@ -62,7 +66,7 @@ public class ControlManager : MonoBehaviour
         NewTask();
     }
 
-    private void Update()
+    private void Update() //Check if the supervisor has started or ended the current task
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -75,7 +79,7 @@ public class ControlManager : MonoBehaviour
 
     }
 
-    public void SetStartPanel()
+    public void SetStartPanel() //set start panel depending on the modality
     {
         if (touchscreenInput == true)
         {
@@ -91,10 +95,10 @@ public class ControlManager : MonoBehaviour
         }
     }
 
-    public void StartTime()
+    public void StartTime() // Start time for ToT measurement and deactivate all start panels (started via start button or key stroke of "S"
     {
         startTime = System.DateTime.Now;
-        clickSound.Play();
+        clickSound.Play(); //acustic feedback
         startPanel.SetActive(false);
         startPanelTouchscreen.SetActive(false);
         startPanelIsActive = false;
@@ -122,20 +126,21 @@ public class ControlManager : MonoBehaviour
         }
     }
 
-    private void NewTask()
+    private void NewTask() //generate a new task
     {
-        int factor = taskNumber / taskList.Length; //start from the top of the list after counting through it
+        //need the "factor" variable if there should be no task limit
+        int factor = taskNumber / taskList.Length; //because the variable "factor" is an "int", the digits after the decimal point are being dropped
         if (taskNumber - (factor * taskList.Length) != 0)
         {
-            if (currentTaskNumber != taskList[taskNumber - (factor * taskList.Length) - 1]) // prevent that the same name needs to be selected twice im a row
+            if (currentTaskNumber != taskList[taskNumber - (factor * taskList.Length) - 1]) // prevent that the same task is selected twice im a row
             {
                 currentTaskNumber = taskList[taskNumber - (factor * taskList.Length) - 1];
             }
-            else if (currentTaskNumber != taskList[taskNumber - (factor * taskList.Length) - 2]) // prevent that the same name needs to be selected twice im a row
+            else if (currentTaskNumber != taskList[taskNumber - (factor * taskList.Length) - 2]) // prevent that the same task is selected twice im a row
             {
                 currentTaskNumber = taskList[taskNumber - (factor * taskList.Length) - 2];
             }
-            else if (currentTaskNumber != taskList[taskNumber - (factor * taskList.Length) - 3]) // prevent that the same name needs to be selected twice im a row
+            else if (currentTaskNumber != taskList[taskNumber - (factor * taskList.Length) - 3]) // prevent that the same task is selected twice im a row
             {
                 currentTaskNumber = taskList[taskNumber - (factor * taskList.Length) - 3];
             }
@@ -145,12 +150,13 @@ public class ControlManager : MonoBehaviour
             currentTaskNumber = taskList[taskNumber / factor - 1];
         }
 
-        if (taskIsTextInput == false)
+        if (taskIsTextInput == false) //To convert the text into a processable variable
         {
             currentTaskTextField.text = currentTaskNumber.ToString();
         }
         else
         {
+            // select the next task
             int currentTaskElement = currentTaskNumber * tasks.Length / maxValue;
             currentTaskTextField.text = tasks[currentTaskElement];
 
@@ -171,14 +177,14 @@ public class ControlManager : MonoBehaviour
             }
             else
             {
-                currentTaskTextField.text = tasks[currentTaskElement].ToUpper();
+                currentTaskTextField.text = tasks[currentTaskElement].ToUpper(); //Capital letter to fit the keyboard layout
             }
             lastTaskElement = currentTaskElement;
         }
     }
 
 
-    private void CreateTaskOrder() //Ramdom Order depending on the number of names
+    private void CreateTaskOrder() //Random Order depending on the number of names
 {
         //needs to be the same as in SliderTask
         taskList[0] = maxValue * 4 / 7;
@@ -217,7 +223,7 @@ public class ControlManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(activeTime);
         errorScreen.SetActive(false);
     }
-
+    // Check if the input was correct
      public void checkOutput(string inputText){
         clickSound.Play();
         string verificationString = currentTaskTextField.text;
@@ -235,7 +241,7 @@ public class ControlManager : MonoBehaviour
         }
      }
 
-    public void EndScreen()
+    public void EndScreen() //show end screen and stop the timer for ToT
     {
         var totalTime = System.DateTime.Now - startTime;
         timeTextField.text = totalTime.Minutes.ToString() + " min : " + totalTime.Seconds.ToString() + " sec";

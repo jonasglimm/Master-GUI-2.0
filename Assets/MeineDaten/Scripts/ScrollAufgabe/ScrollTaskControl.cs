@@ -6,11 +6,12 @@ using TMPro;
 using System;
 public class ScrollTaskControl : MonoBehaviour
 {
-
+    //references to different scripts
     public ButtonListControl buttonListControl;
     private ScrollRectMovement scrollRectMovement;
     private ValueControlCenter valueControlCenter;
     private IDriveController iDriveController;
+    //GUI elements
     public TextMeshProUGUI timeTextField;
     public GameObject nameAufgabe;
     public GameObject anzahlFehler;
@@ -24,6 +25,7 @@ public class ScrollTaskControl : MonoBehaviour
 
     public AudioSource clickSound;
 
+    //private variables for internal calculations
     private string gesuchterName;
     private int listenEintrag;
     private int[] aufgabenListe = new int[15];
@@ -38,25 +40,27 @@ public class ScrollTaskControl : MonoBehaviour
     public GameObject startPanel;
     public GameObject startPanelTouchscreen;
 
-    private void Awake()
+    private void Awake() //assign local variables to the scripts
     {
         valueControlCenter = GameObject.Find("ScrollManager").GetComponent<ValueControlCenter>();
         scrollRectMovement = GameObject.Find("ButtonScrollList").GetComponent<ScrollRectMovement>();
         iDriveController = GameObject.Find("ScrollManager").GetComponent<IDriveController>();
     }
 
-    void Start()
+    void Start() 
     {
+        //set variables 
         activeTime = valueControlCenter.feedbackPanelTime;
         anzahlAufgaben = valueControlCenter.numberOfTasks;
         namesLength = buttonListControl.names.Length;
         fehlercounter = 0;
         aufgabenNr = 1;
+        //create tasks
         CreateTaskOrder();
         SetStartPanel();
         NewTask();
 
-        if (!valueControlCenter.iDriveInput)
+        if (!valueControlCenter.iDriveInput) //deactivate iDriveInputs to avoid unwanted interference
         {
             iDriveController.enabled = false;
         }
@@ -64,6 +68,7 @@ public class ScrollTaskControl : MonoBehaviour
 
     private void Update()
     {
+        //update the GUI elements
         nameAufgabe.GetComponent<TMPro.TextMeshProUGUI>().text = gesuchterName;
         anzahlFehler.GetComponent<TMPro.TextMeshProUGUI>().text = fehlercounter.ToString();
         nummerDerAufgabe.GetComponent<TMPro.TextMeshProUGUI>().text = aufgabenNr.ToString();
@@ -71,6 +76,7 @@ public class ScrollTaskControl : MonoBehaviour
 
         if (valueControlCenter.touchpadInput == true)
         {
+            //start the comparison if the mouse press/touchpad is tapped/pressed
             if (Input.GetMouseButtonDown(0)){
                 Comparision(scrollRectMovement.buttonText[0]);
                 scrollRectMovement.selectedButton.Select();
@@ -80,6 +86,7 @@ public class ScrollTaskControl : MonoBehaviour
 
         if (valueControlCenter.iDriveInput)
         {
+            //start the comparison if the iDrive-Controller is pressed
             if (iDriveController.pushedOnce)
             {
                 Comparision(scrollRectMovement.buttonText[0]);
@@ -99,7 +106,7 @@ public class ScrollTaskControl : MonoBehaviour
         }
     }
 
-    public void SetStartPanel()
+    public void SetStartPanel() //activate the start panel depending if the modality is touchscreen input 
     {
         if (valueControlCenter.touchscreenInput == true)
         {
@@ -113,7 +120,7 @@ public class ScrollTaskControl : MonoBehaviour
         }
     }
 
-    public void StartTime()
+    public void StartTime() //start the timer for ToT
     {
         startTime = System.DateTime.Now;
         clickSound.Play();
@@ -121,7 +128,7 @@ public class ScrollTaskControl : MonoBehaviour
         startPanelTouchscreen.SetActive(false);
     }
 
-    public void Comparision(TextMeshProUGUI buttonText)
+    public void Comparision(TextMeshProUGUI buttonText) //compare if the selected name is correct
     {
         if (buttonText.text == gesuchterName)
         {
@@ -162,7 +169,7 @@ public class ScrollTaskControl : MonoBehaviour
         gesuchterName = buttonListControl.names[listenEintrag];
     }
 
-    private void CreateTaskOrder() //Ramdom Order depending on the number of names
+    private void CreateTaskOrder() //Ramdom order depending on the number of names
     {
         aufgabenListe[0] = namesLength / 2 + 1;
         aufgabenListe[1] = namesLength - 2;

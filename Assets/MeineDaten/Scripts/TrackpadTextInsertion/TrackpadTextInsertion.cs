@@ -9,10 +9,10 @@ public class TrackpadTextInsertion : MonoBehaviour{
     [Header("GUI Elements")]
     public TMP_InputField inputField;
     public Image selector;
-    public int minSelectorX;
-    public int maxSelectorX;
-    public int minSelectorY;
-    public int maxSelectorY;
+    public int minSelectorX; //setting boundries for the cursor movement
+    public int maxSelectorX; //setting boundries for the cursor movement
+    public int minSelectorY; //setting boundries for the cursor movement
+    public int maxSelectorY; //setting boundries for the cursor movement
 
     [Header("Swipe Movement")]
     public float swipeDistanceX;
@@ -60,13 +60,14 @@ public class TrackpadTextInsertion : MonoBehaviour{
     public void OpenTouchKeyboard() //assign this to the StartButton of the StartPanel
     {
         TouchScreenKeyboard.hideInput = true;
-        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false);
+        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false); //open the touchscreen keyboard of iOS
         //new
         inputField.enabled = true;
         inputField.Select();
     }
 
-    void insertText(string text){
+    void insertText(string text) //function to add new letters stepwise
+    {
         inputField.text = inputField.text + text; 
     }
 
@@ -76,8 +77,10 @@ public class TrackpadTextInsertion : MonoBehaviour{
         if(script.touchpadInput == true ){
              CursorUnlock();
             Vector3 mouseDelta = Input.mousePosition - lastMouseCoordinate;
-            handleSwipeGesture(mouseDelta);
+            handleSwipeGesture(mouseDelta); //analyse if there were any swipe gestures
             // handleHorizontalGesture(mouseDelta);
+
+            //if the touchpad is clicked, the current location of the selector is checked 
             if(Input.GetMouseButtonDown(0)){
                 if(selectorRectTransform.localPosition.x == minSelectorX && selectorRectTransform.localPosition.y == maxSelectorY){
                     insertText("A");
@@ -182,7 +185,8 @@ public class TrackpadTextInsertion : MonoBehaviour{
                     clickSound.Play();
                 } else if(selectorRectTransform.localPosition.x == (minSelectorX + (15*70)) && selectorRectTransform.localPosition.y == minSelectorY){
                     // Enter value
-                    if(Input.GetMouseButtonDown(0)){
+                    if(Input.GetMouseButtonDown(0)) //check the input
+                    {
                         ControlManager script = gameObject.GetComponent<ControlManager>();
                         script.checkOutput(inputField.text);
                         inputField.text = "";
@@ -192,20 +196,20 @@ public class TrackpadTextInsertion : MonoBehaviour{
             
         } else if (script.touchscreenInput == true){
 
-            if (script.endscreenIsActive == true)
+            if (script.endscreenIsActive == true) //hide the keyboard, if the endscreen is active
             {
                 keyboard.active = false;
             }
 
             if (TouchScreenKeyboard.visible == true && keyboard != null && script.endscreenIsActive == false)
             {
-                if (keyboard.text != inputField.text)
+                if (keyboard.text != inputField.text) //if the text of the keyboard and the input field is not identical, a letter was added and therefore the new letter must be added inside the input field
                 {
                     inputField.text = keyboard.text;
                     clickSound.Play();
                 }
 
-                if (keyboard.status == TouchScreenKeyboard.Status.Done)
+                if (keyboard.status == TouchScreenKeyboard.Status.Done) //if the input is ended - the input field should be cleared
                 {
                     script.checkOutput(keyboard.text.ToUpper());
                     inputField.text = "";
@@ -215,6 +219,7 @@ public class TrackpadTextInsertion : MonoBehaviour{
                 }
             }
 
+            #region Alternative
             /*
             if (TouchScreenKeyboard.visible == false && keyboard != null)
             {
@@ -235,6 +240,7 @@ public class TrackpadTextInsertion : MonoBehaviour{
                 keyboard.active = false;
             }
             */
+            #endregion
         }
     }
 

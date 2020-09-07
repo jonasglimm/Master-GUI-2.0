@@ -10,7 +10,7 @@ namespace TrackpadTouch
 	{
 		public GameObject prefab;
 
-		private Vector3 touchZeroPrevPos = new Vector3(0,0,0);
+		private Vector3 touchZeroPrevPos = new Vector3(0,0,0); //store the position on each touch from the last frame
 		private Vector3 touchOnePrevPos = new Vector3(0,0,0);
 		private Vector2 panTouchPrevPos = new Vector2(0, 0);
 		private Vector2 touchStart = new Vector2();
@@ -18,19 +18,19 @@ namespace TrackpadTouch
 
 		private MapboxTaskControl mapboxTaskControl;
 
-		Dictionary<int, GameObject> touchObjects = new Dictionary<int, GameObject>();
+		Dictionary<int, GameObject> touchObjects = new Dictionary<int, GameObject>(); //dictionary based on the imported TrackpadTouch - asset
 
         private void Awake()
         {
-			mapboxTaskControl = GameObject.Find("MapManager").GetComponent<MapboxTaskControl>();
+			mapboxTaskControl = GameObject.Find("MapManager").GetComponent<MapboxTaskControl>(); //reference to map control script
         }
 
         void Update()
 		{
-			for (var i = 0; i < TrackpadInput.touches.Count; ++i)
+			for (var i = 0; i < TrackpadInput.touches.Count; ++i) 
 			{
-				var touch = TrackpadInput.touches[i];
-				var deviceSize = TrackpadInput.deviceSizes[i];
+				var touch = TrackpadInput.touches[i]; //creates an array of each touch
+				var deviceSize = TrackpadInput.deviceSizes[i]; //stores the size of the touchdevice in pixels
 
 				var screenPoint = new Vector3(touch.position.x, touch.position.y, 0);
 				//var worldPos = Camera.main.ScreenToWorldPoint(screenPoint);
@@ -42,7 +42,9 @@ namespace TrackpadTouch
 
 				switch (touch.phase)
 				{
-
+					//this is acutally the code which is used in the example scripts of the Trackpad Touch asset
+					//This is used to create gameobject for the first two touches so that the position of these gameobjects can be analysed for possible pinch gestures
+					//This is kind of a detour but the measurement of the touch input was too inconsistent 
 					case TouchPhase.Began:
 						if (touchObjects.TryGetValue(touch.fingerId, out debugSphere))
 							Object.Destroy(debugSphere);
@@ -89,6 +91,7 @@ namespace TrackpadTouch
 		{
 			if (TrackpadInput.touchCount != 0)
 			{
+				// Two gameobjects are being created to analyse the movement of these
 				GameObject touch0 = GameObject.Find("Touch 0");
 				GameObject touch1 = GameObject.Find("Touch 1");
 
@@ -100,12 +103,12 @@ namespace TrackpadTouch
 					}
 					else
 					{
-						float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+						float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude; //calculate the distance between both touch points of the last frame
 
-						float touchDeltaMag = (touch0.transform.position - touch1.transform.position).magnitude;
-						var zoomDelta = 0.01f * (touchDeltaMag - prevTouchDeltaMag);
+						float touchDeltaMag = (touch0.transform.position - touch1.transform.position).magnitude; //calculate the distance between both touch points of this frame
+						var zoomDelta = 0.01f * (touchDeltaMag - prevTouchDeltaMag); //factor to decrease the magnitude
 						//Debug.Log(zoomDelta);
-						if (TrackpadInput.touches[0].phase != TouchPhase.Ended || TrackpadInput.touches[0].phase != TouchPhase.Canceled)
+						if (TrackpadInput.touches[0].phase != TouchPhase.Ended || TrackpadInput.touches[0].phase != TouchPhase.Canceled) //fire the zoom value if the touchphase has ended
 						{
 							if (Mathf.Abs(zoomDelta) < 0.5)
 							{
@@ -114,7 +117,7 @@ namespace TrackpadTouch
 						}
 						//Debug.Log("ZoomDelta = " + zoomDelta);
 					}
-					touchZeroPrevPos = touch0.transform.position;
+					touchZeroPrevPos = touch0.transform.position; //reset last frame position
 					touchOnePrevPos = touch1.transform.position;
 				}
 			}
@@ -130,21 +133,21 @@ namespace TrackpadTouch
 				{
 					if(TrackpadInput.touches[0].phase == TouchPhase.Began)
                     {
-						touchStart = TrackpadInput.touches[0].position;
+						touchStart = TrackpadInput.touches[0].position; //store the initial position
 						return Vector2.zero;
 					}
 
 					else if(TrackpadInput.touches[0].phase == TouchPhase.Moved)
 					{
-						Vector2 panTouchDelta = touchStart - TrackpadInput.touches[0].position ;
-						touchStart = TrackpadInput.touches[0].position;
+						Vector2 panTouchDelta = touchStart - TrackpadInput.touches[0].position ; // measure the position difference between last frame and current frame
+						touchStart = TrackpadInput.touches[0].position; //reset the touchStart value
 						if (panTouchDelta.x > 80 || panTouchDelta.y > 80) //avoid pan jumps caused by incorrectly detected touchInput
 						{
 							return Vector2.zero;
 						}
 						else
 						{
-							return panTouchDelta;
+							return panTouchDelta; //only in this case a pan value is sent 
 						}
 					}
 					else if (TrackpadInput.touches[0].phase == TouchPhase.Ended || TrackpadInput.touches[0].phase == TouchPhase.Canceled)

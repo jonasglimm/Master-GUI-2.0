@@ -22,6 +22,7 @@ public class ButtonListBlaettern : MonoBehaviour
         valueControlCenter = GameObject.Find("BlaetterManager").GetComponent<ValueControlCenter>();
         blaetterRectMovement = GameObject.Find("SnapOnScroll").GetComponent<BlaetterRectMovement>();
         pageSelectionCreator = GameObject.Find("BlaetterManager").GetComponent<PageSelectionCreator>();
+
         // Intiating a button for each element in the pages array
         for (int i = 0; i < pages.Length; i++)
         {
@@ -30,6 +31,7 @@ public class ButtonListBlaettern : MonoBehaviour
             button.GetComponent<ButtonListButtonBlaettern>().SetText(pages[i]);
             button.transform.SetParent(firstButton.transform.parent, false);
         }
+
         // Assigning the changable text of the first button
         firstButton.GetComponent<ButtonListButtonBlaettern>().SetText(firstButtonText);
 

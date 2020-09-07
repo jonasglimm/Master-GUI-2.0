@@ -63,8 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BananaEugene\CursorControl\Demo\DemoScript.cs" />
-    <Compile Include="Assets\BananaEugene\CursorControl\Windows\CursorControl.cs" />
     <Compile Include="Assets\Fingers\Demo\ExampleProjects\ExampleScripts\FingersExampleCoRoutineScript.cs" />
     <Compile Include="Assets\Fingers\Demo\ExampleProjects\ExampleScripts\FingersExampleMainMenuScript.cs" />
     <Compile Include="Assets\Fingers\Demo\ExampleProjects\ExampleScripts\FingersExampleOptionsScript.cs" />
@@ -631,14 +629,11 @@
     <Compile Include="Assets\MeineDaten\Scripts\MapAufgabe\PinSouthCollider.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\MapAufgabe\PinWestCollider.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\MapAufgabe\TrackpadInputMapbox.cs" />
-    <Compile Include="Assets\MeineDaten\Scripts\MapAufgabe\Unused\EnteringTrigger.cs" />
-    <Compile Include="Assets\MeineDaten\Scripts\MapAufgabe\Unused\MapControlAlt.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ScreenshotHandler.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ScrollAufgabe\ButtonListControl.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ScrollAufgabe\ScrollAufgabeMitTasten\ButtonListControlMitTasten.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ScrollAufgabe\ScrollAufgabeMitTasten\ButtonSelectionController.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ScrollAufgabe\ScrollAufgabeMitTasten\ScrollTaskControlMitTasten.cs" />
-    <Compile Include="Assets\MeineDaten\Scripts\ScrollAufgabe\ScrollAufgabeMitTasten\Unused\ScrollMitTasten2.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ScrollAufgabe\ScrollRectMovement.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ScrollAufgabe\ScrollTaskControl.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ScrollAufgabe\StartScrollAufgabe.cs" />
@@ -647,8 +642,6 @@
     <Compile Include="Assets\MeineDaten\Scripts\SliderClick.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\SliderControl\SliderControl.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\SliderControl\StartSliderTask.cs" />
-    <Compile Include="Assets\MeineDaten\Scripts\SliderControl\Unused\SliderControlMitTasten.cs" />
-    <Compile Include="Assets\MeineDaten\Scripts\SliderControl\Unused\SliderTrackpad.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\TrackpadTextInsertion\TrackpadTextInsertion.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ValueControlCenter.cs" />
     <Compile Include="Assets\MeineDaten\Scripts\ValueManipulation\ValueManipulation.cs" />

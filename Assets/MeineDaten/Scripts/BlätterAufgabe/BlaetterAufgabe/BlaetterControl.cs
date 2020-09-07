@@ -47,7 +47,7 @@ public class BlaetterControl : MonoBehaviour
     //For iDriveController
     private IDriveController iDriveController;
 
-    private void Awake()
+    private void Awake() //assign values and functions to local variables 
     {
         valueControlCenter = GameObject.Find("BlaetterManager").GetComponent<ValueControlCenter>();
         clickSound = GameObject.Find("BlaetterManager").GetComponent<AudioSource>();
@@ -65,7 +65,7 @@ public class BlaetterControl : MonoBehaviour
         // Starting to count mistakes and tasks
         fehlercounter = 0;
         aufgabenNr = 1;
-        pagesLength = buttonListBlaettern.pages.Length;
+        pagesLength = buttonListBlaettern.pages.Length; //count how many pages are being created
         CreateTaskOrder();
         SetStartPanel();
         SetGesuchteSeite();
@@ -74,6 +74,7 @@ public class BlaetterControl : MonoBehaviour
     //The correct text is assigned to the different textelements shown on the Canvas
     private void Update()
     {
+        //update the displayes GUI-elements each frame
         nameAufgabe.GetComponent<TextMeshProUGUI>().text = gesuchteSeite;
         anzahlFehler.GetComponent<TextMeshProUGUI>().text = fehlercounter.ToString();
         nummerDerAufgabe.GetComponent<TextMeshProUGUI>().text = aufgabenNr.ToString();
@@ -81,7 +82,7 @@ public class BlaetterControl : MonoBehaviour
 
         if (valueControlCenter.touchpadInput == true)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0)) //check the selected page/button if the touchpad is clicked
             {
                 Comparision(blaetterRectMovement.buttonText[0]);
                 blaetterRectMovement.selectedButton.Select();
@@ -91,7 +92,7 @@ public class BlaetterControl : MonoBehaviour
 
         if (valueControlCenter.iDriveInput)
         {
-            if (iDriveController.pushedOnce)
+            if (iDriveController.pushedOnce) //check the selected page/button is if the iDrive-Controller is clicked
             {
                 Comparision(blaetterRectMovement.buttonText[0]);
                 blaetterRectMovement.selectedButton.Select();
@@ -110,7 +111,7 @@ public class BlaetterControl : MonoBehaviour
         }
     }
 
-    public void SetStartPanel()
+    public void SetStartPanel() //initiate the start panel for either touchscreen or touchpad/iDrive-Controller 
     {
         if (valueControlCenter.touchscreenInput == true)
         {
@@ -124,7 +125,7 @@ public class BlaetterControl : MonoBehaviour
         }
     }
 
-    public void StartTime()
+    public void StartTime() //register the current time (for measuring ToT) and deactivate the start panel
     {
         startTime = System.DateTime.Now;
         clickSound.Play();

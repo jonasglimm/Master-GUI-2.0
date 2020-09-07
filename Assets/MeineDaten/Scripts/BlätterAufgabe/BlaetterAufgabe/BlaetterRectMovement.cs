@@ -223,6 +223,8 @@ public class BlaetterRectMovement : MonoBehaviour
         startTouch = swipeDelta = Vector2.zero;
     }
 
+    // Alternative to TrackpadSwipes() - currently deactivated/not used
+
     private void handleSwipe(){
         Vector3 mouseDelta = Input.mousePosition - lastMouseCoordinate;
         if(mouseDelta.x > swipeMovementX){ // if difference less than zero, moved to left

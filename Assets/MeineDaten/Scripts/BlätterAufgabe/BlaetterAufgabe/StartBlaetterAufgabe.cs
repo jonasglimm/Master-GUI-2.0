@@ -18,7 +18,7 @@ public class StartBlaetterAufgabe : MonoBehaviour
         //EnableClickSound();
     }
 
-    private void InitiateVariables()
+    private void InitiateVariables() //assign values to local variables 
     {
         valueControlCenter = GameObject.Find("BlaetterManager").GetComponent<ValueControlCenter>();
         snapOnScroll = GameObject.Find("SnapOnScroll");
@@ -26,7 +26,7 @@ public class StartBlaetterAufgabe : MonoBehaviour
         firstButton = GameObject.Find("FirstButton").GetComponent<Button>();
     }
 
-    private void EnableBlaetterRectMovement()
+    private void EnableBlaetterRectMovement() //BlaetterRectMovement is not need for Touchscreeninput
     {
         if (valueControlCenter.touchscreenInput == false)
         {
@@ -38,7 +38,7 @@ public class StartBlaetterAufgabe : MonoBehaviour
         }
     }
 
-    private void EnableClickSound()
+    private void EnableClickSound() //currently done via a different script
     {
         if (valueControlCenter.touchscreenInput == false)
         {
@@ -50,7 +50,7 @@ public class StartBlaetterAufgabe : MonoBehaviour
         }
     }
 
-    private void ChangeColorForTouchscreen()
+    private void ChangeColorForTouchscreen() //button color shouldn't be switch for touchscreeninput
     {
         if (valueControlCenter.touchscreenInput)
         {

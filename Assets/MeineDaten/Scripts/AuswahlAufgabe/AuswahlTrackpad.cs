@@ -11,6 +11,7 @@ using TrackpadTouch;
 /// </summary>
 
 public class AuswahlTrackpad : MonoBehaviour{
+    //assign each button to have the possibility to start a comparison after a button was clicked
     public Button button1;
     public Button button2;
     public Button button3;
@@ -20,7 +21,7 @@ public class AuswahlTrackpad : MonoBehaviour{
     private Button currentButton;
     private Vector3 lastMouseCoordinate = Vector3.zero; // used to store the last mose moved co-ordinates. Initialized with (0,0,0)
     private bool swipeInProgress = false;
-    private Button[] buttonListForRotation = new Button[6];
+    private Button[] buttonListForRotation = new Button[6]; //collect all buttons in on list to select for rotation with the iDrive-Controller
     
     private bool isTrackpadEnabled;
     private bool touchscreenInput;
@@ -28,9 +29,9 @@ public class AuswahlTrackpad : MonoBehaviour{
     private bool gestureInput;
 
     private float cursorResetTime;
-    public float swipeMovementX = 20f;
-    public float swipeMovementy = 20f;
-    public float swipeDistanceMagicTrackpad = 50f;
+    public float swipeMovementX = 20f; //set a factor for the distance in x-directions after which a swipe is detected
+    public float swipeMovementy = 20f; //set a factor for the distance in y-directions after which a swipe is detected
+    public float swipeDistanceMagicTrackpad = 50f; //set a factor for the distance on the Apple Magic Trackpad after which a swipe is detected
 
     public ValueControlCenter valueControlCenter; 
     public AudioSource clickSound; // for a click (only used for TouchpadInput - for Touch and iDrive it is played via onClick() of the button
@@ -47,6 +48,7 @@ public class AuswahlTrackpad : MonoBehaviour{
 
     void Awake()
     {
+        //assign the local variables to global variable in ValueControlCenter
         isTrackpadEnabled = valueControlCenter.touchpadInput;
         touchscreenInput = valueControlCenter.touchscreenInput;
         iDriveInput = valueControlCenter.iDriveInput;
@@ -60,7 +62,7 @@ public class AuswahlTrackpad : MonoBehaviour{
     {
         if (touchscreenInput == false)
         {
-            SelectButton(valueControlCenter.startButton);
+            SelectButton(valueControlCenter.startButton); //only if the input is not via Touchscreen, a startbutton is needed
 
             if (isTrackpadEnabled == true)
             {
@@ -68,7 +70,7 @@ public class AuswahlTrackpad : MonoBehaviour{
                 HideCursor();
             }
         }
-        if (!iDriveInput)
+        if (!iDriveInput) //fill the button list for rotation via iDrive-Controller
         {
             iDriveController.enabled = false;
         }
@@ -83,12 +85,12 @@ public class AuswahlTrackpad : MonoBehaviour{
         }
     }
 
-    void SelectButton(Button btn)
+    void SelectButton(Button btn) //on function to select a button
     {
         btn.Select(); 
         currentButton = btn;
     }
-    void moveLeft(){
+    void moveLeft(){ //move the selected button one element to the left, if is not at a left end
         if(currentButton == button2){
             StartCoroutine(waiter(button1));
             // SelectButton(button1);
@@ -109,8 +111,9 @@ public class AuswahlTrackpad : MonoBehaviour{
         }*/
     }
 
-    void moveRight(){
-        if(currentButton == button1){
+    void moveRight()
+    { //move the selected button one element to the right, if is not at a right end
+        if (currentButton == button1){
             StartCoroutine(waiter(button2));
             // SelectButton(button2);
         } else if(currentButton == button2){
@@ -130,8 +133,9 @@ public class AuswahlTrackpad : MonoBehaviour{
         }*/
     }
 
-    void moveUp(){
-        if(currentButton == button4){
+    void moveUp()
+    {//move the selected button one element up, if is not at the upper end
+        if (currentButton == button4){
             StartCoroutine(waiter(button1));
             // SelectButton(button1);
         } else if(currentButton == button5){
@@ -148,8 +152,9 @@ public class AuswahlTrackpad : MonoBehaviour{
         }*/
     }
 
-    void moveDown(){
-        if(currentButton == button1){
+    void moveDown()
+    {//move the selected button one element down, if is not at the lower end
+        if (currentButton == button1){
             StartCoroutine(waiter(button4));
             // SelectButton(button4);
         } else if(currentButton == button2){
@@ -167,7 +172,7 @@ public class AuswahlTrackpad : MonoBehaviour{
     }
     
     
-    IEnumerator waiter(Button btn){
+    IEnumerator waiter(Button btn){ //play a sound feedback and select the button
         yield return new WaitForSeconds(0.115f);
         if (currentButton != btn)
         {
@@ -182,10 +187,13 @@ public class AuswahlTrackpad : MonoBehaviour{
     {
         if (isTrackpadEnabled == true){
             CursorUnlock(); // Unlock and reset Cursor if it is locked
+
             //handling trackpad swipe as input
-            //handleTrackpadGesture(); //exchanged with TrackpadSwipes()
+
             TrackpadSwipes();
-        } else if(iDriveInput == true){
+            //handleTrackpadGesture(); //exchanged with TrackpadSwipes()
+        }
+        else if(iDriveInput == true){
             //handling keyboard arrrow keys as input
             handleKeyboardInput();
             handleIDriveControllerInput();
@@ -193,16 +201,16 @@ public class AuswahlTrackpad : MonoBehaviour{
 
     }
 
-    public void TrackpadSwipes()
+    public void TrackpadSwipes() //check for possible swiipes, the direction and the magnitude 
     {
-        tap = moved = swipeDown = swipeLeft = swipeRight = swipeUp = false;
+        tap = moved = swipeDown = swipeLeft = swipeRight = swipeUp = false; //set each state to false
 
-        if (TrackpadInput.touchCount > 0)
+        if (TrackpadInput.touchCount > 0) //check the status of the touchcount
         {
             if (TrackpadInput.touches[0].phase == TouchPhase.Began)
             {
                 isDragging = true;
-                startTouch = TrackpadInput.touches[0].position;
+                startTouch = TrackpadInput.touches[0].position; //save the touchposition in pixels
             }
             else if (TrackpadInput.touches[0].phase == TouchPhase.Ended || TrackpadInput.touches[0].phase == TouchPhase.Canceled)
             {
@@ -211,7 +219,7 @@ public class AuswahlTrackpad : MonoBehaviour{
             }
         }
 
-        //calculate the distance
+        //calculate the distance of the swipe
         swipeDelta = Vector2.zero;
         if (isDragging)
         {
@@ -268,10 +276,10 @@ public class AuswahlTrackpad : MonoBehaviour{
             Reset();
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) //if the touchpad is pressed or taped
         {
             AuswahlControl script = gameObject.GetComponent<AuswahlControl>();
-            script.Comparision(currentButton);
+            script.Comparision(currentButton); //check if the correct button was clicked
             clickSound.Play();
             SelectButton(currentButton);
         }
@@ -287,7 +295,7 @@ public class AuswahlTrackpad : MonoBehaviour{
         */
     }
 
-    private void Reset()
+    private void Reset() //reset all variables
     {
         if (moved == false)
         {
@@ -300,6 +308,8 @@ public class AuswahlTrackpad : MonoBehaviour{
         startTouch = swipeDelta = Vector2.zero;
     }
 
+
+    //Alternative to TrackpadSwipes()
     void handleTrackpadGesture(){
         Vector3 mouseDelta = Input.mousePosition - lastMouseCoordinate;
         //value 20 works for normal move ment without gesture for both directions
@@ -362,6 +372,7 @@ public class AuswahlTrackpad : MonoBehaviour{
         }
     }
 
+    //Use keyboard input as a example to check the functionality
     void handleKeyboardInput(){
         if(Input.GetKeyDown(KeyCode.LeftArrow)){
             moveLeft();
@@ -380,7 +391,7 @@ public class AuswahlTrackpad : MonoBehaviour{
         }
     }
 
-    private void handleIDriveControllerInput()
+    private void handleIDriveControllerInput() //handle movement of Controller to left, right, up and down
     {
         if (iDriveController.movedLeftOnce)
         {
@@ -417,7 +428,7 @@ public class AuswahlTrackpad : MonoBehaviour{
             {
                 int counter = 0;
 
-                if(currentButton == button1)
+                if(currentButton == button1) //counter is needed to scroll through the button in a circular order
                 {
                     counter = 0;
                 }
@@ -444,7 +455,7 @@ public class AuswahlTrackpad : MonoBehaviour{
 
                 if(iDriveController.rotationClockwiseSteps > 0)
                 {
-                    if(counter + iDriveController.rotationClockwiseSteps < 6)
+                    if(counter + iDriveController.rotationClockwiseSteps < 6) //check if the rotation was very quick and the iDrive-Controller was rotated for more than 6 steps in on frame
                     {
                         counter = counter + iDriveController.rotationClockwiseSteps;
                     }
@@ -465,8 +476,8 @@ public class AuswahlTrackpad : MonoBehaviour{
                     }
                 }
                 //currentButton = buttonListForRotation[counter];
-                SelectButton(buttonListForRotation[counter]);
-                scrollingSound.Play();
+                SelectButton(buttonListForRotation[counter]); 
+                scrollingSound.Play(); //acustic feedback
             }
         }
         
@@ -818,7 +829,7 @@ public class AuswahlTrackpad : MonoBehaviour{
         }
     }
 
-    private void HideCursor()
+    private void HideCursor() 
     {
         Cursor.visible = false;
     }

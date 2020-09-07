@@ -5,5 +5,5 @@ using UnityEngine;
 public class StartSliderTask : MonoBehaviour
 {
     [Header("Slider controls")]
-    public int endOfScale;
+    public int endOfScale; //adjust the total amount of numbers
 }

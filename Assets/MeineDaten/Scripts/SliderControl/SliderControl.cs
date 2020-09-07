@@ -10,7 +10,7 @@ public class SliderControl : MonoBehaviour
     private ValueControlCenter valueControlCenter;
     private StartSliderTask startSliderTask;
     private AudioSource clickSound;
-
+    //GUI elements
     public TextMeshProUGUI zahlAufgabe;
     public TextMeshProUGUI anzahlFehler;
     public TextMeshProUGUI nummerDerAufgabe;
@@ -23,12 +23,12 @@ public class SliderControl : MonoBehaviour
     public TextMeshProUGUI endOfScaleText;
     public TextMeshProUGUI handleNumber;
     public Slider valueSlider;
-
+    //local variables
     private int aufgabenstellung;
     private int neueAufgabenstellung;
     private int fehlercounter;
     private int aufgabenNr;
-
+    //lists of all possible tasks
     private int[] aufgabenListe = new int[15]; 
 
     private int endOfScale;
@@ -40,27 +40,31 @@ public class SliderControl : MonoBehaviour
     public GameObject startPanel;
     public GameObject startPanelTouchscreen;
 
-    public float swipeDistanceX;
+    public float swipeDistanceX; //value to adjust the swipe distance 
 
     private void Awake() //intiate all variables which are set in different scripts
     {
+        //assign global scripts to local variables 
         valueControlCenter = GameObject.Find("SliderControl").GetComponent<ValueControlCenter>();
         startSliderTask = GameObject.Find("SliderControl").GetComponent<StartSliderTask>();
         clickSound = GameObject.Find("ClickSound").GetComponent<AudioSource>();
 
-        endOfScale = startSliderTask.endOfScale;
+        endOfScale = startSliderTask.endOfScale;//set the maximum value
         CreateTaskOrder();
     }
 
     void Start()
     {
+        //set local variables
         fehlercounter = 0;
         aufgabenNr = 1;
         valueSlider.maxValue = endOfScale;
         valueSlider.value = endOfScale / 3;
+
         NewTask();
         SetStartPanel();
 
+        //change color for touchscreen input
         if (valueControlCenter.touchpadInput == false){
             ColorBlock colorVar = valueSlider.colors;
             colorVar.selectedColor = new Color(1f, 0.8509804f, 0.4f, 1);
@@ -98,6 +102,7 @@ public class SliderControl : MonoBehaviour
     }
     private void Update()
     {
+        //update the GUI elements
         zahlAufgabe.text = aufgabenstellung.ToString();
         anzahlFehler.text = fehlercounter.ToString();
         nummerDerAufgabe.text = aufgabenNr.ToString();
@@ -105,6 +110,7 @@ public class SliderControl : MonoBehaviour
 
         endOfScaleText.text = endOfScale.ToString();
         handleNumber.text = valueSlider.value.ToString();
+
         if(valueControlCenter.touchpadInput == true){
             CursorUnlock();
             handleTouchpadInput();
@@ -134,7 +140,7 @@ public class SliderControl : MonoBehaviour
         }
     }
 
-    public void StartTime()
+    public void StartTime() //set time for ToT measurment 
     {
         startTime = System.DateTime.Now;
         clickSound.Play();
@@ -144,7 +150,7 @@ public class SliderControl : MonoBehaviour
         selected = true;
     }
 
-    public void Comparision()
+    public void Comparision() //comparison if the selected value is correct
     {
         if (valueSlider.value == aufgabenstellung){
             StartCoroutine(FeedbackCorrect());
@@ -171,7 +177,7 @@ public class SliderControl : MonoBehaviour
         }
     }
 
-    private void CreateTaskOrder() //Ramdom Order depending on the number of names
+    private void CreateTaskOrder() //Ramdom order depending on the number of names
     {
         aufgabenListe[0] = endOfScale * 4 / 7;
         aufgabenListe[1] = endOfScale * 7 / 9;

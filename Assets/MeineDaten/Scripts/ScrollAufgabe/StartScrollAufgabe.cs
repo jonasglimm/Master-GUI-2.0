@@ -20,7 +20,7 @@ public class StartScrollAufgabe : MonoBehaviour
         EnableScrollRectMovement();
     }
 
-    public void EnableScrollRectMovement()
+    public void EnableScrollRectMovement() //enable the correct scrollrectMovement depending on the input modality
     {
         if (valueControlCenter.touchscreenInput == false)
         {

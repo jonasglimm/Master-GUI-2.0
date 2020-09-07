@@ -5,28 +5,31 @@ using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.UI;
 
+//additional mapbox functions
 using Mapbox.Utils;
 using Mapbox.Unity.Map;
 using System;
 using Mapbox.Unity.Utilities;
 
-using TrackpadTouch;
+using TrackpadTouch; //using an add on from the unity asset store 
 
 public class MapboxTaskControl : MonoBehaviour
 {
-    private Mapbox.Unity.Map.AbstractMap abstractMap;
-    private Mapbox.Examples.SpawnOnMap spawnOnMap;
-    private Mapbox.Examples.QuadTreeCameraMovement quadTreeCameraMovement;
+    private Mapbox.Unity.Map.AbstractMap abstractMap; // script which is linked to the Map gameobject and which was created by mapbox
+    private Mapbox.Examples.SpawnOnMap spawnOnMap; // script which is linked to the Map gameobject and which was created by mapbox (controls the different targets which sparn on definded locations)
+    private Mapbox.Examples.QuadTreeCameraMovement quadTreeCameraMovement; // script which is linked to the Map gameobject and which was created by mapbox (controls the map movement)
+    //other scripts to interact with
     private ValueControlCenter valueControlCenter;
     private AudioSource clickSound;
     private TrackpadInputMapbox trackpadInputMapbox;
     private IDriveController iDriveController;
 
-    private AbstractMap _mapManager;
+    private AbstractMap _mapManager; // a mapbox specific object category 
 
     private Camera _referenceCamera;
     private bool _shouldDrag;
 
+    //GUI elements
     public GameObject nameAufgabe;
     public GameObject nummerDerAufgabe;
     public GameObject maxAnzahlAufgabe;
@@ -36,11 +39,13 @@ public class MapboxTaskControl : MonoBehaviour
     public GameObject pointer;
     private Slider zoomSlider;
 
+    //different canvases and GUI elements
     private GameObject valueCanvas;
     private GameObject valueAdjustmentPanel;
     private GameObject panSpeedValue;
     private GameObject zoomSpeedValue;
 
+    // vectors to control the map movement
     private Vector3 _origin;
     private Vector3 _mousePosition;
     private Vector3 _mousePositionPrevious;
@@ -58,6 +63,7 @@ public class MapboxTaskControl : MonoBehaviour
 
     private Vector2d[] targetLocations;
 
+    //variables to adjust 
     public bool valueCanvasIsVisible;
     public float _panSpeed = 2f;
     public float _zoomSpeed = 0.25f;
@@ -92,10 +98,12 @@ public class MapboxTaskControl : MonoBehaviour
         targetCount = 1;
         SetStartPanel();
 
-        if (valueControlCenter.touchpadInput == true) 
+        if (valueControlCenter.touchpadInput == true) // in order to use the Apple Trackpad a an input device, the standard movement scripts needs to be change/deactivated
         {
+            // specific for the touchpad
             _zoomSpeed = 0.75f;
             _panSpeed = 40.0f;
+
             quadTreeCameraMovement.enabled = false; //preventing conflict with quadTreeCameraMovement script
             //InvokeRepeating("CursorLock", valueControlCenter.cursorResetTime, valueControlCenter.cursorResetTime);
             HideCursor();
@@ -107,17 +115,19 @@ public class MapboxTaskControl : MonoBehaviour
 
         if (valueControlCenter.touchscreenInput == true)
         {
+            // specific values for touchscreen
             _panSpeed = 1.75f;
             _zoomSpeed = 0.25f;
         }
 
-        if (valueCanvasIsVisible == false)
+        if (valueCanvasIsVisible == false) // a GUI to adjust pan and zoom values while testing (during game mode)
         {
             valueCanvas.GetComponent<Canvas>().enabled = false;
         }
 
         if (valueControlCenter.iDriveInput)
         {
+            // specific values for the iDrive-Controller
             _panSpeed = 30f;
         }
         else
@@ -137,7 +147,7 @@ public class MapboxTaskControl : MonoBehaviour
         GetCurrentLocation();
         GetCurrentZoom();
         CheckZoomAndOffset();
-        zoomSlider.value = zoom;
+        zoomSlider.value = zoom; // zoom indicator is adjusted 
 
         if(valueControlCenter.touchpadInput == true)
         {
@@ -148,6 +158,7 @@ public class MapboxTaskControl : MonoBehaviour
             handleIDriveController();
         }
 
+        // if the supervisor manually starts or ends the test
         if (Input.GetKeyDown(KeyCode.S))
         {
             StartTime();
@@ -159,9 +170,9 @@ public class MapboxTaskControl : MonoBehaviour
         }
     }
 
-    #region ValueAdjustments
+    #region ValueAdjustments (a GUI to adjust pan and zoom values while testing (during game mode))
 
-    private void ValueAdjustment()
+    private void ValueAdjustment() // a GUI to adjust pan and zoom values while testing (during game mode)
     {
         valueAdjustmentPanel = GameObject.Find("ValueAdjustment");
         valueAdjustmentPanel.SetActive(true);
@@ -172,6 +183,7 @@ public class MapboxTaskControl : MonoBehaviour
         zoomSpeedValue.GetComponent<Text>().text = _zoomSpeed.ToString();
     }
 
+    // connect each of these functions to the correspondig buttons
     public void PanSpeedUp()
     {
         _panSpeed = _panSpeed + 0.25f;
@@ -198,7 +210,7 @@ public class MapboxTaskControl : MonoBehaviour
 
     #endregion
 
-    public void SetStartPanel()
+    public void SetStartPanel() //start panel, same as in every other task
     {
         if (valueControlCenter.touchscreenInput == true)
         {
@@ -212,7 +224,7 @@ public class MapboxTaskControl : MonoBehaviour
         }
     }
 
-    public void StartTime()
+    public void StartTime() //start timer for ToT and deactivate the start panels
     {
         startTime = System.DateTime.Now;
         clickSound.Play();
@@ -220,7 +232,7 @@ public class MapboxTaskControl : MonoBehaviour
         startPanelTouchscreen.SetActive(false);
     }
 
-    private void SetGUI()
+    private void SetGUI() //adjust the GUI each frame
     {
         nameAufgabe.GetComponent<TextMeshProUGUI>().text = gesuchteMarkierung;
         nummerDerAufgabe.GetComponent<TextMeshProUGUI>().text = targetCount.ToString();
@@ -230,24 +242,24 @@ public class MapboxTaskControl : MonoBehaviour
 
     }
 
-    private void GetTargetLocations()
+    private void GetTargetLocations() // get the locations of each spawn point in an array
     {
         targetLocations = spawnOnMap._locations;
     }
 
-    private void GetCurrentLocation()
+    private void GetCurrentLocation() // get the current map location each frame
     {
         currentLocationString = abstractMap.Options.locationOptions.latitudeLongitude;
-        currentLocation = Conversions.StringToLatLon(currentLocationString);
+        currentLocation = Conversions.StringToLatLon(currentLocationString); // this conversion and type of vector is unique for mapbox
     }
 
-    private void GetCurrentZoom()
+    private void GetCurrentZoom() // get current zoom value
     {
         zoom = abstractMap.Options.locationOptions.zoom;
         //Debug.Log(zoom);
     }
 
-    private void CheckZoomAndOffset()
+    private void CheckZoomAndOffset() // check if the zoom barrier is broken (user has zoomed in and the target zoom value has been 
     {
         if (zoom > zoomBarrier)
         {
@@ -255,7 +267,7 @@ public class MapboxTaskControl : MonoBehaviour
         }
     }
 
-    private void CheckOffset(int target)
+    private void CheckOffset(int target) // compare the current location and the target locations in x- and y-coordinates to see, if these are within the barriers
     {
         if ((targetLocations[target].x + targetOffset >= currentLocation.x) && (targetLocations[target].x - targetOffset <= currentLocation.x))
         {
@@ -281,8 +293,9 @@ public class MapboxTaskControl : MonoBehaviour
         panelCorrect.SetActive(false);
     }
 
-    private void handleIDriveController()
+    private void handleIDriveController() 
     {
+        // using the predefined panning mechanism to pan with an iDrive-Controller
         if (iDriveController.RotaryLeft)
         {
             quadTreeCameraMovement.PanMapUsingKeyBoard(-1f, 0f);
@@ -300,6 +313,7 @@ public class MapboxTaskControl : MonoBehaviour
             quadTreeCameraMovement.PanMapUsingKeyBoard(0f, -1f);
         }
 
+        // zoom delta is directly correlated to the rotation
         if (iDriveController.turnedClockwise)
         {
             float zoomDelta = iDriveController.rotationClockwiseSteps;
@@ -319,6 +333,7 @@ public class MapboxTaskControl : MonoBehaviour
 
         PanWithTrackpad();
 
+        #region Alternatives and debugging
         //PinchTrackpadZoom(); //Problem with touchdetection on trackpad - detects multiple fingers instate of just one
 
         //UseMeterConversion(); //Exchanged with PanWithTrackpad
@@ -328,9 +343,10 @@ public class MapboxTaskControl : MonoBehaviour
         //ZoomMapUsingTouchOrMouse(scrollDelta);
 
         //zoom is done using the TrackpadInputMapbox script
+        #endregion
     }
 
-    public void UseMeterConversion()
+    public void UseMeterConversion() // this functions is copied and slighly change out of the quadTreeCameraMovement script from mapbox
     {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
@@ -384,7 +400,7 @@ public class MapboxTaskControl : MonoBehaviour
         }
     } //exchanged with PanWithTrackpad
 
-    public void PanWithTrackpad()
+    public void PanWithTrackpad() //function to collect values from TrackpadPan and convert into values to be used by UpdateMap
     {
         Vector2 offset = trackpadInputMapbox.TrackpadPan() * 0.01f;
 
@@ -423,7 +439,7 @@ public class MapboxTaskControl : MonoBehaviour
         }
     } //Problem with multiple touches detected -> done in TrackpadInputMapbox script
 
-    public void ZoomMapUsingTouchOrMouse(float zoomFactor)
+    public void ZoomMapUsingTouchOrMouse(float zoomFactor) // this functions is copied and slighly change out of the quadTreeCameraMovement script from mapbox
     {
         var zoom = Mathf.Max(0.0f, Mathf.Min(_mapManager.Zoom + zoomFactor * _zoomSpeed, 21.0f));
         if (Math.Abs(zoom - _mapManager.Zoom) > 0.0f)

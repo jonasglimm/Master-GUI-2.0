@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour //attach this script to each button onClick()
+public class MainMenu : MonoBehaviour //attach this script to each menu button onClick()
 {
     public void LoadScene(int sceneNumber) //sceneNumber set in File -> Build Settings
     {

@@ -54,10 +54,11 @@ public class AuswahlControl : MonoBehaviour
 
     void Awake()
     {
+        //assign the specific element to each defined variable
         valueControlCenter = GameObject.Find("AufgabenManager").GetComponent<ValueControlCenter>();
         auswahlTrackpad = GameObject.Find("AufgabenManager").GetComponent<AuswahlTrackpad>();
         buttonList = FindObjectsOfType<Button>();
-        images = GameObject.Find("Images");
+        images = GameObject.Find("Images"); //each image is given a number as a name - thats how the comparison is for each button press is done
         clickSound = GameObject.Find("AufgabenManager").GetComponent<AudioSource>();
 
         activeTime = valueControlCenter.feedbackPanelTime;
@@ -74,7 +75,7 @@ public class AuswahlControl : MonoBehaviour
         // Starting to count mistakes and tasks
         fehlercounter = 0;
 
-        // if direct touch is used, the selected color is changed to blue
+        // if direct touch is used, the selected color is changed to blue to avoid to show a button in yellow after it has been pressed
         if (directTouchInput == true) 
          {
              for (var i = 0; i < buttonList.Length - 1; i++ ) // -1 because of backbutton
@@ -93,9 +94,9 @@ public class AuswahlControl : MonoBehaviour
         }
     }
 
-    //The correct text is assigned to the different textelements shown on the Canvas
     private void Update() 
     {
+        // The correct text is assigned to the different textelements shown on the Canvas
         zahlAufgabe.GetComponent<TMPro.TextMeshProUGUI>().text = aufgabenstellung.ToString();
         anzahlFehler.GetComponent<TMPro.TextMeshProUGUI>().text = fehlercounter.ToString();
         nummerDerAufgabe.GetComponent<TMPro.TextMeshProUGUI>().text = aufgabenNr.ToString();
@@ -113,7 +114,7 @@ public class AuswahlControl : MonoBehaviour
 
     }
 
-    public void StartTime()
+    public void StartTime() //if the time isn't started by pressing the touch start button, the supervisor can start the time manually
     {
         startTime = System.DateTime.Now;
         clickSound.Play();
@@ -121,10 +122,10 @@ public class AuswahlControl : MonoBehaviour
         startPanelTouchscreen.SetActive(false);
     }
 
-    private void ChangeToIcons()
+    private void ChangeToIcons() //if the buttons should show icons insteat of numbers, the function will switch these
     {
-        numberList = GameObject.FindGameObjectsWithTag("NoIcons");
-        iconList = GameObject.FindGameObjectsWithTag("WithIcons");
+        numberList = GameObject.FindGameObjectsWithTag("NoIcons"); //a seperate Tag is assigned to the number to identify the six numbers and activate them
+        iconList = GameObject.FindGameObjectsWithTag("WithIcons"); //likewise the icons have a seperate Tag to select them all together and toggle them
 
         if (useIcons == true)
         {
@@ -219,7 +220,7 @@ public class AuswahlControl : MonoBehaviour
         }
     }
 
-    private void ShowCursor()
+    private void ShowCursor() //Activates and resets the cursor into the middle if the screen
     {
         Cursor.visible = true;
     }

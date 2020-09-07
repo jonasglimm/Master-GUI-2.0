@@ -7,6 +7,7 @@ using TMPro;
 
 public class LetterSelection : MonoBehaviour
 {
+    //drag according GUI-elements into the Inspector
     public Image selector;
     public TMP_InputField inputField;
     public TextMeshProUGUI selectorText;
@@ -15,15 +16,17 @@ public class LetterSelection : MonoBehaviour
     public GameObject knob;
     public AudioSource scrollingSound;
     public AudioSource clickSound;
+    //assign local variable to public classes
     private ControlManager script;
     private IDriveController iDriveController;
 
     private void Start() {
-        selector.transform.eulerAngles =  new Vector3(selector.transform.eulerAngles.x, selector.transform.eulerAngles.y, 0f);
-        inputField.text  = "";
-        script = gameObject.GetComponent<ControlManager>();
+        selector.transform.eulerAngles =  new Vector3(selector.transform.eulerAngles.x, selector.transform.eulerAngles.y, 0f); //initiate a vector to discribe the rotation of the selector
+        inputField.text  = ""; //empty the input field
+        //assign local variable to public classes
+        script = gameObject.GetComponent<ControlManager>(); 
         iDriveController = GameObject.Find("Manager").GetComponent<IDriveController>();
-
+        //activate or deactivate the presented knob
         if (script.touchscreenInput == true)
         {
             knob.SetActive(false);
@@ -40,7 +43,7 @@ public class LetterSelection : MonoBehaviour
             if(iDriveController.turnedClockwise)
             {
                 scrollingSound.Play();
-                selector.transform.eulerAngles = new Vector3(selector.transform.eulerAngles.x, selector.transform.eulerAngles.y, selector.transform.eulerAngles.z - (iDriveController.rotationClockwiseSteps * 11.25f));
+                selector.transform.eulerAngles = new Vector3(selector.transform.eulerAngles.x, selector.transform.eulerAngles.y, selector.transform.eulerAngles.z - (iDriveController.rotationClockwiseSteps * 11.25f)); // rotate the selector for 11.25 degree each rotatoin step
             }
             else if(iDriveController.turnedCounterclockwise)
             {
@@ -56,11 +59,16 @@ public class LetterSelection : MonoBehaviour
                 scrollingSound.Play();
                 selector.transform.eulerAngles =  new Vector3(selector.transform.eulerAngles.x, selector.transform.eulerAngles.y, selector.transform.eulerAngles.z - 11.25f);
             }*/
-            void insertText(string text){
+
+
+            void insertText(string text) //function to add a letter or textelement to the inputfield
+            {
                 inputField.text = inputField.text + text;
             }
 
-            if (iDriveController.movedLeftOnce)
+
+            //if the controller is lateraly moved, the cursor jumpes on digit within the input field
+            if (iDriveController.movedLeftOnce) 
             {
                 inputField.caretPosition = inputField.caretPosition - 1;
             }
@@ -68,9 +76,13 @@ public class LetterSelection : MonoBehaviour
             {
                 inputField.caretPosition = inputField.caretPosition + 1;
             }
-
+            //
+            //depending on the angle, the selector text is changed according to the selected letter
+            //if the iDrive-Controller is pressed, the according letter is added to the input field
+            //if the last input was the return or backspace image, it needs to be deactivated
+            //
             if (selector.transform.eulerAngles.z >= 0f-1f && selector.transform.eulerAngles.z < 0f+1f ){
-                returnImage.SetActive(false);
+                returnImage.SetActive(false); 
                 backspaceImage.SetActive(false);
                 selectorText.text = "A";
                 if(iDriveController.pushedOnce)
@@ -330,7 +342,9 @@ public class LetterSelection : MonoBehaviour
                     insertText("Ü");
                     clickSound.Play();
                 }
-            } else if(selector.transform.eulerAngles.z >= 11.25f-1f && selector.transform.eulerAngles.z < 11.25f+1f){
+            } else if(selector.transform.eulerAngles.z >= 11.25f-1f && selector.transform.eulerAngles.z < 11.25f+1f) 
+            {
+                //add a blank space
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(false);
                 selectorText.text = "_";
@@ -351,14 +365,15 @@ public class LetterSelection : MonoBehaviour
                     inputField.text  = "";
                 }
             } else if(selector.transform.eulerAngles.z >= 33.75f-1f && selector.transform.eulerAngles.z < 33.75f+1f){
-                //backspace value
+                //backspace
                 selectorText.text = "";
                 returnImage.SetActive(false);
                 backspaceImage.SetActive(true);
 
                 if(iDriveController.pushedOnce){
                     string temp = inputField.text;
-                    if(temp.Length != 0){
+                    if(temp.Length != 0) //check if the input field has content 
+                    {
                         clickSound.Play();
                         char lastChar = temp[temp.Length-1];
                         if(lastChar == ' '){

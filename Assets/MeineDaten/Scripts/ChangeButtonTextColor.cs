@@ -30,7 +30,7 @@ public class ChangeButtonTextColor : MonoBehaviour //, ISelectHandler
     {
         if (!valueControlCenter.touchscreenInput)
         {
-            if (EventSystem.current.currentSelectedGameObject == button)
+            if (EventSystem.current.currentSelectedGameObject == button) //if the button is selected, it will be yellow -> text must be black
             {
                 button.GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
             }

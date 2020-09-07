@@ -6,6 +6,7 @@ using System;
 
 public class IDriveController : MonoBehaviour
 {
+    //create public variables to access from different scripts
     [HideInInspector]
     public bool movedLeftOnce, movedRightOnce, movedUpOnce, movedDownOnce, pushedOnce;
     [HideInInspector]
@@ -24,7 +25,7 @@ public class IDriveController : MonoBehaviour
     [HideInInspector]
     public int rotationClockwiseSteps, rotationCounterclockwiseSteps;
 
-
+    // variable to collect iDrive-Controller signals
     [HideInInspector]
     public bool RotaryPush, RotaryLeft, RotaryRight, RotaryUp, RotaryDown, MainOption, MainBack, MainMedia, MainRadio, MainTel, MainNav, MainMenue;
     [HideInInspector]
@@ -32,11 +33,14 @@ public class IDriveController : MonoBehaviour
 
     private bool rotationInLastFrame;
 
+
+    // the name of the serial port needs to be change for each computer to which the iDrive-Controller gets connected to
     private SerialPort port = new SerialPort("/dev/tty.usbmodem48692101", 115200, Parity.None, 8, StopBits.One);
 
     // Start is called before the first frame update
     void Start()
     {
+        //reset all variables
         movedDownOnce = movedLeftOnce = movedRightOnce = movedUpOnce = pushedOnce = false;
         pushStarted = leftStarted = rightStarted = upStarted = downStarted = false;
         pushHeld = leftHeld = upHeld = downHeld = false;
@@ -103,6 +107,8 @@ public class IDriveController : MonoBehaviour
         CheckControllerMovement();
         CheckRotation();
         CheckPushedDown();
+
+        #region debugging
         //Debug.Log("RotartyEx = " + RotaryEx);
         //Debug.Log("Clockwise: " + rotationClockwiseSteps);
         //Debug.Log("Counterclockwise: " + rotationCounterclockwiseSteps);
@@ -131,8 +137,10 @@ public class IDriveController : MonoBehaviour
         */
         //Debug.Log(RotaryEx);
         //Debug.Log("Done");
+        #endregion
     }
-
+    // three stages (started, held, ended) of pushing the controller down
+    // therefore varables from the last frame are taken into consideration
     void CheckPushedDown()
     {
         if (RotaryPush)
@@ -158,7 +166,7 @@ public class IDriveController : MonoBehaviour
         }
     }
 
-    void CheckControllerMovement()
+    void CheckControllerMovement() // collection of the for dimensions
     {
         CheckLeft();
         CheckRight();
@@ -166,6 +174,7 @@ public class IDriveController : MonoBehaviour
         CheckDown();
     }
 
+    //detecting if and how fast / how far the controller is rotated in one frame
     void CheckRotation()
     {
         rotationClockwiseSteps = rotationCounterclockwiseSteps = 0;
@@ -206,11 +215,11 @@ public class IDriveController : MonoBehaviour
             }
         }
 
-        if (rotationClockwiseSteps == 1 || rotationCounterclockwiseSteps == 1) //sometime a rotations takes place during two frames. This if-statment prevents a double step
+        if (rotationClockwiseSteps == 1 || rotationCounterclockwiseSteps == 1) //sometimes a rotations lasts for two frames. This if-statment prevents a double step
         {
             if (rotationInLastFrame)
             {
-                rotationClockwiseSteps = rotationCounterclockwiseSteps = 0;
+                rotationClockwiseSteps = rotationCounterclockwiseSteps = 0; 
                 rotationInLastFrame = false;
             }
             else
@@ -224,7 +233,13 @@ public class IDriveController : MonoBehaviour
         }
     }
 
-    void CheckLeft()
+    #region Detecting lateral and horizontal controller movement
+    //
+    // for each button or direction three different stages (started, held, ended) are being created
+    // therefore the status of the last frame is checked
+    // that's how the difference between a continues and discrete interaction is possible
+    //
+    void CheckLeft() 
     {
         if (RotaryLeft)
         {
@@ -324,7 +339,9 @@ public class IDriveController : MonoBehaviour
         }
     }
 
-    private void Reset()
+    #endregion
+
+    private void Reset() //reset all static variables
     {
         movedLeftOnce = movedRightOnce = movedUpOnce = movedDownOnce = false;
         pushedOnce = false;
